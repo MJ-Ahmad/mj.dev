@@ -1,0 +1,31 @@
+NOTICE — mj.dev Ethical Stewardship Principles
+
+mj.dev is not only a technical framework but also a declaration of values.  
+Every artifact created under this project is governed by the following principles:
+
+1. **Exclusion-Proof Design**  
+   All scripts, documents, and workflows are architected to ensure no contributor or citizen is excluded.  
+   Accessibility and clarity are non-negotiable.
+
+2. **Inheritable Documentation**  
+   Every file, README, and declaration is written to be passed on to future generations.  
+   mj.dev is a living archive of stewardship, designed for continuity and legacy.
+
+3. **Universal Accessibility**  
+   UTF-8 safety, cross-platform compatibility, and responsive design are embedded in every artifact.  
+   mj.dev belongs to everyone, everywhere.
+
+4. **Accountability and Dignity**  
+   Contributors are custodians of clarity and respect.  
+   Every addition to mj.dev must uphold dignity, transparency, and traceable inheritance.
+
+5. **Joyful Stewardship**  
+   Branding, naming, and communication are designed to resonate with youth and citizens,  
+   fostering pride, hope, and collective ownership.
+
+This NOTICE is a reminder that mj.dev is more than code — it is a covenant of ethical architecture and human legacy.
+
+Author: MJ Ahmad  
+📧 Email: mjahmad2024@outlook.com  
+🌐 GitHub: https://github.com/mj-ahmad  
+🔗 LinkedIn: https://linkedin.com/in/jafor-ahmad

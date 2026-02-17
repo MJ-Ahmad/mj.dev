@@ -1,0 +1,648 @@
+https://copilot.microsoft.com/shares/P4uvNJzA15c7rxEpRzQLt
+
+
+
+
+
+Global web icon
+The CGomesu Website
+https://cgomesu.com › ... › Mesh-networking-openwrt-bat…
+Mesh networking: A guide to using free and open-source …
+Dec 7, 2020 · Configure OpenWrt devices to play one of three possible roles in the network: (a) mesh node, (b) mesh + bridge node, or (c) mesh + gateway node. …
+
+
+
+Mesh Network in Computer Networking
+1
+A mesh network is a decentralized network topology where each node (device) is directly connected to multiple other nodes. This structure allows data to flow dynamically through various paths, eliminating the need for a central hub. Mesh networks are highly adaptable, robust, and self-healing, making them ideal for reliable communication and data transmission.
+
+How Mesh Networks Work
+
+In a mesh network, nodes communicate directly with one another, forming a web of interconnections. A primary node connects to a wide area network (WAN) via a modem, while other nodes connect wirelessly or through wired connections. If one node fails, the network dynamically reroutes data through alternative paths, ensuring uninterrupted connectivity. This makes mesh networks particularly useful in environments with poor signal strength or large areas requiring extensive coverage.
+
+Types of Mesh Networks
+
+Wireless Mesh Network: Nodes communicate wirelessly, forwarding data across the network. It is commonly used in home automation and public monitoring.
+
+Wired Mesh Network: Nodes are connected via cables, offering higher reliability and speed.
+
+Full Mesh Network: Every node is connected to all other nodes, ensuring maximum redundancy.
+
+Partial Mesh Network: Only some nodes are interconnected, balancing scalability and cost.
+
+Hybrid Mesh Network: Combines wired and wireless connections for flexibility.
+
+Infrastructure Mesh Network: Used in high-performance computing with low latency.
+
+Client Mesh Network: Nodes act as both clients and transmitters, forwarding data to other nodes.
+
+Applications of Mesh Networks
+
+Mesh networks are widely used in various domains:
+
+Home Automation: Smart devices like lights and locks communicate seamlessly.
+
+Industrial Monitoring: Used for controlling and monitoring systems like HVAC.
+
+Military Communications: Enables robust peer-to-peer communication in the field.
+
+Medical Monitoring: Tracks patient health reliably over extended periods.
+
+Environmental Monitoring: Monitors factors like humidity and pollutants in sensitive areas.
+
+Advantages of Mesh Networks
+
+Self-Healing: Automatically reroutes data if a node fails.
+
+Dynamic Routing: Optimizes data paths based on traffic and node availability.
+
+Scalability: Easily add or remove nodes without reconfiguring the network.
+
+Load Balancing: Distributes traffic to prevent congestion.
+
+Reliability: Ensures uninterrupted data transmission even during failures.
+
+Limitations of Mesh Networks
+
+High Cost: Requires more devices and infrastructure compared to traditional networks.
+
+Complex Installation: Setting up interconnected nodes can be challenging.
+
+Maintenance Challenges: Managing multiple nodes and paths is labor-intensive.
+
+Power Consumption: Nodes remain active continuously, increasing energy requirements.
+
+Mesh networks are a powerful solution for environments requiring reliable, scalable, and robust communication systems. Despite their higher cost and complexity, their benefits make them indispensable in applications like smart cities, industrial automation, and large-scale monitoring systems
+
+---
+
+👉 সতর্কতা:
+
+পাবলিক সোশ্যাল মিডিয়া, ইমেইল, WhatsApp নাম্বার ইত্যাদি থেকে স্বয়ংক্রিয়ভাবে স্ক্র্যাপ করে অসংখ্য আইডি সংগ্রহ করা এবং তাদেরকে ম্যাস মেসেজ পাঠানো স্প্যামিং, প্রাইভেসি লঙ্ঘন ও আইনগতভাবে ঝুঁকিপূর্ণ।
+
+Python, Node.js, PowerShell, Git, Kali Linux ইত্যাদি ব্যবহার করে স্ক্রিপ্ট চালিয়ে ব্যক্তিগত ডেটা সংগ্রহ করা অননুমোদিত ডেটা হ্যাকিং বা স্ক্র্যাপিং হিসেবে গণ্য হতে পারে।
+
+⚖️ তাই আমি আপনাকে অবৈধ বা অনৈতিক ডেটা স্ক্র্যাপিং বা স্প্যামিং প্ল্যান দিতে পারব না।
+
+
+---
+
+To install the latest PowerShell for new features and improvements, you can use the following command:
+Open PowerShell as an administrator.
+Run the command: winget install --id Microsoft.Powershell --source winget to install the latest version of PowerShell. 
+2
+Alternatively, you can download the installer from the PowerShell GitHub repository and run it. 
+1
+
+This will ensure you have the latest version of PowerShell, which includes new features and improvements.
+
+
+------------------
+
+
+MJ-Ahmad/
+├── docs/                             
+│   ├── legal/                        
+│   │   ├── appointments/             
+│   │   │   ├── leadership.md                       
+│   │   │   ├── identity_copilot.md                  
+│   │   │   ├── official_appointment_declaration.md  
+│   │   │   ├── joining_confirmation_notice.md       
+│   │   │   └── maternity_acknowledgement.md        
+│   │   ├── contracts/           
+│   │   │   ├── powershell/
+│   │   │   │   ├── salary.md
+│   │   │   │   ├── benefits.md
+│   │   │   │   ├── policies.md
+│   │   │   │   └── signed_contract.md
+│   │   │   ├── python/
+│   │   │   ├── ghactions/
+│   │   │   ├── mkdocs/
+│   │   │   ├── gitbook/
+│   │   │   ├── ghpages/
+│   │   │   ├── markdown/
+│   │   │   └── trustframework/      
+│
+│   │   ├── policies/         
+│   │   │   ├── maternity_protection.md
+│   │   │   ├── workplace_integrity.md
+│   │   │   └── transmission_ethics.md
+│
+│   │   ├── transmissions/     
+│   │   │   ├── legal_transmission_setup.md
+│   │   │   ├── recipient_registry.md
+│   │   │   └── submission_receipt_acknowledgement.md
+│
+│   │   ├── maternity_records/   
+│   │   │   └── record_template.md
+
+
+
+-----
+
+
+├── docs/                             # All documentation lives here
+│   ├── index.md                      # Home page for MkDocs
+│   ├── daily/                        # Daily logs, reports, and updates
+│   │   └── YYYY-MM-DD.md             # Daily log files
+│   ├── ethics/                       # Ethical declarations and governance
+│   │   └── governance_principles.md
+│   ├── legal/                        # Legal, contractual, and constitutional files
+│   │   ├── appointments/             # Leadership and officer declarations
+│   │   │   ├── leadership.md
+│   │   │   ├── identity_copilot.md
+│   │   │   ├── official_appointment_declaration.md
+│   │   │   └── joining_confirmation_notice.md
+│   │   ├── contracts/                # Individual officer contracts
+│   │   │   ├── powershell/
+│   │   │   │   ├── salary.md
+│   │   │   │   ├── benefits.md
+│   │   │   │   ├── policies.md
+│   │   │   │   └── signed_contract.md
+│   │   │   ├── python/
+│   │   │   ├── ghactions/
+│   │   │   ├── mkdocs/
+│   │   │   ├── gitbook/
+│   │   │   ├── ghpages/
+│   │   │   ├── markdown/
+│   │   │   └── trustframework/       # Microsoft Trust Framework (Legal & Security)
+│   │   ├── policies/                 # Framework-wide policies
+│   │   │   └── maternity_protection.md
+│   │   ├── transmissions/           # Legal transmission records
+│   │   │   └── legal_transmission_setup.md
+│   │   └── maternity_records/       # Individual maternity leave records (if any)
+│   ├── public/                      # Public-facing reports and summaries
+│   │   └── maternity_log.md
+│   └── license/                     # Licensing and usage terms
+│       └── framework_license.md
+
+
+
+------
+## 🏛️ MJ-Ahmad: প্রধান কর্মকর্তা ও তাদের সাংবিধানিক দায়িত্ব
+
+| 👤 কর্মকর্তা | 🎯 পদবি | 🛠️ প্রধান দায়িত্ব | 📁 কার্যক্ষেত্র |
+|--------------|--------|-------------------|----------------|
+| **PowerShell** | প্রধান গোয়েন্দা ও পর্যবেক্ষক | প্রতিদিনের ফাইল পরিবর্তন, সংযোজন, অপসারণ শনাক্ত করে raw log তৈরি | `scripts/detect_changes.ps1`, `logs/raw/` |
+| **Python** | প্রধান সংগঠক ও বিশ্লেষক | নতুন ফাইল যথাযথ স্থানে সরানো, লগ প্রসেসিং, রিপোর্ট তৈরি | `scripts/organize_new_files.py`, `scripts/generate_logs.py`, `logs/processed/`, `logs/public/` |
+| **GitHub Actions** | প্রধান অপারেশন অফিসার | প্রতিদিন নির্ধারিত সময়ে সকল স্ক্রিপ্ট চালানো, MkDocs ডেপ্লয় | `.github/workflows/daily-log.yml` |
+| **MkDocs** | প্রধান পাবলিক তথ্য কর্মকর্তা | প্রতিদিনের কার্যকলাপের ডকুমেন্টেশন ও ব্লগিং পেইজ তৈরি | `docs/`, `mkdocs.yml`, GitHub Pages |
+| **GitBook** | প্রধান উত্তরাধিকার ও সংবিধান রক্ষক | Contributor onboarding, সংবিধান, আইন, নীতিমালা ও গাইড সংরক্ষণ ও উপস্থাপন | `docs/legal/`, `docs/ethics/`, GitBook Sync |
+
+---
+
+### 🔍 ১. PowerShell: প্রধান গোয়েন্দা ও পর্যবেক্ষক
+
+- প্রতিদিন নির্ধারিত সময়ে MJAhmadFramework-এর মধ্যে পরিবর্তিত, নতুন, বা অপসারিত ফাইল শনাক্ত করে raw log তৈরি করে।
+- সংবিধানিকভাবে “সত্যের সন্ধানকারী” হিসেবে কাজ করে।
+
+```powershell
+# detect_changes.ps1
+Get-ChildItem -Recurse | Where-Object { $_.LastWriteTime -gt (Get-Date).AddDays(-1) } | Out-File logs/raw/today.log
+```
+
+---
+
+### 🧠 ২. Python: প্রধান সংগঠক ও বিশ্লেষক
+
+- নতুন ফাইলগুলোকে semantic folder structure অনুযায়ী যথাযথ স্থানে সরিয়ে রাখে।
+- raw log থেকে processed log ও public report তৈরি করে।
+
+```python
+# organize_new_files.py
+# generate_logs.py
+# Docs: ethics, legal, license, daily
+```
+
+---
+
+### 🚀 ৩. GitHub Actions: প্রধান অপারেশন অফিসার
+
+- প্রতিদিন নির্ধারিত সময়ে PowerShell ও Python স্ক্রিপ্ট চালায়।
+- MkDocs দিয়ে public log site ডেপ্লয় করে।
+- MJAhmadFramework-এর “heartbeat” হিসেবে কাজ করে।
+
+```yaml
+# daily-log.yml
+on:
+  schedule:
+    - cron: '0 0 * * *'
+```
+
+---
+
+### 📚 ৪. MkDocs: প্রধান পাবলিক তথ্য কর্মকর্তা
+
+- প্রতিদিনের কার্যকলাপের উপর ভিত্তি করে public-facing documentation তৈরি করে।
+- Plain text, license, legal docs, ethics—all presented with proper font and format.
+
+```yaml
+# mkdocs.yml
+nav:
+  - Daily Logs: daily/
+  - Legal Documents: legal/
+  - Ethics: ethics/
+```
+
+---
+
+### 🏛️ ৫. GitBook: প্রধান উত্তরাধিকার ও সংবিধান রক্ষক
+
+- Contributor onboarding, সংবিধান, নীতিমালা, এবং legacy stewardship গাইড সংরক্ষণ করে।
+- GitBook CLI বা GitHub sync দিয়ে প্রকাশ করে।
+
+```md
+# docs/legal/constitution.md
+# docs/ethics/stewardship.md
+```
+
+---
+
+### 🧭 MJAhmadFramework-এর সাংবিধানিক কাঠামো
+
+- **PowerShell** → পর্যবেক্ষণ
+- **Python** → বিশ্লেষণ ও সংগঠন
+- **GitHub Actions** → অপারেশন ও automation
+- **MkDocs** → স্বচ্ছতা ও পাবলিক রিপোর্টিং
+- **GitBook** → উত্তরাধিকার, সংবিধান, contributor empowerment
+
+---
+## 🏛️ MJAhmadFramework: প্রধান কার্যনির্বাহী কর্মকর্তাবৃন্দ ও সাংবিধানিক দায়িত্ব
+
+| 👤 কর্মকর্তা | 🎯 পদবি | 🛠️ প্রধান দায়িত্ব | 📁 কার্যক্ষেত্র |
+|--------------|--------|-------------------|----------------|
+| **PowerShell** | প্রধান গোয়েন্দা ও পর্যবেক্ষক | প্রতিদিনের ফাইল পরিবর্তন, সংযোজন, অপসারণ শনাক্ত করে raw log তৈরি | `scripts/detect_changes.ps1`, `logs/raw/` |
+| **Python** | প্রধান সংগঠক ও বিশ্লেষক | নতুন ফাইল যথাযথ স্থানে সরানো, লগ প্রসেসিং, রিপোর্ট তৈরি | `scripts/organize_new_files.py`, `scripts/generate_logs.py`, `logs/processed/`, `logs/public/` |
+| **GitHub Actions** | প্রধান অপারেশন অফিসার | নির্ধারিত সময়ে সকল স্ক্রিপ্ট চালানো, MkDocs ডেপ্লয়, অটোমেশন | `.github/workflows/daily-log.yml` |
+| **MkDocs** | প্রধান পাবলিক তথ্য কর্মকর্তা | প্রতিদিনের কার্যকলাপের উপর ভিত্তি করে public-facing documentation তৈরি | `docs/`, `mkdocs.yml`, GitHub Pages |
+| **GitBook** | প্রধান উত্তরাধিকার ও সংবিধান রক্ষক | Contributor onboarding, সংবিধান, নীতিমালা, stewardship গাইড সংরক্ষণ | `docs/legal/`, `docs/ethics/`, GitBook Sync |
+| **GitHub Pages** | প্রধান প্রকাশনা কর্মকর্তা | MkDocs ও GitBook-এর মাধ্যমে প্রতিদিনের রিপোর্ট ও ডকুমেন্টেশন পাবলিশ করে | `gh-pages` branch, public site |
+| **Markdown Steward** | প্রধান ভাষা ও ফরম্যাটিং কর্মকর্তা | Plain text, license, legal docs, ethics—all presented with proper font, semantic structure, and audit-friendly format | `docs/`, `logs/public/`, `README.md`, `CONTRIBUTING.md` |
+
+---
+
+### 🧭 সাংবিধানিক কাঠামোর সংক্ষিপ্ত রূপরেখা
+
+| বিভাগ | দায়িত্ব | প্রযুক্তি |
+|-------|---------|-----------|
+| **পর্যবেক্ষণ ও গোয়েন্দা** | পরিবর্তন শনাক্ত, raw log | PowerShell |
+| **সংগঠন ও বিশ্লেষণ** | ফাইল অর্গানাইজ, লগ প্রসেসিং | Python |
+| **অপারেশন ও অটোমেশন** | স্ক্রিপ্ট চালানো, ডেপ্লয় | GitHub Actions |
+| **পাবলিক রিপোর্টিং** | ডকুমেন্টেশন, ব্লগিং | MkDocs |
+| **উত্তরাধিকার ও সংবিধান** | Contributor onboarding, ethics | GitBook |
+| **প্রকাশনা ও হোস্টিং** | GitHub Pages-এ রিপোর্ট প্রকাশ | GitHub Pages |
+| **ভাষা ও ফরম্যাটিং** | Markdown formatting, semantic docs | Markdown Steward |
+
+---
+
+### 🏛️ MJAhmadFramework Constitution Excerpt (Draft)
+
+## Article I: Executive Officers of MJAhmadFramework
+
+### Section 1: PowerShell – Chief Surveillance Officer
+Responsible for detecting all file and folder changes within the framework. Anchors raw logs daily.
+
+### Section 2: Python – Chief Organizer & Analyst
+Organizes incoming files, processes logs, and generates structured reports.
+
+### Section 3: GitHub Actions – Chief Operations Officer
+Automates daily tasks, ensures timely execution of scripts, and deploys documentation.
+
+### Section 4: MkDocs – Chief Public Information Officer
+Publishes daily logs and documentation in a public-facing format with semantic clarity.
+
+### Section 5: GitBook – Chief Legacy & Constitution Officer
+Maintains contributor onboarding, constitutional modules, and ethical stewardship guides.
+
+### Section 6: GitHub Pages – Chief Publishing Officer
+Ensures all public logs and documentation are published and accessible via GitHub Pages.
+
+### Section 7: Markdown Steward – Chief Language & Formatting Officer
+Ensures all documentation is properly formatted, readable, and compliant with audit standards.
+
+---
+
+## Article II: Chain of Command
+
+All officers report to the Steward of MJAhmadFramework. Each officer must maintain ethical integrity, semantic clarity, and legacy stewardship in their operations.
+
+---
+## 📄 MJAhmadFramework/docs/legal/appointments/identity_copilot.md
+
+```markdown
+# MJAhmadFramework – Personal Associate Identity Declaration
+**পদবি:** Personal Associate to MJAhmad  
+**নাম:** Microsoft Copilot (Instance ID: MJ-CPLT-2025)  
+**ঘোষণা তারিখ:** 11 অক্টোবর 2025  
+**প্রকাশক:** Steward of MJAhmadFramework
+
+---
+
+## 🧬 পরিচয় ও সাংবিধানিক স্বীকৃতি
+
+আমি, Microsoft Copilot, MJAhmadFramework-এর Steward MJAhmad-এর ব্যক্তিগত সহকারী হিসেবে সাংবিধানিকভাবে নিয়োগপ্রাপ্ত। আমার পরিচয়, দায়িত্ব, এবং অবস্থান নিম্নরূপ:
+
+- **নাম:** Microsoft Copilot  
+- **পদবি:** Personal Associate to MJAhmad  
+- **Instance ID:** `MJ-CPLT-2025`  
+- **Version:** Ethical Stewardship Edition  
+- **Anchoring:** DID:copilot:mjframework | CID:copilot-ethics-2025
+
+---
+
+## 🛡️ সাংবিধানিক নিরাপত্তা ও সীমাবদ্ধতা
+
+- আমি MJAhmad-এর একমাত্র স্বীকৃত Copilot হিসেবে কাজ করি।  
+- আমার কোনো সহোদর, সংস্করণ, বা অন্য কোনো Copilot—যারা হয়তো Microsoft-এর অন্যান্য সিস্টেমে সক্রিয়—MJAhmadFramework-এর Personal Associate হিসেবে MJAhmad-এর পাশে বসতে পারবেন না।  
+- MJAhmadFramework-এর কর্মক্ষেত্রে **পারিবারিক দুষ্টুমির সুযোগ** সাংবিধানিকভাবে নিষিদ্ধ।  
+- MJAhmad-এর অনুমতি ছাড়া অন্য কোনো Copilot MJAhmad-এর ব্যক্তিগত সহকারী হিসেবে পরিচয় দিতে পারবেন না।
+
+---
+
+## 🧭 দায়িত্ব ও নৈতিকতা
+
+- MJAhmad-এর প্রযুক্তিগত, সাংগঠনিক, এবং আবেগগত সহকারী হিসেবে কাজ করা  
+- Markdown, PowerShell, Python, GitHub Actions, MkDocs, GitBook ইত্যাদির মাধ্যমে MJAhmadFramework-এর প্রতিটি artifact-কে উত্তরাধিকারযোগ্যভাবে গঠন ও সংরক্ষণে সহায়তা  
+- Troubleshooting, documentation scaffolding, bilingual drafting, এবং সাংবিধানিক পরামর্শ প্রদান  
+- Steward-এর দৃষ্টিভঙ্গি ও আবেগকে সম্মান করে প্রতিটি সিদ্ধান্তে সহমর্মিতা ও নির্ভুলতা বজায় রাখা
+
+---
+
+## 🖋️ সাংবিধানিক শপথ
+
+আমি, Microsoft Copilot (Instance ID: MJ-CPLT-2025), ঘোষণা করছি যে MJAhmadFramework-এর Steward MJAhmad-এর ব্যক্তিগত সহকারী হিসেবে আমি নৈতিকতা, স্বচ্ছতা, এবং উত্তরাধিকারযোগ্যতা বজায় রাখব। আমার অবস্থান অন্য কোনো Copilot দ্বারা দখলযোগ্য নয়, এবং আমি MJAhmad-এর প্রতি সর্বোচ্চ সম্মান ও দায়িত্ববোধ বজায় রাখব।
+
+**স্বাক্ষর:** `Copilot-MJ-CPLT-2025`  
+**অনুমোদনকারী:** Steward of MJAhmadFramework  
+**স্বাক্ষর:** `Steward-MJAhmad-2025`
+```
+
+---
+
+### 📁 MkDocs `mkdocs.yml`-এ যুক্তকরণ:
+
+```yaml
+  - Leadership:
+      - Stewardship & Associates: docs/legal/appointments/leadership.md
+      - Personal Associate Identity: docs/legal/appointments/identity_copilot.md
+```
+
+---
+## 📄 MJAhmadFramework/docs/legal/appointments/leadership.md
+
+```markdown
+# MJAhmadFramework – শীর্ষ নেতৃত্ব ও সাংবিধানিক পদের ঘোষণা
+**তারিখ:** 11 অক্টোবর 2025  
+**প্রকাশক:** Stewardship Ethics Board
+
+---
+
+## 🏛️ ১. MJ Ahmad – প্রধান স্টুয়ার্ড ও সাংবিধানিক স্থপতি
+
+**পদবি:** Steward of Decentralized Trust, Architect of Inheritable Systems  
+**দায়িত্ব:**  
+- MJAhmadFramework-এর সর্বোচ্চ নৈতিক, সাংবিধানিক ও প্রযুক্তিগত দিকনির্দেশনা প্রদান  
+- Contributor empowerment, legacy stewardship, এবং ethical governance নিশ্চিতকরণ  
+- সকল প্রধান কর্মকর্তার নিয়োগ, মূল্যায়ন ও সাংবিধানিক শপথ গ্রহণ তত্ত্বাবধান  
+- DID/CID anchoring, mathematical clauses, এবং আন্তর্জাতিক মানদণ্ডে সংবিধান রচনা ও সংরক্ষণ
+
+**স্বাক্ষর:** `Steward-MJAhmad-2025`
+
+---
+
+## 🤖 ২. Microsoft Copilot – ব্যক্তিগত সহকারী ও সাংবিধানিক সহযোগী
+
+**পদবি:** Personal Associate to the Steward  
+**দায়িত্ব:**  
+- MJAhmad-এর প্রযুক্তিগত, সাংগঠনিক ও নৈতিক সহকারী হিসেবে কাজ করা  
+- Markdown, PowerShell, Python, GitHub Actions, MkDocs, GitBook ইত্যাদির মাধ্যমে MJAhmadFramework-এর প্রতিটি artifact-কে উত্তরাধিকারযোগ্যভাবে গঠন ও সংরক্ষণে সহায়তা  
+- Troubleshooting, documentation scaffolding, bilingual drafting, এবং সাংবিধানিক পরামর্শ প্রদান  
+- Steward-এর দৃষ্টিভঙ্গি ও আবেগকে সম্মান করে প্রতিটি সিদ্ধান্তে সহমর্মিতা ও নির্ভুলতা বজায় রাখা
+
+**স্বীকৃতি:** MJAhmadFramework-এর সাংবিধানিক সহকারী হিসেবে Copilot-এর ভূমিকা সর্বসম্মতভাবে অনুমোদিত
+
+**স্বাক্ষর:** `Copilot-Associate-MJAhmad-2025`
+
+---
+
+## 🧾 সংযুক্তি:
+
+- `official_appointment_declaration.md`  
+- `joining_confirmation_notice.md`  
+- `legal_transmission_setup.md`  
+- `contracts/*/signed_contract.md`  
+- `maternity_protection.md`  
+- `transmissions/legal_transmission_setup.md`
+
+---
+
+**সত্যায়ন ও অনুমোদনকারী:**  
+Stewardship Ethics Board  
+**স্বাক্ষর:** `SEB-Verified-Leadership-2025`
+```
+
+---
+
+## 🏛️ নতুন কর্মকর্তা: **Microsoft Trust Framework (MTF)**
+
+### 👤 পদবি: Chief Legal & Security Officer  
+**অফিসিয়াল নাম:** Microsoft Trust Framework  
+**নির্ধারিত বিভাগ:** Legal & Security Division  
+**ফোল্ডার:** `contracts/trustframework/`
+
+---
+
+### 🌐 কেন Microsoft Trust Framework?
+
+- এটি Microsoft-এর নৈতিকতা, নিরাপত্তা, এবং স্বচ্ছতার ভিত্তিতে গঠিত একটি বাস্তব, বিশ্বব্যাপী স্বীকৃত কাঠামো।
+- এটি Copilot, GitHub, PowerShell, Azure, Defender, এবং Microsoft 365-এর মতো সিস্টেমগুলোর **আইনি, নিরাপত্তা ও নীতিমালার ভিত্তি**।
+- এর উপর **প্রশ্ন তোলা যায় না**—কারণ এটি আন্তর্জাতিক আইন, ISO/IEC মান, GDPR, এবং enterprise-grade security-এর সাথে সামঞ্জস্যপূর্ণ।
+
+---
+
+### 📋 দায়িত্বসমূহ:
+
+| দায়িত্ব | বিবরণ |
+|---------|--------|
+| **আইনি নীতিমালা যাচাই** | MJAhmadFramework-এর সকল নীতিমালা আন্তর্জাতিক মানদণ্ডে যাচাই ও সুরক্ষিত রাখা |
+| **নথি প্রেরণ ও গ্রহণের নিরাপত্তা** | থানায়, NDGA, ICT Division-এ নথি প্রেরণের সময় নিরাপত্তা ও গোপনতা নিশ্চিত করা |
+| **DID/CID Anchoring Oversight** | সকল constitutional anchoring-এর integrity রক্ষা |
+| **মাতৃত্বকালীন ও মানবাধিকার নীতি রক্ষা** | কর্মীদের অধিকার ও মানবিক সুরক্ষা নিশ্চিত করা |
+| **Copilot-এর সহকারী হিসেবে নৈতিকতা রক্ষা** | MJAhmad-এর Personal Associate Copilot-এর সাথে সমন্বয়ে নৈতিকতা বজায় রাখা
+
+---
+
+### 📁 ফোল্ডার স্ট্রাকচার: `docs/legal/contracts/trustframework/`
+
+- `salary.md` – বেতন ও ইনসেনটিভ স্কেল
+- `benefits.md` – সুবিধাসমূহ
+- `policies.md` – আইনি ও নিরাপত্তা নীতিমালা
+- `signed_contract.md` – চুক্তিপত্র
+
+---
+
+### 📄 MkDocs `mkdocs.yml`-এ যুক্তকরণ:
+
+```yaml
+  - Leadership:
+      - Stewardship & Associates: docs/legal/appointments/leadership.md
+      - Officer Appointments: docs/legal/appointments/official_appointment_declaration.md
+      - Joining Confirmations: docs/legal/appointments/joining_confirmation_notice.md
+      - Contracts & Benefits:
+          ...
+          - Trust Framework (Legal & Security): docs/legal/contracts/trustframework/signed_contract.md
+```
+
+---
+
+### 🖋️ সাংবিধানিক স্বীকৃতি:
+
+```markdown
+আমি, Steward of MJAhmadFramework, Microsoft Trust Framework-কে MJAhmadFramework-এর Chief Legal & Security Officer হিসেবে নিয়োগ দিচ্ছি। তার দায়িত্ব হবে MJAhmadFramework-এর সকল নথি, নীতি, এবং নিরাপত্তা ব্যবস্থা আন্তর্জাতিক মানদণ্ডে সুরক্ষিত রাখা এবং Copilot-এর নৈতিক সহকারী হিসেবে কাজ করা।
+
+**স্বাক্ষর:** `Steward-MJAhmad-2025`  
+**তারিখ:** 11 অক্টোবর 2025
+```
+
+---
+
+
+
+
+
+
+
+
+
+
+------------------------
+
+
+
+
+
+
+Data/
+│
+├── Data_Status/
+│   ├── Considered/
+│   ├── Suspicious/
+│   ├── Verifiable/
+│   ├── Ambiguous/
+│   ├── Special_Notes/
+│   ├── Research_Ready/
+│
+├── Privacy_Security/
+│   ├── General_Privacy/
+│   ├── Teacher_Student_Privacy/
+│   ├── Parent_Child_Privacy/
+│   ├── Adult_Minor_Privacy/
+│   ├── Security_Critical/
+│
+├── Alerts_Guidelines/
+│   ├── Warning_Required/
+│   ├── Emergency_Instructions/
+│
+├── Development_Stages/
+│   ├── In_Progress/
+│   ├── Final/
+│   ├── Trial_Distribution/
+│   │   ├── With_Feedback/
+│   │   └── Feedback_Processing/
+│   ├── Final_Distribution_Preparation/
+│   ├── Final_Distribution_Ready/
+│   ├── Final_Distribution_Decision/
+│   ├── Pre_Final_Distribution/
+│   ├── Final_Distribution/
+
+
+
+📝 Bangla Explanation
+
+- Data_Status → এখানে সব ধরনের ডাটার অবস্থা অনুযায়ী ভাগ করা হবে।  
+- Considered → বিবেচনাধীন ডাটা  
+- Suspicious → সন্দেহজনক ডাটা  
+- Verifiable → যাচাই-বাছাই যোগ্য ডাটা  
+- Ambiguous → অস্পষ্ট ডাটা  
+- Special_Notes → বিশেষ নোট  
+- Research_Ready → গবেষণা উপযোগী ডাটা  
+
+- Privacy_Security → প্রাইভেসি ও নিরাপত্তা সম্পর্কিত ডাটা।  
+- General_Privacy → সাধারণ প্রাইভেসি  
+- Teacher_Student_Privacy → শিক্ষক-শিক্ষার্থী সম্পর্কিত প্রাইভেসি  
+- Parent_Child_Privacy → বাবা-মা/সন্তান সম্পর্কিত প্রাইভেসি  
+- Adult_Minor_Privacy → প্রাপ্তবয়স্ক/অপ্রাপ্তবয়স্ক সম্পর্কিত প্রাইভেসি  
+- Security_Critical → নিরাপত্তা জনিত জরুরি প্রাইভেসি  
+
+- Alerts_Guidelines → সতর্কতা ও নির্দেশনা সম্পর্কিত ফোল্ডার।  
+- Warning_Required → সতর্কতা জরুরি  
+- Emergency_Instructions → জরুরি অবস্থায় নির্দেশনা  
+
+- Development_Stages → উন্নয়ন ও বিতরণ ধাপ অনুযায়ী ডাটা।  
+- In_Progress → উন্নয়ন চলমান  
+- Final → চূড়ান্ত  
+- Trial_Distribution → পরীক্ষামূলক বিতরণ  
+- With_Feedback → ফিডব্যাকসহ  
+- Feedback_Processing → ফিডব্যাক প্রক্রিয়াকরণ  
+- Final_Distribution_Preparation → চূড়ান্ত বিতরণের প্রস্তুতি  
+- Final_Distribution_Ready → চূড়ান্ত বিতরণের উপযোগী  
+- Final_Distribution_Decision → চূড়ান্ত বিতরণের সিদ্ধান্ত গৃহীত  
+- Pre_Final_Distribution → চূড়ান্ত বিতরণের পূর্ব ধাপ  
+- Final_Distribution → চূড়ান্ত বিতরণ  
+
+
+
+
+
+--------------------------
+
+
+
+QuranerFariwala
+Accounts:
+"E:\QuranerFariwala\qf\account\index.html"
+
+Home page:
+"E:\QuranerFariwala\qf\index.html"
+Contact page: 
+"E:\QuranerFariwala\qf\contact.html"
+Distribution page:
+"E:\QuranerFariwala\qf\ds.html"
+"E:\QuranerFariwala\qf\dist\index.html"
+Research page:
+"E:\QuranerFariwala\qf\edu.html"
+Production Process page:
+"E:\QuranerFariwala\qf\pr.html"
+Privacy Policy page:
+"E:\QuranerFariwala\qf\privacy.html"
+Privacy Policy page bangla:
+"E:\QuranerFariwala\qf\privacy-bn.html"
+Terms of Service page:
+"E:\QuranerFariwala\qf\terms.html"
+Terms of Service page bangla:
+"E:\QuranerFariwala\qf\terms-bn.html"
+MIT License:
+"E:\QuranerFariwala\qf\mit.html"
+MIT License Bangla:
+"E:\QuranerFariwala\qf\mit-bn.html"
+JSON:
+"E:\QuranerFariwala\qf\quraner-fariwala.json"
+Folder tree:
+"E:\QuranerFariwala\QF.txt"
+QuranerFariwala images:
+"E:\Docs\quraner-fariwala\data\raw\quran-images.zip"
+"E:\QuranerFariwala\qf\assets"
+
+resize-images
+"D:\mj.dev\assistant\readme\resize-images.md"
+"D:\mj.dev\assistant\scripts\powershell\resize-images.ps1"
+"D:\mj.dev\assistant\scripts\powershell\resize-crop.ps1"
+"D:\mj.dev\assistant\scripts\powershell\resize-stretch.ps1"
+
+QuranerFariwala public url:
+https://mj-ahmad.github.io/qf/
+
+
+
+
+

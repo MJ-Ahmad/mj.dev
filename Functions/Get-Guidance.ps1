@@ -1,6 +1,11 @@
 function Get-Guidance {
     Write-Host "===============================" -ForegroundColor Cyan
-    Write-Host "   Yes - MJ Assistant - Guidance Hub " -ForegroundColor Yellow
+    Write-Host "   MJ Assistant " -ForegroundColor Yellow
+    Write-Host "===============================" -ForegroundColor Cyan
+    Write-Host ""
+
+    Write-Host "===============================" -ForegroundColor Cyan
+    Write-Host "   Guidance Hub " -ForegroundColor Yellow
     Write-Host "===============================" -ForegroundColor Cyan
     Write-Host ""
 
