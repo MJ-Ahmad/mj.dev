@@ -1,0 +1,710 @@
+<!doctype html>
+<html lang="bn">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>চুক্তি ও ক্ষতিপূরণ — Qari Emdadullah</title>
+  <style>
+    :root{
+      --bg:#f6f8fb;
+      --card:#ffffff;
+      --muted:#6b7280;
+      --accent:#0f172a;
+      --accent-2:#0ea5a4;
+      --danger:#ef4444;
+      --success:#10b981;
+      --shadow:0 10px 30px rgba(2,6,23,0.06);
+      --mono:"Courier New", Courier, monospace;
+      --radius:12px;
+      --surface-border: rgba(2,6,23,0.03);
+      --muted-contrast: rgba(15,23,42,0.04);
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: "Noto Sans Bengali", "SolaimanLipi", Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+      background: linear-gradient(180deg,#eef2ff 0%, var(--bg) 100%);
+      color:var(--accent);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.45;
+    }
+
+    header{
+      background:linear-gradient(90deg,#0b1220,#1f2937);
+      color:#fff;
+      padding:14px 18px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      position:sticky;
+      top:0;
+      z-index:50;
+      box-shadow: 0 6px 18px rgba(15,23,42,0.08);
+    }
+    .brand{display:flex;gap:12px;align-items:center}
+    .logo img{width:48px;height:48px;border-radius:10px;object-fit:cover;display:block}
+    header h1{font-size:18px;margin:0;font-weight:700;color:#fff}
+    nav ul{list-style:none;margin:0;padding:0;display:flex;gap:12px}
+    nav a{color:rgba(255,255,255,0.95);text-decoration:none;font-weight:600;font-size:13px}
+
+    .wrap{max-width:1100px;margin:22px auto;padding:0 18px}
+    .grid{display:grid;grid-template-columns:1fr 360px;gap:18px;align-items:start}
+    .card{background:var(--card);border-radius:var(--radius);padding:16px;box-shadow:var(--shadow);border:1px solid var(--surface-border)}
+    h2{margin:0 0 10px 0;font-size:18px;color:var(--accent)}
+    .lead{color:var(--muted);font-size:14px;margin-bottom:12px}
+
+    .access{display:flex;gap:10px;align-items:center;margin-bottom:12px;flex-wrap:wrap}
+    .access input[type="password"], .access input[type="text"]{
+      padding:10px 12px;border-radius:10px;border:1px solid #e6e9ef;background:#fbfdff;width:240px;font-size:14px;color:var(--accent)
+    }
+    .access button{padding:10px 14px;border-radius:10px;border:none;background:var(--accent);color:#fff;font-weight:700;cursor:pointer}
+    .hint{font-size:13px;color:var(--muted)}
+
+    .clocks{display:flex;gap:10px;margin-top:10px;flex-wrap:wrap}
+    .clock-card{flex:1 1 220px;background:linear-gradient(180deg,#fff,#fbfdff);border-radius:10px;padding:12px;border:1px solid var(--surface-border);box-shadow:0 6px 18px rgba(2,6,23,0.04);min-width:180px}
+    .clock-card h4{margin:0;font-size:13px;color:var(--muted)}
+    .clock-card .big{font-weight:800;color:var(--accent-2);font-size:16px}
+    .count-large{font-weight:800;font-size:15px;color:#0b1220}
+
+    table{width:100%;border-collapse:collapse;font-size:14px;margin-top:12px;background:transparent}
+    thead th{text-align:left;padding:12px 10px;background:linear-gradient(90deg,#eef2ff,#f8fafc);color:#0f172a;font-weight:700;border-bottom:2px solid var(--muted-contrast);font-size:13px}
+    tbody td{padding:12px 10px;border-bottom:1px dashed var(--muted-contrast);vertical-align:middle}
+    tbody tr:nth-child(even){background:rgba(15,23,42,0.02)}
+    .mono{font-family:var(--mono);color:#0b1220}
+
+    .summary{display:flex;gap:10px;margin-top:12px;flex-wrap:wrap}
+    .tile{flex:1 1 160px;background:linear-gradient(180deg,#fff,#fbfdff);padding:12px;border-radius:10px;box-shadow:0 6px 18px rgba(2,6,23,0.04);border:1px solid var(--surface-border)}
+    .tile .label{font-size:13px;color:var(--muted);margin-bottom:6px;font-weight:600}
+    .tile .value{font-size:18px;font-weight:800;color:#0f172a}
+
+    .side{display:flex;flex-direction:column;gap:12px}
+    .info-card{padding:12px;border-radius:10px;background:linear-gradient(180deg,#fff,#fbfdff);box-shadow:var(--shadow);border:1px solid var(--surface-border)}
+    .info-row{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px dashed var(--muted-contrast)}
+    .info-row:last-child{border-bottom:0}
+    .info-row .k{color:var(--muted);font-weight:700}
+    .info-row .v{font-weight:700;color:#0f172a}
+
+    .actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+    .actions button{padding:10px;border-radius:10px;border:1px solid rgba(2,6,23,0.06);background:#fff;cursor:pointer}
+
+    .contract{font-size:14px;color:#0f172a;margin-top:12px}
+    .contract h3{margin:12px 0 6px 0;font-size:15px;color:var(--accent)}
+    .contract p{margin:6px 0;color:var(--muted)}
+    .signature{margin-top:18px;display:flex;gap:18px;flex-wrap:wrap}
+    .sig-box{flex:1 1 220px;padding:12px;border-radius:8px;border:1px dashed var(--muted-contrast);background:#fff}
+
+    .comp-card{margin-top:14px;padding:12px;border-radius:10px;border:1px solid var(--surface-border);background:linear-gradient(180deg,#fff,#fbfdff)}
+    .comp-row{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:8px}
+    .comp-row label{font-size:13px;color:var(--muted);min-width:160px}
+    .comp-row input[type="number"], .comp-row select{padding:8px;border-radius:8px;border:1px solid #e6e9ef;background:#fff}
+    .comp-result{margin-top:12px;padding:12px;border-radius:8px;background:#f8fafc;border:1px solid rgba(2,6,23,0.03)}
+
+    .comp-result-line { margin-top:6px; padding:8px; border-radius:6px; display:block; }
+    .comp-status { background:#fff3cd; color:#856404; font-weight:700; }
+    .comp-elapsed { background:#f8d7da; color:#721c24; font-weight:700; }
+    .comp-amount { background:#d1ecf1; color:#0c5460; font-weight:700; }
+    .comp-total { background:#d4edda; color:#155724; font-weight:700; }
+
+    .contact-box{margin-top:20px;padding:14px;border-radius:10px;background:linear-gradient(180deg,#fff,#fbfdff);border:1px solid rgba(2,6,23,0.06);box-shadow:0 6px 18px rgba(2,6,23,0.04);font-size:14px;color:#0f172a}
+    .contact-box strong{color:var(--danger)}
+    .mj-message{margin-top:12px;font-style:italic;color:#0f172a;background:#f0f4f8;padding:10px;border-radius:8px;border-left:4px solid var(--accent-2)}
+
+    @media (max-width:980px){
+      .grid{grid-template-columns:1fr;padding-bottom:80px}
+      .access input[type="password"]{width:100%}
+      .clock-card{flex:1 1 100%}
+      .tile{flex:1 1 48%}
+      .sig-box{flex:1 1 100%}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <div class="logo"><img src="docs/assets/logo.png" alt="Logo"></div>
+      <div>
+        <h1>চুক্তি ও ক্ষতিপূরণ — Qari Emdadullah</h1>
+        <div style="font-size:12px;color:rgba(255,255,255,0.85);margin-top:4px">লাইভ কাউন্টার ও ক্ষতিপূরণ হিসাব</div>
+      </div>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#" style="color:#fff">হোম</a></li>
+        <li><a href="#" style="color:#fff">চুক্তি</a></li>
+        <li><a href="#" style="color:#fff">সহায়তা</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="wrap">
+    <div class="grid">
+      <section class="card" aria-labelledby="contractTitle">
+        <h2 id="contractTitle">চুক্তির রেকর্ড — Qari Emdadullah</h2>
+        <div class="lead">বিনিয়োগকারীর আইডি নম্বর দিয়ে আনলক করলে পুরো চুক্তি, লাইভ কাউন্টার ও ক্ষতিপূরণ দেখা যাবে।</div>
+
+        <div class="access">
+          <input id="credential" type="password" placeholder="পাসওয়ার্ড (ID নম্বর)" aria-label="Credential input" />
+          <button id="unlockBtn">আনলক</button>
+          <div class="hint">পাসওয়ার্ড (ID): <strong>1820096806</strong></div>
+        </div>
+
+        <div id="accessMessage" style="display:none;margin-top:8px;font-size:13px;color:var(--danger);font-weight:700"></div>
+
+        <div class="clocks">
+          <div class="clock-card">
+            <h4>বাংলাদেশ সময় (BST)</h4>
+            <div id="bdTime" class="big">—</div>
+            <div style="font-size:12px;color:var(--muted)">Asia/Dhaka রিয়েল টাইম</div>
+          </div>
+
+          <div class="clock-card">
+            <h4>৪৫ দিনের কাউন্টডাউন</h4>
+            <div id="countdownToEarliest" class="count-large">—</div>
+            <div style="font-size:12px;color:var(--muted)">পেমেন্টের পর ৪৫ দিন পর্যন্ত</div>
+          </div>
+
+          <div class="clock-card">
+            <h4>৬০ দিনের পর থেকে সময়</h4>
+            <div id="elapsedSinceMax" class="count-large">—</div>
+            <div style="font-size:12px;color:var(--muted)">৬০ দিন অতিক্রমের পর থেকে গণনা শুরু</div>
+          </div>
+        </div>
+
+        <div id="contractArea" style="display:none;margin-top:12px">
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+            <div>
+              <div style="font-weight:800;font-size:16px">Qari Emdadullah</div>
+              <div style="color:var(--muted);font-size:13px;margin-top:4px">Investor • Short term (2 months from Sep 08, 2025)</div>
+            </div>
+            <div style="text-align:right;color:var(--muted);font-size:13px">
+              <div><strong>Last update</strong></div>
+              <div id="lastUpdate" style="font-weight:700;margin-top:6px">Wednesday, February 25, 2026 2:39:56 PM</div>
+            </div>
+          </div>
+
+          <div class="contract">
+            <h3>পক্ষসমূহ ও পেমেন্ট</h3>
+            <p><strong>Investor:</strong> Qari Emdadullah — 11/11/b KM Das Lane, Wari, Sutrapur, Dhaka-1203. ফোন: <strong>+880-1820-096806</strong>.</p>
+            <p><strong>Recipient:</strong> (আপনি / আপনার প্রতিষ্ঠান)। নগদ Tk. <strong>13,000</strong> গ্রহণ করা হয়েছে <strong>2025-09-08</strong> তারিখে (প্রায় 21:00 BST)।</p>
+
+            <h3>চুক্তির সারসংক্ষেপ</h3>
+            <p>প্রাপক ১৩,০০০ টাকার বিনিময়ে <strong>৬৫ কপি</strong> মুদ্রিত কোরআন মাজিদ সরবরাহ করবেন। ডেলিভারি: সর্বনিম্ন <strong>৪৫ দিন</strong>, সর্বোচ্চ <strong>৬০ দিন</strong> পেমেন্টের পর থেকে।</p>
+
+            <h3>ডেলিভারি তারিখ</h3>
+            <p><strong>পেমেন্ট শুরু:</strong> <span id="startDateText">2025-09-08 21:00:00 (BST)</span></p>
+            <p><strong>Earliest (৪৫ দিন):</strong> <span id="earliestDateText"></span></p>
+            <p><strong>Maximum (৬০ দিন):</strong> <span id="maxDateText"></span></p>
+
+            <h3>ক্ষতিপূরণ নিয়ম</h3>
+            <p>নীচের ক্যালকুলেটরটি সর্বোচ্চ ডেলিভারি তারিখ অতিক্রম করলে স্বয়ংক্রিয়ভাবে জরিমানা ও মোট বকেয়া গণনা করবে। দুইটি মোড আছে — Daily fixed penalty এবং Monthly percentage — আপনি মোড পরিবর্তন করে দেখতে পারবেন।</p>
+
+            <div class="comp-card">
+              <div style="font-weight:700">Compensation Calculator</div>
+
+              <div class="comp-row">
+                <label>মূল টাকা (Principal) Tk</label>
+                <input id="principal" type="number" value="13000" min="0" step="0.01" />
+              </div>
+
+              <div class="comp-row">
+                <label>হিসাবের ধরন</label>
+                <select id="mode">
+                  <option value="daily">Daily fixed penalty</option>
+                  <option value="monthly">Monthly percentage</option>
+                </select>
+              </div>
+
+              <div id="dailyRow" class="comp-row">
+                <label>Penalty per day (Tk)</label>
+                <input id="penaltyPerDay" type="number" value="100" min="0" step="0.01" />
+                <div style="font-size:13px;color:var(--muted)">উদাহরণ: Tk.100/দিন (ভগ্নাংশসহ গণনা)</div>
+              </div>
+
+              <div id="monthlyRow" class="comp-row" style="display:none">
+                <label>Monthly percentage (%)</label>
+                <input id="monthlyPercent" type="number" value="5" min="0" step="0.1" />
+                <div style="font-size:13px;color:var(--muted)">উদাহরণ: 5% প্রতি মাস (pro rata)</div>
+              </div>
+
+              <div class="comp-row">
+                <label>Rounding</label>
+                <select id="rounding">
+                  <option value="paise">Round to paise (2 decimals)</option>
+                  <option value="ceil">Round up to next Tk</option>
+                  <option value="floor">Round down to previous Tk</option>
+                </select>
+              </div>
+
+              <div class="comp-result" id="compResult">
+                <div class="comp-result-line comp-status"><strong>স্ট্যাটাস:</strong> <span id="compStatus">Waiting for max date</span></div>
+                <div class="comp-result-line comp-elapsed"><strong>Max অতিক্রমের পর সময়:</strong> <span id="compElapsed">—</span></div>
+                <div class="comp-result-line comp-amount"><strong>হিসাবকৃত ক্ষতিপূরণ:</strong> <span id="compAmount">Tk. 0.00</span></div>
+                <div class="comp-result-line comp-total"><strong>মোট বকেয়া (Principal + compensation):</strong> <span id="totalOwed">Tk. 0.00</span></div>
+              </div>
+            </div>
+
+            <p style="margin-top:10px;color:#721c24;font-weight:700">
+              এটি MJ Ahmad এর পক্ষ থেকে একক নির্ধারণ। বিনিয়োগকারী যদি সন্তুষ্ট না থাকেন, তিনি আইনি প্রক্রিয়া গ্রহণের পূর্ণ অধিকার সংরক্ষণ করেন। এতে করে MJ Ahmad এর পক্ষ থেকে সব ধরনের আপত্তি অগ্রাহ্য হিসেবে বিবেচিত হবে।
+            </p>
+
+            <h3 style="margin-top:12px">প্রমাণ ও প্রতিকার</h3>
+            <p>এই রেকর্ড পেমেন্ট ও লাইভ কাউন্টার টাইমস্ট্যাম্প করে রাখে। আইনি কার্যকারিতার জন্য লিখিত চুক্তি, সাক্ষী বা নোটারাইজেশন গ্রহণের পরামর্শ দেওয়া হচ্ছে।</p>
+
+            <h3 style="margin-top:12px">স্বাক্ষর</h3>
+            <div class="signature">
+              <div class="sig-box">
+                <div style="font-weight:700">Investor</div>
+                <div style="color:var(--muted);font-size:13px;margin-top:8px">Name: Qari Emdadullah</div>
+                <div style="color:var(--muted);font-size:13px;margin-top:6px">Signature: ____________________</div>
+                <div style="color:var(--muted);font-size:12px;margin-top:6px">Date: ____________________</div>
+              </div>
+              <div class="sig-box">
+                <div style="font-weight:700">Recipient</div>
+                <div style="color:var(--muted);font-size:13px;margin-top:8px">Name: (আপনার নাম)</div>
+                <div style="color:var(--muted);font-size:13px;margin-top:6px">Signature: ____________________</div>
+                <div style="color:var(--muted);font-size:12px;margin-top:6px">Date: ____________________</div>
+              </div>
+            </div>
+          </div>
+
+          <h3 style="margin-top:14px">Transaction Ledger (লেনদেন)</h3>
+          <table class="mono">
+            <thead>
+              <tr>
+                <th>তারিখ ও সময়</th>
+                <th>টাকা (Tk)</th>
+                <th>পদ্ধতি</th>
+                <th>মোবাইল</th>
+                <th>Transaction ID</th>
+              </tr>
+            </thead>
+            <tbody id="txBody"></tbody>
+          </table>
+
+          <div class="summary">
+            <div class="tile">
+              <div class="label">Total Bkash</div>
+              <div class="value" id="totalBkash">Tk. 0</div>
+            </div>
+            <div class="tile">
+              <div class="label">Total Cash</div>
+              <div class="value" id="totalCash">Tk. 0</div>
+            </div>
+            <div class="tile">
+              <div class="label">Grand Total</div>
+              <div class="value" id="grandTotal">Tk. 0</div>
+            </div>
+          </div>
+
+          <div class="actions">
+            <button id="copySummary">সারাংশ কপি করুন</button>
+            <button id="downloadCsv">CSV ডাউনলোড</button>
+            <button id="printBtn">প্রিন্ট</button>
+          </div>
+        </div>
+      </section>
+
+      <aside class="side">
+        <div class="info-card card">
+          <h3 style="margin:0 0 8px 0">Investor তথ্য</h3>
+          <div class="info-row"><div class="k">Full name</div><div class="v">Qari Emdadullah</div></div>
+          <div class="info-row"><div class="k">Address</div><div class="v">11/11/b KM Das Lane, Wari, Sutrapur, Dhaka-1203</div></div>
+          <div class="info-row"><div class="k">Email</div><div class="v">hizbullahsalem@gmail.com</div></div>
+          <div class="info-row"><div class="k">Phone</div><div class="v">+880-1820-096806</div></div>
+          <div style="margin-top:10px;font-size:13px;color:var(--muted)"><strong>Agreement</strong></div>
+          <div style="margin-top:6px;font-size:13px;color:var(--muted)">Short-term investment: 2 months from Sep 08, 2025</div>
+        </div>
+
+        <div class="info-card card">
+          <h3 style="margin:0 0 8px 0">Quick Actions</h3>
+          <div style="display:flex;flex-direction:column;gap:8px;margin-top:8px">
+            <button id="copySummarySide" style="padding:10px;border-radius:8px;border:1px solid rgba(2,6,23,0.06);background:#fff;cursor:pointer">সারাংশ কপি</button>
+            <button id="downloadCsvSide" style="padding:10px;border-radius:8px;border:1px solid rgba(2,6,23,0.06);background:#fff;cursor:pointer">CSV ডাউনলোড</button>
+            <button id="printBtnSide" style="padding:10px;border-radius:8px;border:1px solid rgba(2,6,23,0.06);background:#fff;cursor:pointer">প্রিন্ট</button>
+          </div>
+        </div>
+
+        <div class="info-card card">
+          <h3 style="margin:0 0 8px 0">নির্দেশনা</h3>
+          <div style="color:var(--muted);font-size:13px">আইনি কার্যকারিতার জন্য লিখিত চুক্তি, সাক্ষী বা নোটারাইজেশন গ্রহণের পরামর্শ দেওয়া হচ্ছে।</div>
+        </div>
+      </aside>
+    </div>
+
+    <div class="comp-result" id="compResult" style="margin-top:18px">
+      <div class="comp-result-line comp-status"><strong>স্ট্যাটাস:</strong> <span id="compStatusBottom">Waiting for max date</span></div>
+      <div class="comp-result-line comp-elapsed"><strong>Max অতিক্রমের পর সময়:</strong> <span id="compElapsedBottom">—</span></div>
+      <div class="comp-result-line comp-amount"><strong>হিসাবকৃত জরিমানা:</strong> <span id="compAmountBottom">Tk. 0.00</span></div>
+      <div class="comp-result-line comp-total"><strong>মোট বকেয়া:</strong> <span id="totalOwedBottom">Tk. 0.00</span></div>
+    </div>
+
+    <div class="contact-box">
+      <p>পাসওয়ার্ড পরিবর্তন বা যেকোনো প্রশ্নের জন্য যোগাযোগ করুন: <strong>quranerfariwala@gmail.com</strong></p>
+      <div class="mj-message">
+        “MJ Ahmad গভীর কৃতজ্ঞতা ও লজ্জার সঙ্গে প্রতিশ্রুতিবদ্ধ যে, প্রতিটি বিলম্বের মুহূর্ত হিসাব করে বিনিয়োগকারীর ন্যায্য সুবিধা নিশ্চিত করা হবে।”
+      </div>
+    </div>
+
+    <footer style="margin-top:18px">
+      <div style="max-width:1100px;margin:18px auto;padding:8px 20px;color:var(--muted)">
+        &copy; 2026 mj.dev • Contract & Compensation • All rights reserved
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    /* -------------------------
+       Data & Elements
+       ------------------------- */
+    const transactions = [
+      { dt: "2025-09-08 21:00:00", amount: 13000, method: "Cash", mobile: "", trx: "" }
+    ];
+
+    const credentialInput = document.getElementById("credential");
+    const unlockBtn = document.getElementById("unlockBtn");
+    const accessMessage = document.getElementById("accessMessage");
+    const contractArea = document.getElementById("contractArea");
+    const bdTimeEl = document.getElementById("bdTime");
+    const countdownToEarliestEl = document.getElementById("countdownToEarliest");
+    const elapsedSinceMaxEl = document.getElementById("elapsedSinceMax");
+    const txBody = document.getElementById("txBody");
+    const totalBkashEl = document.getElementById("totalBkash");
+    const totalCashEl = document.getElementById("totalCash");
+    const grandTotalEl = document.getElementById("grandTotal");
+
+    const principalInput = document.getElementById('principal');
+    const modeSelect = document.getElementById('mode');
+    const penaltyPerDayInput = document.getElementById('penaltyPerDay');
+    const monthlyPercentInput = document.getElementById('monthlyPercent');
+    const roundingSelect = document.getElementById('rounding');
+
+    const compStatusEl = document.getElementById('compStatus');
+    const compElapsedEl = document.getElementById('compElapsed');
+    const compAmountEl = document.getElementById('compAmount');
+    const totalOwedEl = document.getElementById('totalOwed');
+
+    const compStatusBottom = document.getElementById('compStatusBottom');
+    const compElapsedBottom = document.getElementById('compElapsedBottom');
+    const compAmountBottom = document.getElementById('compAmountBottom');
+    const totalOwedBottom = document.getElementById('totalOwedBottom');
+
+    const copySummaryBtn = document.getElementById("copySummary");
+    const copySummarySideBtn = document.getElementById("copySummarySide");
+    const downloadCsvBtn = document.getElementById("downloadCsv");
+    const downloadCsvSideBtn = document.getElementById("downloadCsvSide");
+    const printBtn = document.getElementById("printBtn");
+    const printBtnSide = document.getElementById("printBtnSide");
+
+    /* -------------------------
+       Configuration & Helpers
+       ------------------------- */
+    const VALID_PASSWORD = "1820096806";
+    const START_ISO = "2025-09-08T21:00:00+06:00";
+    const startDate = new Date(START_ISO);
+    const earliestDate = addDays(startDate, 45);
+    const maxDate = addDays(startDate, 60);
+
+    const ROUNDING_DECIMALS = 2;
+
+    function addDays(date, days) {
+      const d = new Date(date.getTime());
+      d.setDate(d.getDate() + days);
+      return d;
+    }
+    function pad(n) { return String(n).padStart(2, "0"); }
+    function formatNumber(n) { return Number(n).toLocaleString('en-US'); }
+    function formatCurrency(n) { return Number(n).toFixed(2); }
+    function roundPaise(v){ return Math.round(v * Math.pow(10, ROUNDING_DECIMALS)) / Math.pow(10, ROUNDING_DECIMALS); }
+    function formatLocalBD(d) {
+      const opts = {
+        year: "numeric", month: "short", day: "numeric",
+        hour: "2-digit", minute: "2-digit", second: "2-digit",
+        hour12: false, timeZone: "Asia/Dhaka"
+      };
+      try {
+        return new Date(d.toLocaleString("en-US", { timeZone: "Asia/Dhaka" })).toLocaleString("bn-BD", opts).replace(",", "");
+      } catch (e) {
+        return new Date(d.toLocaleString("en-US", { timeZone: "Asia/Dhaka" })).toLocaleString("en-GB", opts).replace(",", "");
+      }
+    }
+
+    /* -------------------------
+       Access control
+       ------------------------- */
+    unlockBtn.addEventListener("click", tryUnlock);
+    credentialInput.addEventListener("keydown", (e) => { if (e.key === "Enter") tryUnlock(); });
+
+    function tryUnlock() {
+      const v = (credentialInput.value || "").trim();
+      if (!v) return showAccess("অনুগ্রহ করে পাসওয়ার্ড (ID নম্বর) দিন।");
+      if (v === VALID_PASSWORD) {
+        accessMessage.style.display = "none";
+        revealContract();
+      } else {
+        showAccess("অ্যাক্সেস অস্বীকৃত — ভুল পাসওয়ার্ড।");
+      }
+    }
+    function showAccess(msg) {
+      accessMessage.style.display = "block";
+      accessMessage.textContent = msg;
+      contractArea.style.display = "none";
+    }
+
+    /* -------------------------
+       Transactions rendering
+       ------------------------- */
+    function renderTransactions() {
+      txBody.innerHTML = "";
+      const totals = { Bkash: 0, Cash: 0 };
+      transactions.forEach(tx => {
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+          <td class="mono">${tx.dt}</td>
+          <td class="mono">Tk. ${formatNumber(tx.amount)}</td>
+          <td>${tx.method}</td>
+          <td class="mono">${tx.mobile || "-"}</td>
+          <td class="mono">${tx.trx || "-"}</td>
+        `;
+        txBody.appendChild(tr);
+        if (tx.method === "Bkash") totals.Bkash += tx.amount;
+        else if (tx.method === "Cash") totals.Cash += tx.amount;
+      });
+      const grand = totals.Bkash + totals.Cash;
+      totalBkashEl.textContent = `Tk. ${formatNumber(totals.Bkash)}`;
+      totalCashEl.textContent = `Tk. ${formatNumber(totals.Cash)}`;
+      grandTotalEl.textContent = `Tk. ${formatNumber(grand)}`;
+    }
+
+    function revealContract() {
+      renderTransactions();
+      contractArea.style.display = "block";
+      contractArea.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+
+    /* -------------------------
+       Clock & diff helpers
+       ------------------------- */
+    function updateBDTime() {
+      const now = new Date();
+      const bd = new Date(now.toLocaleString("en-US", { timeZone: "Asia/Dhaka" }));
+      try {
+        bdTimeEl.textContent = bd.toLocaleString('bn-BD', { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false, timeZone: 'Asia/Dhaka' });
+      } catch (e) {
+        bdTimeEl.textContent = bd.toLocaleString('en-GB', { hour12: false });
+      }
+    }
+
+    function computeDetailedDiff(fromDate, toDate) {
+      let start = new Date(fromDate);
+      let end = new Date(toDate);
+      if (end < start) [start, end] = [end, start];
+
+      const yearsDiff = end.getFullYear() - start.getFullYear();
+      let monthsDiff = end.getMonth() - start.getMonth() + yearsDiff * 12;
+
+      const addMonths = (d, m) => {
+        const nd = new Date(d.getTime());
+        const y = nd.getFullYear();
+        const mo = nd.getMonth();
+        nd.setFullYear(y + Math.floor((mo + m) / 12));
+        nd.setMonth((mo + m) % 12);
+        return nd;
+      };
+
+      let months = monthsDiff;
+      while (months > 0 && addMonths(start, months) > end) months--;
+      const afterMonths = addMonths(start, months);
+      let remainderMs = end - afterMonths;
+      const sec = Math.floor(remainderMs / 1000);
+      const weeks = Math.floor(sec / (7 * 24 * 3600));
+      const days = Math.floor((sec % (7 * 24 * 3600)) / (24 * 3600));
+      const hours = Math.floor((sec % (24 * 3600)) / 3600);
+      const minutes = Math.floor((sec % 3600) / 60);
+      const seconds = sec % 60;
+
+      return { months, weeks, days, hours, minutes, seconds };
+    }
+
+    function applyRounding(value) {
+      const mode = roundingSelect ? roundingSelect.value : 'paise';
+      if (mode === 'ceil') return Math.ceil(value);
+      if (mode === 'floor') return Math.floor(value);
+      return Math.round(value * 100) / 100;
+    }
+
+    /* -------------------------
+       updateCompensation (as requested)
+       ------------------------- */
+    function updateCompensation(nowBD){
+      const principal = Number(principalInput.value) || 0;
+      if(nowBD < maxDate){
+        compStatusEl.textContent = 'Maximum delivery date not yet passed';
+        compElapsedEl.textContent = '0 months 0 weeks 0 days 00h 00m 00s';
+        compAmountEl.textContent = `Tk. 0.00`;
+        totalOwedEl.textContent = `Tk. ${formatCurrency(principal)}`;
+        // bottom mirrors
+        compStatusBottom.textContent = compStatusEl.textContent;
+        compElapsedBottom.textContent = compElapsedEl.textContent;
+        compAmountBottom.textContent = compAmountEl.textContent;
+        totalOwedBottom.textContent = totalOwedEl.textContent;
+        return;
+      }
+
+      const diff = computeDetailedDiff(maxDate, nowBD);
+      compElapsedEl.textContent = `${diff.months} months ${diff.weeks} weeks ${diff.days} days ${pad(diff.hours)}h ${pad(diff.minutes)}m ${pad(diff.seconds)}s`;
+      compStatusEl.textContent = 'Maximum delivery passed — compensation active';
+
+      let comp = 0;
+      const mode = modeSelect ? modeSelect.value : 'daily';
+      if(mode === 'daily'){
+        const msElapsed = nowBD - maxDate;
+        const daysFloat = msElapsed / (1000 * 60 * 60 * 24);
+        const perDay = Number(penaltyPerDayInput.value) || 0;
+        comp = daysFloat * perDay;
+      } else if(mode === 'monthly'){
+        const monthsWhole = diff.months;
+        const afterMonths = (d => {
+          const nd = new Date(d.getTime());
+          nd.setMonth(nd.getMonth() + monthsWhole);
+          return nd;
+        })(maxDate);
+        const remainderMs = nowBD - afterMonths;
+        const daysInMonthApprox = 30;
+        const remainderMonths = remainderMs / (1000 * 60 * 60 * 24 * daysInMonthApprox);
+        const totalMonths = monthsWhole + remainderMonths;
+        const monthlyPercent = Number(monthlyPercentInput.value) || 0;
+        comp = principal * (monthlyPercent / 100) * totalMonths;
+      }
+
+      const compRounded = applyRounding(comp);
+      const total = applyRounding(principal + compRounded);
+
+      compAmountEl.textContent = `Tk. ${formatCurrency(compRounded)}`;
+      totalOwedEl.textContent = `Tk. ${formatCurrency(total)}`;
+
+      // bottom mirrors
+      compStatusBottom.textContent = compStatusEl.textContent;
+      compElapsedBottom.textContent = compElapsedEl.textContent;
+      compAmountBottom.textContent = compAmountEl.textContent;
+      totalOwedBottom.textContent = totalOwedEl.textContent;
+    }
+
+    /* -------------------------
+       UI toggles & listeners
+       ------------------------- */
+    modeSelect.addEventListener('change', ()=>{
+      const mode = modeSelect.value;
+      document.getElementById('dailyRow').style.display = mode === 'daily' ? 'flex' : 'none';
+      document.getElementById('monthlyRow').style.display = mode === 'monthly' ? 'flex' : 'none';
+      updateCompensation(new Date(new Date().toLocaleString('en-US', { timeZone: 'Asia/Dhaka' })));
+    });
+
+    [principalInput, penaltyPerDayInput, monthlyPercentInput, roundingSelect].forEach(el=>{
+      if(!el) return;
+      el.addEventListener('input', ()=> updateCompensation(new Date(new Date().toLocaleString('en-US', { timeZone: 'Asia/Dhaka' }))));
+    });
+
+    /* -------------------------
+       Quick actions
+       ------------------------- */
+    function copySummary() {
+      const principal = transactions.reduce((s,t)=>s+t.amount,0);
+      const summary = [
+        "চুক্তি — Qari Emdadullah",
+        `পেমেন্ট: Tk. ${formatNumber(principal)} (Cash) on ${formatLocalBD(startDate)}`,
+        `Earliest delivery due: ${formatLocalBD(earliestDate)}`,
+        `Maximum delivery due: ${formatLocalBD(maxDate)}`,
+        `লাইভ জরিমানা: ${compAmountEl.textContent}`,
+        `মোট বকেয়া: ${totalOwedEl.textContent}`
+      ].join("\n");
+      navigator.clipboard?.writeText(summary).then(()=>{ alert("সারাংশ ক্লিপবোর্ডে কপি হয়েছে।"); }).catch(()=>{ alert("কপি করা যায়নি।"); });
+    }
+
+    function downloadCsv() {
+      const headers = ["Date & Time","Amount (Tk)","Method","Mobile","Transaction ID"];
+      const rows = transactions.map(t => [t.dt, t.amount, t.method, t.mobile || "-", t.trx || "-"]);
+      const csv = [headers, ...rows].map(r => r.map(cell => `"${String(cell).replace(/"/g,'""')}"`).join(',')).join('\n');
+      const blob = new Blob([csv], {type:'text/csv;charset=utf-8;'});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'emdadullah_statement.csv';
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
+    }
+
+    if (copySummaryBtn) copySummaryBtn.addEventListener('click', copySummary);
+    if (copySummarySideBtn) copySummarySideBtn.addEventListener('click', copySummary);
+    if (downloadCsvBtn) downloadCsvBtn.addEventListener('click', downloadCsv);
+    if (downloadCsvSideBtn) downloadCsvSideBtn.addEventListener('click', downloadCsv);
+    if (printBtn) printBtn.addEventListener('click', ()=>window.print());
+    if (printBtnSide) printBtnSide.addEventListener('click', ()=>window.print());
+
+    /* -------------------------
+       Init & intervals
+       ------------------------- */
+    document.getElementById('startDateText').textContent = formatLocalBD(startDate) + " (BST)";
+    document.getElementById('earliestDateText').textContent = formatLocalBD(earliestDate) + " (BST)";
+    document.getElementById('maxDateText').textContent = formatLocalBD(maxDate) + " (BST)";
+
+    updateBDTime();
+    updateCountdowns();
+    setInterval(updateBDTime, 1000);
+    setInterval(updateCountdowns, 1000);
+
+    // update countdowns and compensation every second
+    function updateCountdowns(){
+      const nowBD = new Date(new Date().toLocaleString("en-US", { timeZone: "Asia/Dhaka" }));
+
+      // Countdown to earliest (45 days)
+      const diffEarliest = earliestDate - nowBD;
+      if (diffEarliest > 0) {
+        const d = computeDetailedDiff(nowBD, earliestDate);
+        countdownToEarliestEl.textContent = `${d.months} মাস ${d.weeks} সপ্তাহ ${d.days} দিন ${pad(d.hours)}h ${pad(d.minutes)}m ${pad(d.seconds)}s`;
+      } else {
+        countdownToEarliestEl.textContent = `৪৫ দিন পূর্ণ হয়েছে`;
+      }
+
+      // Elapsed since max (60 days)
+      const diffMax = nowBD - maxDate;
+      if (diffMax < 0) {
+        elapsedSinceMaxEl.textContent = `এখনও ৬০ দিন পূর্ণ হয়নি`;
+        compStatusEl.textContent = "Maximum delivery date not yet passed";
+        compElapsedEl.textContent = "—";
+        compAmountEl.textContent = `Tk. 0.00`;
+        totalOwedEl.textContent = `Tk. ${formatCurrency(transactions.reduce((s,t)=>s+t.amount,0))}`;
+        compStatusBottom.textContent = compStatusEl.textContent;
+        compElapsedBottom.textContent = compElapsedEl.textContent;
+        compAmountBottom.textContent = compAmountEl.textContent;
+        totalOwedBottom.textContent = totalOwedEl.textContent;
+      } else {
+        updateCompensation(nowBD);
+        const d = computeDetailedDiff(maxDate, nowBD);
+        elapsedSinceMaxEl.textContent = `${d.months} মাস ${d.weeks} সপ্তাহ ${d.days} দিন ${pad(d.hours)}h ${pad(d.minutes)}m ${pad(d.seconds)}s`;
+      }
+    }
+
+    // Initial render
+    function init() {
+      renderTransactions();
+      // set visibility for rows
+      const mode = modeSelect.value;
+      document.getElementById('dailyRow').style.display = mode === 'daily' ? 'flex' : 'none';
+      document.getElementById('monthlyRow').style.display = mode === 'monthly' ? 'flex' : 'none';
+      // initial compensation update
+      updateCompensation(new Date(new Date().toLocaleString('en-US', { timeZone: 'Asia/Dhaka' })));
+    }
+
+    init();
+
+    // Optional: prefill credential for convenience (comment out in production)
+    // credentialInput.value = VALID_PASSWORD;
+  </script>
+</body>
+</html>

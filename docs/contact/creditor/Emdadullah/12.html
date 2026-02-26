@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <title>Contract - Qari Emdadullah</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body { background:#f8f9fa; }
+    header { background:#004080; color:#fff; padding:15px; }
+    header img { height:50px; margin-right:10px; }
+    .card { margin-bottom:20px; }
+    .owed { font-size:1.2rem; font-weight:bold; color:#004080; }
+    .hidden { display:none; }
+  </style>
+</head>
+<body>
+  <header class="d-flex align-items-center">
+    <img src="docs/assets/logo.png" alt="Logo">
+    <h1 class="h4 mb-0">Contract Dashboard - Qari Emdadullah</h1>
+  </header>
+
+  <div class="container my-4">
+    <!-- Lock Screen -->
+    <div id="lockScreen" class="card">
+      <div class="card-body">
+        <h5 class="card-title">🔐 Unlock Contract</h5>
+        <input type="password" id="passwordInput" class="form-control mb-2" placeholder="Enter Password">
+        <button class="btn btn-primary" onclick="unlock()">Unlock</button>
+        <p id="lockMsg" class="text-danger mt-2"></p>
+      </div>
+    </div>
+
+    <!-- Contract Content -->
+    <div id="contractContent" class="hidden">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">⏰ Bangladesh Time</h5>
+              <p id="bdClock" class="fs-5"></p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">📅 Delivery Countdown</h5>
+              <p>Earliest (45 days): <span id="count45"></span></p>
+              <p>Maximum (60 days): <span id="count60"></span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Compensation Calculator -->
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">💰 Compensation Calculator</h5>
+          <div class="mb-2">
+            <label class="form-label">Principal Amount (Tk):</label>
+            <input type="number" id="principal" class="form-control" value="13000">
+          </div>
+          <div class="mb-2">
+            <label class="form-label">Mode:</label>
+            <select id="mode" class="form-select">
+              <option value="daily">Daily Penalty</option>
+              <option value="monthly">Monthly %</option>
+            </select>
+          </div>
+          <div class="mb-2">
+            <label class="form-label">Rate (Tk/day or %/month):</label>
+            <input type="number" id="rate" class="form-control" value="100">
+          </div>
+          <p class="owed">Owed Amount: <span id="owed">Tk 13,000</span></p>
+        </div>
+      </div>
+
+      <!-- Ledger -->
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">📑 Transaction Ledger</h5>
+          <table class="table table-striped" id="ledger">
+            <thead>
+              <tr><th>Date</th><th>Amount</th><th>Method</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>2025-09-08</td><td>13,000</td><td>Cash</td></tr>
+            </tbody>
+          </table>
+          <button class="btn btn-success me-2" onclick="downloadCSV()">Download CSV</button>
+          <button class="btn btn-secondary me-2" onclick="copySummary()">Copy Summary</button>
+          <button class="btn btn-info" onclick="window.print()">Print</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<script>
+  // Unlock
+  function unlock(){
+    const pass = document.getElementById('passwordInput').value;
+    if(pass==="1820096806"){
+      document.getElementById('lockScreen').classList.add('hidden');
+      document.getElementById('contractContent').classList.remove('hidden');
+    } else {
+      document.getElementById('lockMsg').innerText="❌ Wrong password!";
+    }
+  }
+
+  // Clock
+  setInterval(()=>{
+    const now=new Date();
+    const options={timeZone:'Asia/Dhaka',hour:'2-digit',minute:'2-digit',second:'2-digit'};
+    document.getElementById('bdClock').innerText=now.toLocaleString('bn-BD',options);
+  },1000);
+
+  // Countdown
+  const startDate=new Date("2025-09-08T21:00:00+06:00");
+  const day45=new Date(startDate.getTime()+45*24*60*60*1000);
+  const day60=new Date(startDate.getTime()+60*24*60*60*1000);
+
+  setInterval(()=>{
+    const now=new Date();
+    const diff45=day45-now;
+    const diff60=day60-now;
+    document.getElementById('count45').innerText=diff45>0?Math.floor(diff45/(1000*60*60*24))+" days left":"Passed";
+    document.getElementById('count60').innerText=diff60>0?Math.floor(diff60/(1000*60*60*24))+" days left":"Elapsed "+Math.abs(Math.floor(diff60/(1000*60*60*24)))+" days";
+  },1000);
+
+  // Compensation
+  setInterval(()=>{
+    const principal=parseFloat(document.getElementById('principal').value)||0;
+    const rate=parseFloat(document.getElementById('rate').value)||0;
+    const mode=document.getElementById('mode').value;
+    const now=new Date();
+    let owed=principal;
+    if(mode==="daily" && now>day60){
+      const daysLate=Math.floor((now-day60)/(1000*60*60*24));
+      owed+=daysLate*rate;
+    } else if(mode==="monthly" && now>day60){
+      const monthsLate=(now-day60)/(1000*60*60*24*30);
+      owed+=principal*(rate/100)*monthsLate;
+    }
+    document.getElementById('owed').innerText="Tk "+owed.toFixed(2);
+  },1000);
+
+  // Ledger CSV
+  function downloadCSV(){
+    let csv="Date,Amount,Method\n2025-09-08,13000,Cash\n";
+    const blob=new Blob([csv],{type:"text/csv"});
+    const a=document.createElement("a");
+    a.href=URL.createObjectURL(blob);
+    a.download="ledger.csv";
+    a.click();
+  }
+
+  function copySummary(){
+    const summary="Transaction: 13,000 Tk Cash on 2025-09-08. Current owed: "+document.getElementById('owed').innerText;
+    navigator.clipboard.writeText(summary);
+    alert("Summary copied!");
+  }
+</script>
+</body>
+</html>

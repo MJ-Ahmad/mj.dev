@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <title>Home - Contracts Portal</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+  <!-- Header -->
+  <header class="bg-blue-900 text-white">
+    <div class="max-w-6xl mx-auto flex items-center justify-between p-4">
+      <div class="flex items-center space-x-2">
+        <img src="docs/assets/logo.png" alt="Logo" class="h-10 w-10">
+        <span class="font-bold text-lg">Contracts Portal</span>
+      </div>
+      <nav class="space-x-4 hidden md:block">
+        <a href="index.html" class="hover:underline">Home</a>
+        <a href="contract.html" class="hover:underline">Contract</a>
+        <a href="#" class="hover:underline">About</a>
+        <a href="#" class="hover:underline">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Lock Screen -->
+  <main class="max-w-3xl mx-auto p-6">
+    <div id="lockScreen" class="bg-white shadow rounded p-6 text-center">
+      <h2 class="text-lg font-semibold text-blue-900">🔐 Enter Password</h2>
+      <input type="password" id="passwordInput" class="border rounded px-3 py-2 mt-4 w-full" placeholder="Enter Password">
+      <button onclick="unlock()" class="bg-blue-700 text-white px-4 py-2 rounded mt-4">Unlock</button>
+      <p id="lockMsg" class="text-red-600 mt-2"></p>
+    </div>
+
+    <!-- Portal Content -->
+    <div id="portalContent" class="hidden mt-6">
+      <div class="bg-white shadow rounded p-6">
+        <h2 class="text-lg font-semibold text-blue-900">Contracts Portal</h2>
+        <p class="mt-2">Access the contract details for Qari Emdadullah:</p>
+        <p class="mt-4">
+          📜 <a href="contract.html" class="text-blue-700 underline">View Contract Agreement</a>
+        </p>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-200 text-center py-6 mt-6">
+    <p>&copy; 2026 Quraner Fariwala. All rights reserved.</p>
+    <div class="mt-2 space-x-4">
+      <a href="#" class="text-blue-700">Terms of Service</a>
+      <a href="#" class="text-blue-700">Privacy Policy</a>
+      <a href="#" class="text-blue-700">Legal Disclaimer</a>
+    </div>
+  </footer>
+
+<script>
+  function unlock(){
+    const pass=document.getElementById('passwordInput').value;
+    if(pass==="1820096806"){
+      document.getElementById('lockScreen').classList.add('hidden');
+      document.getElementById('portalContent').classList.remove('hidden');
+    } else {
+      document.getElementById('lockMsg').innerText="❌ Wrong password!";
+    }
+  }
+</script>
+</body>
+</html>

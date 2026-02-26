@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8" />
+  <title>Contract - Qari Emdadullah</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+  <!-- Lock Screen -->
+  <div id="lockScreen" class="flex flex-col items-center justify-center min-h-screen p-6 bg-gray-50">
+    <div class="w-full max-w-md bg-white rounded-lg shadow p-6 text-center">
+      <h2 class="text-xl font-semibold text-blue-900">🔐 পাসওয়ার্ড দিন</h2>
+      <p class="text-sm text-gray-600 mt-2">এই পেজটি সুরক্ষিত। সঠিক পাসওয়ার্ড দিলে কনটেন্ট দেখা যাবে।</p>
+      <input type="password" id="passwordInput" class="mt-4 w-full border rounded px-3 py-2" placeholder="পাসওয়ার্ড লিখুন">
+      <button onclick="unlock()" class="mt-4 w-full bg-blue-700 text-white px-4 py-2 rounded">Unlock</button>
+      <p id="lockMsg" class="text-red-600 mt-3"></p>
+      <p class="text-xs text-gray-500 mt-4">If you need to change the password or have any questions, contact: <strong>quranerfariwala@gmail.com</strong></p>
+    </div>
+  </div>
+
+  <!-- Main Content (Hidden initially) -->
+  <div id="contractContent" class="hidden min-h-screen">
+
+    <!-- Header -->
+    <header class="bg-blue-900 text-white py-4 text-center">
+      <h1 class="text-xl font-bold">Contract Dashboard - Qari Emdadullah</h1>
+    </header>
+
+    <main class="max-w-3xl mx-auto p-4 space-y-6">
+
+      <!-- Profile / Info Section -->
+      <div class="bg-white shadow rounded p-4">
+        <h2 class="text-lg font-semibold text-blue-900">👤 Investor Information</h2>
+        <div class="mt-3 grid grid-cols-1 gap-2 text-sm text-gray-800">
+          <div><strong>Full name</strong> &nbsp;&nbsp;: Qari Emdadullah</div>
+          <div><strong>Address</strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: 11/11/b KM Das Lane, Wari, Sutrapur, Dhaka-1203</div>
+          <div><strong>Email</strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: hizbullahsalem@gmail.com</div>
+          <div><strong>Phone</strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: +880-1820-096806</div>
+          <div><strong>Role</strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: Investor</div>
+          <div><strong>Agreement</strong> &nbsp;: Short-term investment: 2 months from Sep 08, 2025</div>
+          <div><strong>Payment</strong> &nbsp;&nbsp;&nbsp;&nbsp;: Tk. 13,000 (Cash) on 8 Sept 2025 21:00:00</div>
+          <div><strong>Earliest delivery due</strong> : 23 Oct 2025 21:00:00</div>
+          <div><strong>Maximum delivery due</strong> &nbsp;: 7 Nov 2025 21:00:00</div>
+        </div>
+      </div>
+
+      <!-- Bangladesh Time -->
+      <div class="bg-white shadow rounded p-4">
+        <h2 class="text-lg font-semibold text-blue-900">⏰ Bangladesh Time</h2>
+        <p id="bdClock" class="text-xl mt-2"></p>
+      </div>
+
+      <!-- Countdown -->
+      <div class="bg-white shadow rounded p-4">
+        <h2 class="text-lg font-semibold text-blue-900">📅 Delivery Countdown</h2>
+        <p>Earliest (45 days): <span id="count45" class="font-medium"></span></p>
+        <p>Maximum (60 days): <span id="count60" class="font-medium"></span></p>
+        <p class="mt-2 text-red-700 font-semibold">Elapsed Since Maximum Delivery:
+          <span id="elapsed" class="font-mono"></span>
+        </p>
+      </div>
+
+      <!-- Compensation Calculator -->
+      <div class="bg-white shadow rounded p-4">
+        <h2 class="text-lg font-semibold text-blue-900">💰 Compensation Calculator</h2>
+
+        <label class="block mt-2 text-sm text-gray-700">Principal Amount (Tk):</label>
+        <input type="number" id="principal" value="13000" class="w-full border rounded px-2 py-1 mt-1">
+
+        <label class="block mt-3 text-sm text-gray-700">Daily Penalty (Tk/day):</label>
+        <input type="number" id="rate" value="100" class="w-full border rounded px-2 py-1 mt-1">
+
+        <p class="mt-3 text-sm">Calculated Compensation: <span id="compensation" class="font-medium text-gray-700">Tk 0</span></p>
+        <p class="mt-1 text-lg font-bold text-blue-900">Total Owed: <span id="owed">Tk 13,000</span></p>
+      </div>
+
+      <!-- Agreement Section -->
+      <div class="bg-white shadow rounded p-4">
+        <h2 class="text-lg font-semibold text-blue-900">📜 Agreement</h2>
+        <p class="mt-2">Access the contract details for Qari Emdadullah:</p>
+        <p class="mt-4">
+          📜 <a href="contract.html" class="text-blue-700 underline">View Contract Agreement</a>
+        </p>  <p>   </p> <p>   </p>  <p class="mt-4 text-sm">If you need to change the password or have any questions, please contact:
+        <strong>quranerfariwala@gmail.com</strong>
+      </p>
+
+      <p class="italic mt-2 text-sm">
+        “MJ Ahmad remains deeply grateful yet ashamed, and commits with sincerity that every moment of delay will be accounted for until the investor’s rightful benefit is fulfilled.”
+      </p>
+      </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-200 text-center py-6 mt-6">
+      <p class="text-sm">&copy; 2026 Quraner Fariwala. All rights reserved.</p>
+      <div class="mt-2 space-x-4">
+        <a href="#" class="text-blue-700 text-sm">Terms of Service</a>
+        <a href="#" class="text-blue-700 text-sm">Privacy Policy</a>
+        <a href="#" class="text-blue-700 text-sm">Legal Disclaimer</a>
+      </div>
+
+
+    </footer>
+  </div>
+
+<script>
+  // Unlock function (client-side demo)
+  function unlock(){
+    const pass = document.getElementById('passwordInput').value;
+    const lockMsg = document.getElementById('lockMsg');
+    if(pass === "1820096806"){
+      document.getElementById('lockScreen').classList.add('hidden');
+      document.getElementById('contractContent').classList.remove('hidden');
+      lockMsg.innerText = "";
+    } else {
+      lockMsg.innerText = "❌ ভুল পাসওয়ার্ড। আবার চেষ্টা করুন।";
+    }
+  }
+
+  // Real-time Bangladesh clock
+  setInterval(()=>{
+    const now = new Date();
+    const options = { timeZone: 'Asia/Dhaka', hour: '2-digit', minute: '2-digit', second: '2-digit' };
+    const el = document.getElementById('bdClock');
+    if(el) el.innerText = now.toLocaleString('bn-BD', options);
+  }, 1000);
+
+  // Countdown setup using the provided dates
+  const paymentDate = new Date("2025-09-08T21:00:00+06:00");
+  const earliestDue = new Date("2025-10-23T21:00:00+06:00"); // 45 days after payment
+  const maximumDue = new Date("2025-11-07T21:00:00+06:00");  // 60 days after payment
+
+  function formatDaysLeft(ms){
+    return Math.floor(ms / (1000*60*60*24));
+  }
+
+  setInterval(()=>{
+    const now = new Date();
+    const diff45 = earliestDue - now;
+    const diff60 = maximumDue - now;
+
+    const c45 = document.getElementById('count45');
+    const c60 = document.getElementById('count60');
+    const elapsed = document.getElementById('elapsed');
+
+    if(c45) c45.innerText = diff45 > 0 ? formatDaysLeft(diff45) + " days left" : "Passed";
+    if(c60) c60.innerText = diff60 > 0 ? formatDaysLeft(diff60) + " days left" : "Deadline Passed";
+
+    if(elapsed){
+      if(now > maximumDue){
+        let elapsedMs = now - maximumDue;
+        let seconds = Math.floor(elapsedMs / 1000);
+        let minutes = Math.floor(seconds / 60);
+        let hours = Math.floor(minutes / 60);
+        let days = Math.floor(hours / 24);
+
+        let months = Math.floor(days / 30);
+        let weeks = Math.floor((days % 30) / 7);
+        let remDays = days % 7;
+        let remHours = hours % 24;
+        let remMinutes = minutes % 60;
+        let remSeconds = seconds % 60;
+
+        elapsed.innerText = `${months}m ${weeks}w ${remDays}d ${remHours}h ${remMinutes}m ${remSeconds}s`;
+      } else {
+        elapsed.innerText = "Not yet elapsed";
+      }
+    }
+  }, 1000);
+
+  // Compensation calculator (daily fixed penalty)
+  setInterval(()=>{
+    const principal = parseFloat(document.getElementById('principal')?.value) || 0;
+    const rate = parseFloat(document.getElementById('rate')?.value) || 0;
+    const now = new Date();
+    let compensation = 0;
+    if(now > maximumDue){
+      const daysLate = Math.floor((now - maximumDue) / (1000*60*60*24));
+      compensation = daysLate * rate;
+    }
+    const compEl = document.getElementById('compensation');
+    const owedEl = document.getElementById('owed');
+    if(compEl) compEl.innerText = "Tk " + compensation.toFixed(2);
+    if(owedEl) owedEl.innerText = "Tk " + (principal + compensation).toFixed(2);
+  }, 1000);
+</script>
+</body>
+</html>

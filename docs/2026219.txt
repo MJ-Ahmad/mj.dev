@@ -1,0 +1,102 @@
+# ================================
+# MJ Assistant PowerShell Profile
+# ================================
+
+# --- Default Location ---
+Set-Location "D:\mj.dev\"
+
+# --- Custom Prompt ---
+function prompt {
+    $path = Get-Location
+    Write-Host "[$path]" -ForegroundColor Green -NoNewline
+    return " > "
+}
+
+# --- Load Functions ---
+. "D:\mj.dev\Functions\Get-Guidance.ps1"
+. "D:\mj.dev\Functions\Get-Assistant.ps1"
+. "D:\mj.dev\Functions\Get-gh-cli.ps1"
+. "D:\mj.dev\Functions\Get-CLI.ps1"
+. "D:\mj.dev\Functions\Get-NMS.ps1"
+. "D:\mj.dev\Functions\Get-Satellite-Router.ps1"
+. "D:\mj.dev\Functions\Get-Antenna.ps1"
+. "D:\mj.dev\Functions\Get-MEOSAT.ps1"
+. "D:\mj.dev\Functions\Get-LEO.ps1"
+. "D:\mj.dev\Functions\Get-GEO-Satellite.ps1"
+. "D:\mj.dev\Functions\Get-IPsec-backbone-link.ps1"
+. "D:\mj.dev\Functions\Get-VPN-backbone-link.ps1"
+. "D:\mj.dev\Functions\Get-Wi-Fi.ps1"
+. "D:\mj.dev\Functions\Get-LAN.ps1"
+. "D:\mj.dev\Functions\Get-LAN-and-Wi-Fi.ps1"
+. "D:\mj.dev\Functions\Get-VSAT.ps1"
+. "D:\mj.dev\Functions\Get-Mesh.ps1"
+. "D:\mj.dev\Functions\Get-Solutions.ps1"
+. "D:\mj.dev\Functions\Get-ip.ps1"
+. "D:\mj.dev\Functions\Get-metadata.ps1"
+. "D:\mj.dev\Functions\Get-diagram.ps1"
+. "D:\mj.dev\Functions\Get-pages.ps1"
+. "D:\mj.dev\Functions\Get-html.ps1"
+. "D:\mj.dev\Functions\Get-js.ps1"
+. "D:\mj.dev\Functions\Get-css.ps1"
+. "D:\mj.dev\Functions\Get-calendar.ps1"
+. "D:\mj.dev\Functions\Get-time.ps1"
+. "D:\mj.dev\Functions\Get-sitemap.ps1"
+. "D:\mj.dev\Functions\Get-codecard.ps1"
+. "D:\mj.dev\Functions\Get-links.ps1"
+. "D:\mj.dev\Functions\Get-WAN.ps1"
+. "D:\mj.dev\Functions\Get-Cloud.ps1"
+. "D:\mj.dev\Functions\Get-Sync.ps1"
+. "D:\mj.dev\Functions\Get-Network.ps1"
+. "D:\mj.dev\Functions\Get-Private.ps1"
+. "D:\mj.dev\Functions\Get-Intranet.ps1"
+. "D:\mj.dev\Functions\Get-Private-WAN.ps1"
+. "D:\mj.dev\Functions\Get-NOC.ps1"
+. "D:\mj.dev\Functions\Get-Linux-Windows-Server.ps1"
+. "D:\mj.dev\Functions\Get-fiver.ps1"
+. "D:\mj.dev\Functions\Get-Radio.ps1"
+. "D:\mj.dev\Functions\Get-VPN.ps1"
+. "D:\mj.dev\Functions\Get-IP-over-Satellite.ps1"
+. "D:\mj.dev\Functions\Get-Wireless.ps1"
+. "D:\mj.dev\Functions\Get-Traffic.ps1"
+. "D:\mj.dev\Functions\Get-gh.ps1"
+. "D:\mj.dev\Functions\Get-py.ps1"
+. "D:\mj.dev\Functions\Get-node.ps1"
+. "D:\mj.dev\Functions\Get-npm.ps1"
+. "D:\mj.dev\Functions\Get-npx.ps1"
+. "D:\mj.dev\Functions\Get-sh.ps1"
+. "D:\mj.dev\Functions\Get-dotnet.ps1"
+. "D:\mj.dev\Functions\Get-mlnet.ps1"
+. "D:\mj.dev\Functions\Get-env.ps1"
+. "D:\mj.dev\Functions\Get-ps.ps1"
+. "D:\mj.dev\Functions\mj-dir.ps1"
+. "D:\mj.dev\Functions\mj-force.ps1"
+. "D:\mj.dev\Functions\Get-MJ-Tree.ps1"
+. "D:\mj.dev\Functions\Get-mj-faq.ps1"
+. "D:\mj.dev\Functions\Get-MJTreePersonal.ps1"
+. "D:\mj.dev\Functions\Get-MJAccount.ps1"
+. "D:\mj.dev\Functions\Get-MJPersonalData.ps1"
+. "D:\mj.dev\Functions\Get-BGS.ps1"
+. "D:\mj.dev\Functions\Get-QF.ps1"
+. "D:\mj.dev\Functions\Get-MJRoadmap.ps1"
+. "D:\mj.dev\Functions\Get-MJCommand.ps1"
+. "D:\mj.dev\Functions\Get-MJTime.ps1"
+. "D:\mj.dev\Functions\Get-MJTime2026218.ps1"
+. "D:\mj.dev\Functions\Get-QFHelth.ps1"
+. "D:\mj.dev\Functions\Get-QFStatus.ps1"
+. "D:\mj.dev\Functions\Get-QFRoadmap.ps1"
+. "D:\mj.dev\Functions\Get-QFProblems.ps1"
+. "D:\mj.dev\Functions\Get-MJTime.ps1"
+
+. "D:\mj.dev\Functions\MJAhmad.ps1"
+
+# --- Custom Aliases ---
+Set-Alias dev "Set-Location D:\mj.dev\"
+Set-Alias guide Get-Guidance   # directly maps to the function
+
+# --- Welcome Message ---
+Write-Host "               =====================================" -ForegroundColor Cyan
+Write-Host "               Welcome MJ! Your Assistant is Ready" -ForegroundColor Yellow
+Write-Host "               Project Location: D:\mj.dev\" -ForegroundColor Green
+Write-Host "               Other Locations: QuranerFariwala,MJ-Ahmad,BGS,BGS.Fund,SRBC" -ForegroundColor White
+Write-Host "               QuranerFariwala- E:\QuranerFariwala\qf, MJ-Ahmad- E:\MJ-Ahmad, BGS- D:\BGS, BGS.Fund- D:\BGS.Fund, SRBC- E:\srbc " -ForegroundColor Cyan
+Write-Host "               =====================================" -ForegroundColor Cyan

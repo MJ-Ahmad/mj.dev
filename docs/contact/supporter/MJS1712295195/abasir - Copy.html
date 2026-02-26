@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Statement Viewer — Abdul Basir Numany</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <style>
+    :root{
+      --bg:#f5f7fb;
+      --card:#ffffff;
+      --muted:#6b7280;
+      --accent:#2563eb;
+      --accent-2:#06b6d4;
+      --success:#10b981;
+      --danger:#ef4444;
+      --glass: rgba(255,255,255,0.6);
+      --shadow: 0 6px 18px rgba(15,23,42,0.08);
+      --mono: "Courier New", Courier, monospace;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: linear-gradient(180deg, #eef2ff 0%, var(--bg) 100%);
+      color:#0f172a;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.45;
+    }
+
+    header{
+      background:linear-gradient(90deg,var(--accent),#4f46e5);
+      color:#fff;
+      padding:18px 28px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+      box-shadow: 0 6px 18px rgba(79,70,229,0.12);
+      position:sticky;
+      top:0;
+      z-index:50;
+    }
+    .brand{display:flex;gap:14px;align-items:center}
+    .logo{width:48px;height:48px;border-radius:10px;background:linear-gradient(135deg,#fff 0%, rgba(255,255,255,0.15) 100%);display:flex;align-items:center;justify-content:center;color:var(--accent);font-weight:700;font-size:18px;box-shadow: 0 6px 18px rgba(15,23,42,0.06)}
+    header h1{font-size:18px;margin:0;font-weight:600;letter-spacing:0.2px}
+    nav ul{list-style:none;margin:0;padding:0;display:flex;gap:18px;align-items:center}
+    nav a{color:rgba(255,255,255,0.95);text-decoration:none;font-weight:600;font-size:14px}
+    nav a.secondary{background:rgba(255,255,255,0.12);padding:8px 12px;border-radius:8px}
+
+    .wrap{max-width:1100px;margin:28px auto;padding:0 20px}
+    .grid{display:grid;grid-template-columns: 1fr 360px;gap:22px;align-items:start}
+
+    .card{background:var(--card);border-radius:12px;padding:20px;box-shadow:var(--shadow);overflow:hidden}
+    .card h2{margin:0 0 12px 0;font-size:18px}
+    .lead{color:var(--muted);font-size:14px;margin-bottom:16px}
+
+    .access{display:flex;gap:12px;align-items:center;margin-bottom:18px;flex-wrap:wrap}
+    .access input[type="text"]{padding:10px 12px;border-radius:8px;border:1px solid #e6e9ef;background:#fbfdff;width:260px;font-size:14px}
+    .access button{padding:10px 14px;border-radius:8px;border:none;background:var(--accent);color:#fff;font-weight:700;cursor:pointer;box-shadow: 0 6px 18px rgba(37,99,235,0.12)}
+    .hint{font-size:13px;color:var(--muted)}
+
+    .countdown{display:flex;gap:12px;align-items:center;margin-top:8px;background:linear-gradient(90deg, rgba(37,99,235,0.06), rgba(6,182,212,0.03));padding:12px;border-radius:10px;border:1px solid rgba(37,99,235,0.06);color:var(--accent);font-weight:700}
+
+    table{width:100%;border-collapse:collapse;font-size:14px;margin-top:14px;background:transparent}
+    thead th{text-align:left;padding:12px 10px;background:linear-gradient(90deg,#eef2ff,#f8fafc);color:#0f172a;font-weight:700;border-bottom:2px solid rgba(15,23,42,0.04);font-size:13px}
+    tbody td{padding:12px 10px;border-bottom:1px dashed rgba(15,23,42,0.04);vertical-align:middle}
+    tbody tr:nth-child(even){background:rgba(15,23,42,0.02)}
+    .mono{font-family:var(--mono);color:#0b1220}
+
+    .summary{display:flex;gap:12px;margin-top:18px;flex-wrap:wrap}
+    .summary .tile{flex:1 1 160px;background:linear-gradient(180deg,#fff,#fbfdff);padding:14px;border-radius:10px;box-shadow: 0 6px 18px rgba(2,6,23,0.04);border:1px solid rgba(2,6,23,0.03)}
+    .tile .label{font-size:13px;color:var(--muted);margin-bottom:6px;font-weight:600}
+    .tile .value{font-size:18px;font-weight:800;color:#0f172a}
+
+    .side{display:flex;flex-direction:column;gap:14px}
+    .info-card{padding:14px;border-radius:10px;background:linear-gradient(180deg,#fff,#fbfdff);box-shadow:var(--shadow)}
+    .info-row{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px dashed rgba(15,23,42,0.04)}
+    .info-row:last-child{border-bottom:0}
+    .info-row .k{color:var(--muted);font-weight:700}
+    .info-row .v{font-weight:700;color:#0f172a}
+
+    footer{margin-top:28px;padding:18px 20px;text-align:center;color:var(--muted);font-size:13px}
+
+    @media (max-width:980px){.grid{grid-template-columns:1fr; padding-bottom:80px}.access input[type="text"]{width:100%}}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand">
+     <div class="logo">
+      <img src="D:\mj.dev\docs\assets\logo.png" alt="Logo" style="width:48px;height:48px;border-radius:10px;">
+     </div>
+      <div>
+        <h1>mj.dev Statement Portal</h1>
+        <div style="font-size:12px;color:rgba(255,255,255,0.9);margin-top:4px">Secure viewer • Transaction ledger</div>
+      </div>
+    </div>
+
+    <nav>
+      <ul>
+        <li><a href="https://mj-ahmad.github.io/qf/" class="secondary">Home</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="wrap">
+    <div class="grid">
+      <section class="card" aria-labelledby="statementTitle">
+        <h2 id="statementTitle">Statement — Abdul Basir Numany</h2>
+        <div class="access" aria-hidden="false">
+          <input id="credential" type="text" placeholder="Enter email or password" aria-label="Credential input" />
+          <button id="unlockBtn" type="button">Unlock Statement</button>
+        </div>
+
+        <div id="accessMessage" style="display:none;margin-top:8px;font-size:13px;color:var(--danger);font-weight:700"></div>
+
+        <div class="countdown" id="countdown" style="display:none">
+          <div id="countdownLabel">Countdown</div>
+          <div id="countdownTimer" style="margin-left:8px;color:var(--accent-2)"></div>
+        </div>
+
+        <div id="statementArea" style="display:none;margin-top:18px">
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+            <div>
+              <div style="font-weight:800;font-size:16px">Abdul Basir Numany</div>
+              <div style="color:var(--muted);font-size:13px;margin-top:4px">Supporter • Creditor — emergency help without formal documentation</div>
+            </div>
+            <div style="text-align:right;color:var(--muted);font-size:13px">
+              <div><strong>Last update</strong></div>
+              <div id="lastUpdate" style="font-weight:700;margin-top:6px">Wednesday, February 25, 2026 2:39:56 PM</div>
+            </div>
+          </div>
+
+          <h3 style="margin-top:18px;margin-bottom:6px">Transaction History</h3>
+          <table aria-describedby="transactionsDesc" class="mono">
+            <thead>
+              <tr>
+                <th>Date & Time</th>
+                <th>Amount (Tk)</th>
+                <th>Method</th>
+                <th>Details</th>
+                <th>Trx ID</th>
+              </tr>
+            </thead>
+            <tbody id="txBody"></tbody>
+          </table>
+
+          <div class="summary" aria-hidden="false" style="margin-top:12px">
+            <div class="tile">
+              <div class="label">Total Nagad</div>
+              <div class="value" id="totalNagad">Tk. 0</div>
+            </div>
+            <div class="tile">
+              <div class="label">Total Bkash</div>
+              <div class="value" id="totalBkash">Tk. 0</div>
+            </div>
+            <div class="tile">
+              <div class="label">Total Cash</div>
+              <div class="value" id="totalCash">Tk. 0</div>
+            </div>
+            <div class="tile">
+              <div class="label">Grand Total</div>
+              <div class="value" id="grandTotal">Tk. 0</div>
+            </div>
+          </div>
+
+          <div style="margin-top:18px">
+            <h4 style="margin:0 0 8px 0">Remarks</h4>
+            <div style="color:var(--muted);font-size:14px">-</div>
+            <div style="color:var(--muted);font-size:14px;margin-top:6px">-</div>
+          </div>
+        </div>
+      </section>
+
+      <aside class="side">
+        <div class="info-card card">
+          <h3 style="margin:0 0 8px 0">Contact Info</h3>
+          <div class="info-row"><div class="k">Full name</div><div class="v">Abdul Basir Numany</div></div>
+          <div class="info-row"><div class="k">Date of birth</div><div class="v">11 Nov 1985</div></div>
+          <div class="info-row"><div class="k">Nationality</div><div class="v">Bangladeshi</div></div>
+          <div class="info-row"><div class="k">Email</div><div class="v" id="maskedEmail">..........@gmail.com</div></div>
+          <div class="info-row"><div class="k">Phone</div><div class="v">+880-1712-295195</div></div>
+          <div class="info-row"><div class="k">Address</div><div class="v">Rridoy More, Muktagacha, Mymensingh</div></div>
+          <div style="margin-top:10px;font-size:13px;color:var(--muted)"><strong>Social</strong></div>
+          <div style="margin-top:6px;font-size:13px"><a href="https://facebook.com/abdul.basir.numany.2025" target="_blank" rel="noopener" style="color:var(--accent)">Facebook</a> · <a href="https://linkedin.com/in/" target="_blank" rel="noopener" style="color:var(--accent)">LinkedIn</a></div>
+        </div>
+
+        <div class="info-card card">
+          <h3 style="margin:0 0 8px 0">Quick Actions</h3>
+          <div style="display:flex;flex-direction:column;gap:8px;margin-top:8px">
+            <button id="copySummary" style="padding:10px;border-radius:8px;border:1px solid rgba(2,6,23,0.06);background:#fff;cursor:pointer">Copy Summary</button>
+            <button id="downloadCsv" style="padding:10px;border-radius:8px;border:1px solid rgba(2,6,23,0.06);background:#fff;cursor:pointer">Download CSV</button>
+            <button id="printBtn" style="padding:10px;border-radius:8px;border:1px solid rgba(2,6,23,0.06);background:#fff;cursor:pointer">Print Statement</button>
+          </div>
+        </div>
+
+        <div class="info-card card">
+          <h3 style="margin:0 0 8px 0">Notes</h3>
+          <div style="color:var(--muted);font-size:13px">This viewer is a client-side demonstration. Access control is implemented in JavaScript for convenience only and is not secure for production use.</div>
+        </div>
+      </aside>
+    </div>
+
+
+
+<!-- Real-time Bangladesh Clock -->
+<div id="bdTime" style="font-weight:700;color:#2563eb;margin-top:10px"></div>
+
+<!-- Countdown to Target -->
+<div class="countdown">
+  <div>Countdown to Target:</div>
+  <div id="countdownToTarget" style="margin-left:8px;color:#06b6d4"></div>
+</div>
+
+<!-- Elapsed Since Target -->
+<div class="countdown">
+  <div>Elapsed Since Target:</div>
+  <div id="countdownSinceTarget" style="margin-left:8px;color:#ef4444"></div>
+</div>
+    <footer>
+      <div style="max-width:1100px;margin:0 auto;padding:8px 20px;color:var(--muted)">
+        &copy; 2026 mj.dev • Statement Viewer • All rights reserved
+      </div>
+    </footer>
+  </main>
+<script>
+  // Target time (example: 2026-03-01 00:00 BST)
+  const targetDate = new Date("2026-03-01T00:00:00+06:00");
+
+  function updateClocks(){
+    // Real-time Bangladesh time
+    const now = new Date();
+    const bdTime = new Date(now.toLocaleString("en-US", {timeZone:"Asia/Dhaka"}));
+    document.getElementById("bdTime").textContent = 
+      "Bangladesh Time: " + bdTime.toLocaleString();
+
+    // Countdown to target
+    const diff = targetDate - bdTime;
+    if(diff > 0){
+      const days = Math.floor(diff/(1000*60*60*24));
+      const hours = Math.floor((diff%(1000*60*60*24))/(1000*60*60));
+      const minutes = Math.floor((diff%(1000*60*60))/(1000*60));
+      const seconds = Math.floor((diff%(1000*60))/1000);
+      document.getElementById("countdownToTarget").textContent =
+        `${days}d ${hours}h ${minutes}m ${seconds}s`;
+      document.getElementById("countdownSinceTarget").textContent = "Not yet started";
+    } else {
+      // Elapsed since target
+      const elapsed = bdTime - targetDate;
+      const days = Math.floor(elapsed/(1000*60*60*24));
+      const months = Math.floor(days/30);
+      const hours = Math.floor((elapsed%(1000*60*60*24))/(1000*60*60));
+      const minutes = Math.floor((elapsed%(1000*60*60))/(1000*60));
+      const seconds = Math.floor((elapsed%(1000*60))/1000);
+      document.getElementById("countdownToTarget").textContent = "Target Passed";
+      document.getElementById("countdownSinceTarget").textContent =
+        `${months}m ${days}d ${hours}h ${minutes}m ${seconds}s elapsed`;
+    }
+  }
+
+  setInterval(updateClocks, 1000);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <title>Contract - Qari Emdadullah</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+  <!-- Lock Screen -->
+  <div id="lockScreen" class="flex flex-col items-center justify-center h-screen">
+    <h2 class="text-lg font-semibold text-blue-900">🔐 Enter Password</h2>
+    <input type="password" id="passwordInput" class="border rounded px-3 py-2 mt-4 w-64" placeholder="Enter Password">
+    <button onclick="unlock()" class="bg-blue-700 text-white px-4 py-2 rounded mt-4">Unlock</button>
+    <p id="lockMsg" class="text-red-600 mt-2"></p>
+  </div>
+
+  <!-- Main Content (Hidden initially) -->
+  <div id="contractContent" class="hidden">
+    <header class="bg-blue-900 text-white py-4 text-center">
+      <h1 class="text-xl font-bold">Contract Dashboard - Qari Emdadullah</h1>
+    </header>
+
+    <main class="max-w-3xl mx-auto p-4 space-y-6">
+      <!-- Bangladesh Time -->
+      <div class="bg-white shadow rounded p-4">
+        <h2 class="text-lg font-semibold text-blue-900">⏰ Bangladesh Time</h2>
+        <p id="bdClock" class="text-xl mt-2"></p>
+      </div>
+
+      <!-- Countdown -->
+      <div class="bg-white shadow rounded p-4">
+        <h2 class="text-lg font-semibold text-blue-900">📅 Delivery Countdown</h2>
+        <p>Earliest (45 days): <span id="count45" class="font-medium"></span></p>
+        <p>Maximum (60 days): <span id="count60" class="font-medium"></span></p>
+        <p class="mt-2 text-red-700 font-semibold">Elapsed Since Maximum Delivery: 
+          <span id="elapsed" class="font-mono"></span>
+        </p>
+      </div>
+
+      <!-- Compensation Calculator -->
+      <div class="bg-white shadow rounded p-4">
+        <h2 class="text-lg font-semibold text-blue-900">💰 Compensation Calculator</h2>
+        <label class="block mt-2">Principal Amount (Tk):</label>
+        <input type="number" id="principal" value="13000" class="w-full border rounded px-2 py-1 mt-1">
+
+        <label class="block mt-3">Daily Penalty (Tk/day):</label>
+        <input type="number" id="rate" value="100" class="w-full border rounded px-2 py-1 mt-1">
+
+        <p class="mt-3">Calculated Compensation: <span id="compensation" class="font-medium text-gray-700">Tk 0</span></p>
+        <p class="mt-1 text-lg font-bold text-blue-900">Total Owed: <span id="owed">Tk 13,000</span></p>
+      </div>
+    </div>
+  </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-200 text-center py-6 mt-6">
+      <p>If you need to change the password or have any questions, please contact: 
+        <strong>quranerfariwala@gmail.com</strong>
+      </p>
+      <p class="italic mt-2">
+        “MJ Ahmad remains deeply grateful yet ashamed, and commits with sincerity that every moment of delay will be accounted for until the investor’s rightful benefit is fulfilled.”
+      </p>
+    <p>&copy; 2026 Quraner Fariwala. All rights reserved.</p>
+    <div class="mt-2 space-x-4">
+      <a href="#" class="text-blue-700">Terms of Service</a>
+      <a href="#" class="text-blue-700">Privacy Policy</a>
+      <a href="#" class="text-blue-700">Legal Disclaimer</a>
+    </div>
+    </footer>
+  </div>
+
+<script>
+  // Unlock function
+  function unlock(){
+    const pass=document.getElementById('passwordInput').value;
+    if(pass==="1820096806"){
+      document.getElementById('lockScreen').classList.add('hidden');
+      document.getElementById('contractContent').classList.remove('hidden');
+    } else {
+      document.getElementById('lockMsg').innerText="❌ Wrong password!";
+    }
+  }
+
+  // Real-time Bangladesh clock
+  setInterval(()=>{
+    const now=new Date();
+    const options={timeZone:'Asia/Dhaka',hour:'2-digit',minute:'2-digit',second:'2-digit'};
+    const bdClock=document.getElementById('bdClock');
+    if(bdClock) bdClock.innerText=now.toLocaleString('bn-BD',options);
+  },1000);
+
+  // Countdown setup
+  const startDate=new Date("2025-09-08T21:00:00+06:00");
+  const day45=new Date(startDate.getTime()+45*24*60*60*1000);
+  const day60=new Date(startDate.getTime()+60*24*60*60*1000);
+
+  setInterval(()=>{
+    const now=new Date();
+    const diff45=day45-now;
+    const diff60=day60-now;
+    const c45=document.getElementById('count45');
+    const c60=document.getElementById('count60');
+    const elapsed=document.getElementById('elapsed');
+    if(c45) c45.innerText=diff45>0?Math.floor(diff45/(1000*60*60*24))+" days left":"Passed";
+    if(c60) c60.innerText=diff60>0?Math.floor(diff60/(1000*60*60*24))+" days left":"Deadline Passed";
+
+    if(elapsed){
+      if(now>day60){
+        let elapsedMs=now-day60;
+        let seconds=Math.floor(elapsedMs/1000);
+        let minutes=Math.floor(seconds/60);
+        let hours=Math.floor(minutes/60);
+        let days=Math.floor(hours/24);
+
+        let months=Math.floor(days/30);
+        let weeks=Math.floor((days%30)/7);
+        let remDays=days%7;
+        let remHours=hours%24;
+        let remMinutes=minutes%60;
+        let remSeconds=seconds%60;
+
+        elapsed.innerText=`${months}m ${weeks}w ${remDays}d ${remHours}h ${remMinutes}m ${remSeconds}s`;
+      } else {
+        elapsed.innerText="Not yet elapsed";
+      }
+    }
+  },1000);
+
+  // Compensation calculator
+  setInterval(()=>{
+    const principal=parseFloat(document.getElementById('principal')?.value)||0;
+    const rate=parseFloat(document.getElementById('rate')?.value)||0;
+    const now=new Date();
+    let compensation=0;
+    if(now>day60){
+      const daysLate=Math.floor((now-day60)/(1000*60*60*24));
+      compensation=daysLate*rate;
+    }
+    const comp=document.getElementById('compensation');
+    const owed=document.getElementById('owed');
+    if(comp) comp.innerText="Tk "+compensation.toFixed(2);
+    if(owed) owed.innerText="Tk "+(principal+compensation).toFixed(2);
+  },1000);
+</script>
+</body>
+</html>

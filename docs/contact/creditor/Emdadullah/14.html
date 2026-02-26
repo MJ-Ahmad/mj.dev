@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <title>Contract - Qari Emdadullah</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body { background:#f8f9fa; }
+    header { background:#004080; color:#fff; padding:15px; text-align:center; }
+    .card { margin-bottom:20px; }
+    .owed { font-size:1.2rem; font-weight:bold; color:#004080; }
+    footer { background:#eee; padding:20px; text-align:center; font-size:0.9rem; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Contract Dashboard - Qari Emdadullah</h1>
+  </header>
+
+  <div class="container my-4">
+    <!-- Bangladesh Time -->
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">⏰ Bangladesh Time</h5>
+        <p id="bdClock" class="fs-5"></p>
+      </div>
+    </div>
+
+    <!-- Countdown -->
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">📅 Delivery Countdown</h5>
+        <p>Earliest (45 days): <span id="count45"></span></p>
+        <p>Maximum (60 days): <span id="count60"></span></p>
+      </div>
+    </div>
+
+    <!-- Compensation Calculator -->
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">💰 Compensation Calculator</h5>
+        <div class="mb-2">
+          <label class="form-label">Principal Amount (Tk):</label>
+          <input type="number" id="principal" class="form-control" value="13000">
+        </div>
+        <div class="mb-2">
+          <label class="form-label">Daily Penalty (Tk/day):</label>
+          <input type="number" id="rate" class="form-control" value="100">
+        </div>
+        <p>Calculated Compensation: <span id="compensation">Tk 0</span></p>
+        <p class="owed">Total Owed: <span id="owed">Tk 13,000</span></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Contact Section -->
+  <footer>
+    <p>If you need to change the password or have any questions, please contact: <strong>quranerfariwala@gmail.com</strong></p>
+    <p><em>“MJ Ahmad remains deeply grateful yet ashamed, and commits with sincerity that every moment of delay will be accounted for until the investor’s rightful benefit is fulfilled.”</em></p>
+  </footer>
+
+<script>
+  // Real-time Bangladesh clock
+  setInterval(()=>{
+    const now=new Date();
+    const options={timeZone:'Asia/Dhaka',hour:'2-digit',minute:'2-digit',second:'2-digit'};
+    document.getElementById('bdClock').innerText=now.toLocaleString('bn-BD',options);
+  },1000);
+
+  // Countdown setup
+  const startDate=new Date("2025-09-08T21:00:00+06:00");
+  const day45=new Date(startDate.getTime()+45*24*60*60*1000);
+  const day60=new Date(startDate.getTime()+60*24*60*60*1000);
+
+  setInterval(()=>{
+    const now=new Date();
+    const diff45=day45-now;
+    const diff60=day60-now;
+    document.getElementById('count45').innerText=diff45>0?Math.floor(diff45/(1000*60*60*24))+" days left":"Passed";
+    document.getElementById('count60').innerText=diff60>0?Math.floor(diff60/(1000*60*60*24))+" days left":"Elapsed "+Math.abs(Math.floor(diff60/(1000*60*60*24)))+" days";
+  },1000);
+
+  // Compensation calculator
+  setInterval(()=>{
+    const principal=parseFloat(document.getElementById('principal').value)||0;
+    const rate=parseFloat(document.getElementById('rate').value)||0;
+    const now=new Date();
+    let compensation=0;
+    if(now>day60){
+      const daysLate=Math.floor((now-day60)/(1000*60*60*24));
+      compensation=daysLate*rate;
+    }
+    document.getElementById('compensation').innerText="Tk "+compensation.toFixed(2);
+    document.getElementById('owed').innerText="Tk "+(principal+compensation).toFixed(2);
+  },1000);
+</script>
+</body>
+</html>

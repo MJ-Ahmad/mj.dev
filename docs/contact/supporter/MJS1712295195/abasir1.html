@@ -1,0 +1,554 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Statement Viewer — Abdul Basir Numany</title>
+  <style>
+    :root{
+      --bg:#f5f7fb;
+      --card:#ffffff;
+      --muted:#6b7280;
+      --accent:#2563eb;
+      --accent-2:#06b6d4;
+      --success:#10b981;
+      --danger:#ef4444;
+      --shadow: 0 8px 30px rgba(2,6,23,0.06);
+      --mono: "Courier New", Courier, monospace;
+      --radius:12px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: linear-gradient(180deg,#eef2ff 0%, var(--bg) 100%);
+      color:#0f172a;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.45;
+      -webkit-font-smoothing:antialiased;
+    }
+
+    /* Header */
+    header{
+      background:linear-gradient(90deg,var(--accent),#4f46e5);
+      color:#fff;
+      padding:14px 20px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      position:sticky;
+      top:0;
+      z-index:50;
+      box-shadow: 0 6px 18px rgba(79,70,229,0.08);
+    }
+    .brand{display:flex;gap:12px;align-items:center}
+    .logo img{width:48px;height:48px;border-radius:10px;object-fit:cover;display:block}
+    header h1{font-size:18px;margin:0;font-weight:700}
+    nav ul{list-style:none;margin:0;padding:0;display:flex;gap:14px;align-items:center}
+    nav a{color:rgba(255,255,255,0.95);text-decoration:none;font-weight:600;font-size:14px}
+    nav a.secondary{background:rgba(255,255,255,0.12);padding:8px 12px;border-radius:8px}
+
+    /* Layout */
+    .wrap{max-width:1100px;margin:26px auto;padding:0 18px}
+    .grid{
+      display:grid;
+      grid-template-columns: 1fr 360px;
+      gap:20px;
+      align-items:start;
+    }
+
+    /* Card */
+    .card{
+      background:var(--card);
+      border-radius:var(--radius);
+      padding:18px;
+      box-shadow:var(--shadow);
+      overflow:hidden;
+    }
+    .card h2{margin:0 0 10px 0;font-size:18px}
+    .lead{color:var(--muted);font-size:14px;margin-bottom:14px}
+
+    /* Access area */
+    .access{
+      display:flex;
+      gap:10px;
+      align-items:center;
+      margin-bottom:14px;
+      flex-wrap:wrap;
+    }
+    .access input[type="password"], .access input[type="text"]{
+      padding:10px 12px;border-radius:10px;border:1px solid #e6e9ef;background:#fbfdff;
+      width:260px;font-size:14px;
+    }
+    .access .toggle{
+      background:#fff;border:1px solid rgba(2,6,23,0.06);padding:8px 10px;border-radius:10px;cursor:pointer;
+    }
+    .access button{
+      padding:10px 14px;border-radius:10px;border:none;background:var(--accent);color:#fff;font-weight:700;
+      cursor:pointer;box-shadow: 0 8px 20px rgba(37,99,235,0.12);
+    }
+    .hint{font-size:13px;color:var(--muted)}
+
+    /* Clocks & countdowns */
+    .clocks{
+      display:flex;
+      gap:12px;
+      margin-top:12px;
+      flex-wrap:wrap;
+    }
+    .clock-card{
+      flex:1 1 220px;
+      background:linear-gradient(180deg,#fff,#fbfdff);
+      border-radius:10px;padding:12px;border:1px solid rgba(2,6,23,0.03);
+      box-shadow: 0 6px 18px rgba(2,6,23,0.04);
+      display:flex;flex-direction:column;gap:8px;align-items:flex-start;
+    }
+    .clock-card h4{margin:0;font-size:13px;color:var(--muted)}
+    .clock-card .big{font-weight:800;color:var(--accent);font-size:16px}
+    .count-large{font-weight:800;font-size:15px;color:var(--accent-2)}
+
+    /* Transaction table */
+    table{width:100%;border-collapse:collapse;font-size:14px;margin-top:12px;background:transparent}
+    thead th{text-align:left;padding:12px 10px;background:linear-gradient(90deg,#eef2ff,#f8fafc);color:#0f172a;font-weight:700;border-bottom:2px solid rgba(15,23,42,0.04);font-size:13px}
+    tbody td{padding:12px 10px;border-bottom:1px dashed rgba(15,23,42,0.04);vertical-align:middle}
+    tbody tr:nth-child(even){background:rgba(15,23,42,0.02)}
+    .mono{font-family:var(--mono);color:#0b1220}
+
+    /* Totals */
+    .summary{display:flex;gap:12px;margin-top:14px;flex-wrap:wrap}
+    .tile{flex:1 1 160px;background:linear-gradient(180deg,#fff,#fbfdff);padding:12px;border-radius:10px;box-shadow: 0 6px 18px rgba(2,6,23,0.04);border:1px solid rgba(2,6,23,0.03)}
+    .tile .label{font-size:13px;color:var(--muted);margin-bottom:6px;font-weight:600}
+    .tile .value{font-size:18px;font-weight:800;color:#0f172a}
+
+    /* Right column */
+    .side{display:flex;flex-direction:column;gap:14px}
+    .info-card{padding:14px;border-radius:10px;background:linear-gradient(180deg,#fff,#fbfdff);box-shadow:var(--shadow)}
+    .info-row{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px dashed rgba(15,23,42,0.04)}
+    .info-row:last-child{border-bottom:0}
+    .info-row .k{color:var(--muted);font-weight:700}
+    .info-row .v{font-weight:700;color:#0f172a}
+
+    /* Buttons */
+    .actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+    .actions button{padding:10px;border-radius:10px;border:1px solid rgba(2,6,23,0.06);background:#fff;cursor:pointer}
+
+    /* Footer */
+    footer{margin-top:28px;padding:18px 20px;text-align:center;color:var(--muted);font-size:13px}
+
+    /* Responsive */
+    @media (max-width:980px){
+      .grid{grid-template-columns:1fr; padding-bottom:80px}
+      .access input[type="password"]{width:100%}
+      .clock-card{flex:1 1 100%}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <div class="logo">
+        <!-- Use the provided logo path -->
+        <img src="D:\mj.dev\docs\assets\logo.png" alt="Logo">
+      </div>
+      <div>
+        <h1>mj.dev Statement Portal</h1>
+        <div style="font-size:12px;color:rgba(255,255,255,0.9);margin-top:4px">Secure viewer • Transaction ledger</div>
+      </div>
+    </div>
+
+    <nav>
+      <ul>
+        <li><a href="#" class="secondary">Home</a></li>
+        <li><a href="#">Statements</a></li>
+        <li><a href="#">Profile</a></li>
+        <li><a href="#">Help</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="wrap">
+    <div class="grid">
+      <!-- Left: Statement -->
+      <section class="card" aria-labelledby="statementTitle">
+        <h2 id="statementTitle">Statement — Abdul Basir Numany</h2>
+        <div class="lead">Enter the ID number (password) or a known credential to unlock the full statement. This demo uses client-side access for convenience.</div>
+
+        <div class="access" aria-hidden="false">
+          <input id="credential" type="password" placeholder="Enter ID number or credential" aria-label="Credential input" />
+          <div class="toggle" id="showToggle" title="Show / hide">Show</div>
+          <button id="unlockBtn" type="button">Unlock</button>
+          <div class="hint">Valid examples: <strong>ABasir</strong>, <strong>abasir@gmail.com</strong>, <strong>password123</strong>, <strong>1712295195</strong></div>
+        </div>
+
+        <div id="accessMessage" style="display:none;margin-top:8px;font-size:13px;color:var(--danger);font-weight:700"></div>
+
+        <!-- Real-time BD clock and two countdowns -->
+        <div class="clocks" style="margin-top:6px">
+          <div class="clock-card">
+            <h4>Bangladesh Time (BST)</h4>
+            <div id="bdTime" class="big">—</div>
+            <div style="font-size:12px;color:var(--muted)">Real-time clock (Asia/Dhaka)</div>
+          </div>
+
+          <div class="clock-card">
+            <h4>Countdown to Target</h4>
+            <div id="countdownToTarget" class="count-large">—</div>
+            <div style="font-size:12px;color:var(--muted)">Counts down toward the target date/time</div>
+          </div>
+
+          <div class="clock-card">
+            <h4>Elapsed Since Target</h4>
+            <div id="elapsedSinceTarget" class="count-large">—</div>
+            <div style="font-size:12px;color:var(--muted)">When target passes, counts how long since it passed</div>
+          </div>
+        </div>
+
+        <!-- Statement content (hidden until unlocked) -->
+        <div id="statementArea" style="display:none;margin-top:18px">
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+            <div>
+              <div style="font-weight:800;font-size:16px">Abdul Basir Numany</div>
+              <div style="color:var(--muted);font-size:13px;margin-top:4px">Supporter • Creditor — emergency help without formal documentation</div>
+            </div>
+            <div style="text-align:right;color:var(--muted);font-size:13px">
+              <div><strong>Last update</strong></div>
+              <div id="lastUpdate" style="font-weight:700;margin-top:6px">Wednesday, February 25, 2026 2:39:56 PM</div>
+            </div>
+          </div>
+
+          <h3 style="margin-top:18px;margin-bottom:6px">Transaction History</h3>
+          <table aria-describedby="transactionsDesc" class="mono">
+            <thead>
+              <tr>
+                <th>Date & Time</th>
+                <th>Amount (Tk)</th>
+                <th>Method</th>
+                <th>Details</th>
+                <th>Trx ID</th>
+              </tr>
+            </thead>
+            <tbody id="txBody">
+              <!-- Rows inserted by JS -->
+            </tbody>
+          </table>
+
+          <div class="summary" aria-hidden="false" style="margin-top:12px">
+            <div class="tile">
+              <div class="label">Total Nagad</div>
+              <div class="value" id="totalNagad">Tk. 0</div>
+            </div>
+            <div class="tile">
+              <div class="label">Total Bkash</div>
+              <div class="value" id="totalBkash">Tk. 0</div>
+            </div>
+            <div class="tile">
+              <div class="label">Total Cash</div>
+              <div class="value" id="totalCash">Tk. 0</div>
+            </div>
+            <div class="tile">
+              <div class="label">Grand Total</div>
+              <div class="value" id="grandTotal">Tk. 0</div>
+            </div>
+          </div>
+
+          <div style="margin-top:18px">
+            <h4 style="margin:0 0 8px 0">Remarks</h4>
+            <div style="color:var(--muted);font-size:14px">-</div>
+            <div style="color:var(--muted);font-size:14px;margin-top:6px">-</div>
+          </div>
+
+          <div class="actions" style="margin-top:14px">
+            <button id="copySummary">Copy Summary</button>
+            <button id="downloadCsv">Download CSV</button>
+            <button id="printBtn">Print Statement</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Right: Info and quick actions -->
+      <aside class="side">
+        <div class="info-card card">
+          <h3 style="margin:0 0 8px 0">Contact Info</h3>
+          <div class="info-row"><div class="k">Full name</div><div class="v">Abdul Basir Numany</div></div>
+          <div class="info-row"><div class="k">Date of birth</div><div class="v">11 Nov 1985</div></div>
+          <div class="info-row"><div class="k">Nationality</div><div class="v">Bangladeshi</div></div>
+          <div class="info-row"><div class="k">Email</div><div class="v" id="maskedEmail">..........@gmail.com</div></div>
+          <div class="info-row"><div class="k">Phone</div><div class="v">+880-1712-295195</div></div>
+          <div class="info-row"><div class="k">Address</div><div class="v">Rridoy More, Muktagacha, Mymensingh</div></div>
+          <div style="margin-top:10px;font-size:13px;color:var(--muted)"><strong>Social</strong></div>
+          <div style="margin-top:6px;font-size:13px"><a href="https://facebook.com/abdul.basir.numany.2025" target="_blank" rel="noopener" style="color:var(--accent)">Facebook</a> · <a href="https://linkedin.com/in/" target="_blank" rel="noopener" style="color:var(--accent)">LinkedIn</a></div>
+        </div>
+
+        <div class="info-card card">
+          <h3 style="margin:0 0 8px 0">Quick Actions</h3>
+          <div style="display:flex;flex-direction:column;gap:8px;margin-top:8px">
+            <button id="copySummarySide" style="padding:10px;border-radius:8px;border:1px solid rgba(2,6,23,0.06);background:#fff;cursor:pointer">Copy Summary</button>
+            <button id="downloadCsvSide" style="padding:10px;border-radius:8px;border:1px solid rgba(2,6,23,0.06);background:#fff;cursor:pointer">Download CSV</button>
+            <button id="printBtnSide" style="padding:10px;border-radius:8px;border:1px solid rgba(2,6,23,0.06);background:#fff;cursor:pointer">Print Statement</button>
+          </div>
+        </div>
+
+        <div class="info-card card">
+          <h3 style="margin:0 0 8px 0">Notes</h3>
+          <div style="color:var(--muted);font-size:13px">This viewer is a client-side demonstration. Access control is implemented in JavaScript for convenience only and is not secure for production use.</div>
+        </div>
+      </aside>
+    </div>
+
+    <footer>
+      <div style="max-width:1100px;margin:0 auto;padding:8px 20px;color:var(--muted)">
+        &copy; 2026 mj.dev • Statement Viewer • All rights reserved
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    /* ---------------------------
+       Data (from user-provided statement)
+       --------------------------- */
+    const transactions = [
+      {dt:"2025-10-15 21:53", amount:2000, method:"Nagad", details:"8801826742829", trx:"74H0CFHW"},
+      {dt:"2025-10-16 20:56", amount:2000, method:"Nagad", details:"8801826742829", trx:"74H5R6C5"},
+      {dt:"2025-10-17 21:29", amount:1000, method:"Nagad", details:"8801826742829", trx:"74HABO3Y"},
+      {dt:"2025-10-28 23:00", amount:1000, method:"Cash", details:"-", trx:"-"},
+      {dt:"2025-10-29 12:03", amount:20000, method:"Bkash", details:"Bank to bKash", trx:"CJT4OETN40"},
+      {dt:"2025-11-20 06:19", amount:500, method:"Bkash", details:"8801742610792", trx:"CKK4CZTNYG"},
+      {dt:"2025-11-27 09:49", amount:500, method:"Nagad", details:"8801826742829", trx:"74MKUTEC"},
+      {dt:"2025-12-16 19:50", amount:510, method:"Nagad", details:"8801826742829", trx:"74P7WJQ1"},
+      {dt:"2025-12-21 19:10", amount:8000, method:"Nagad", details:"Bank to Nagad", trx:"74PVWB9V"},
+      {dt:"2026-01-16 23:31", amount:2000, method:"Bkash", details:"Bank to bKash", trx:"DAG17CWVM7"},
+      {dt:"2026-01-17 20:54", amount:2040, method:"Bkash", details:"Bank to bKash", trx:"DAH688QTQE"},
+      {dt:"2026-01-31 21:06", amount:2030, method:"Bkash", details:"Bank to bKash", trx:"DAV0NNY3Q6"},
+      {dt:"2026-02-06 22:07", amount:1500, method:"Bkash", details:"Bank to bKash", trx:"DB69UGWY1B"}
+    ];
+
+    /* ---------------------------
+       Access control (client-side demo)
+       Password added: 1712295195
+       --------------------------- */
+    const validCredentials = new Set(["ABasir","abasir@gmail.com","password123","1712295195"]);
+    const unlockBtn = document.getElementById('unlockBtn');
+    const credentialInput = document.getElementById('credential');
+    const statementArea = document.getElementById('statementArea');
+    const accessMessage = document.getElementById('accessMessage');
+    const bdTimeEl = document.getElementById('bdTime');
+    const countdownToTargetEl = document.getElementById('countdownToTarget');
+    const elapsedSinceTargetEl = document.getElementById('elapsedSinceTarget');
+    const showToggle = document.getElementById('showToggle');
+
+    // Toggle show/hide password
+    showToggle.addEventListener('click', ()=>{
+      if(credentialInput.type === 'password'){
+        credentialInput.type = 'text';
+        showToggle.textContent = 'Hide';
+      } else {
+        credentialInput.type = 'password';
+        showToggle.textContent = 'Show';
+      }
+      credentialInput.focus();
+    });
+
+    unlockBtn.addEventListener('click', tryUnlock);
+    credentialInput.addEventListener('keydown', (e)=>{ if(e.key === 'Enter') tryUnlock(); });
+
+    function tryUnlock(){
+      const val = credentialInput.value.trim();
+      if(!val){
+        showAccess("Please enter an ID number or credential to continue.");
+        return;
+      }
+      if(validCredentials.has(val)){
+        accessMessage.style.display = 'none';
+        revealStatement();
+      } else {
+        showAccess("Access Denied — incorrect ID or credential.");
+      }
+    }
+
+    function showAccess(msg){
+      accessMessage.style.display = 'block';
+      accessMessage.textContent = msg;
+      statementArea.style.display = 'none';
+    }
+
+    /* ---------------------------
+       Render transactions & totals
+       --------------------------- */
+    function formatNumber(n){ return n.toLocaleString('en-US'); }
+
+    function renderTransactions(){
+      const tbody = document.getElementById('txBody');
+      tbody.innerHTML = '';
+      let totals = {Nagad:0,Bkash:0,Cash:0};
+      transactions.forEach(tx=>{
+        const tr = document.createElement('tr');
+        tr.innerHTML = `<td class="mono">${tx.dt}</td>
+                        <td class="mono">Tk. ${formatNumber(tx.amount)}</td>
+                        <td>${tx.method}</td>
+                        <td class="mono">${tx.details}</td>
+                        <td class="mono">${tx.trx}</td>`;
+        tbody.appendChild(tr);
+        if(tx.method === 'Nagad') totals.Nagad += tx.amount;
+        else if(tx.method === 'Bkash') totals.Bkash += tx.amount;
+        else if(tx.method === 'Cash') totals.Cash += tx.amount;
+      });
+      const grand = totals.Nagad + totals.Bkash + totals.Cash;
+      document.getElementById('totalNagad').textContent = `Tk. ${formatNumber(totals.Nagad)}`;
+      document.getElementById('totalBkash').textContent = `Tk. ${formatNumber(totals.Bkash)}`;
+      document.getElementById('totalCash').textContent = `Tk. ${formatNumber(totals.Cash)}`;
+      document.getElementById('grandTotal').textContent = `Tk. ${formatNumber(grand)}`;
+    }
+
+    function revealStatement(){
+      renderTransactions();
+      statementArea.style.display = 'block';
+      // focus on statement
+      statementArea.scrollIntoView({behavior:'smooth', block:'start'});
+    }
+
+    /* ---------------------------
+       Bangladesh real-time clock
+       --------------------------- */
+    function updateBDTime(){
+      // Use Intl to get Asia/Dhaka time reliably
+      const now = new Date();
+      const bdStr = now.toLocaleString('en-GB', { timeZone: 'Asia/Dhaka', hour12: false });
+      // Format: "DD/MM/YYYY, HH:MM:SS" or similar; convert to friendly
+      const bd = new Date(new Date().toLocaleString('en-US', { timeZone: 'Asia/Dhaka' }));
+      const options = { weekday: 'long', year: 'numeric', month: 'short', day: 'numeric',
+                        hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false, timeZone: 'Asia/Dhaka' };
+      bdTimeEl.textContent = bd.toLocaleString('en-GB', options).replace(',', '');
+    }
+
+    /* ---------------------------
+       Two countdowns:
+       - Countdown to target (counts down toward target)
+       - Elapsed since target (counts up after target passes)
+       Target used: 2025-10-15 21:53 (BST / UTC+6)
+       --------------------------- */
+    // Target date/time in Asia/Dhaka timezone. Use ISO with +06:00 to be explicit.
+    const targetISO = "2025-10-15T21:53:00+06:00";
+    const targetDate = new Date(targetISO);
+
+    // Utility: compute months/weeks/days/hours/minutes/seconds between two Date objects
+    function computeDetailedDiff(fromDate, toDate){
+      // fromDate <= toDate expected for elapsed; if not, swap
+      let start = new Date(fromDate);
+      let end = new Date(toDate);
+      let negative = false;
+      if(end < start){
+        negative = true;
+        [start, end] = [end, start];
+      }
+
+      // months: approximate by calendar months difference
+      let yearsDiff = end.getFullYear() - start.getFullYear();
+      let monthsDiff = end.getMonth() - start.getMonth() + yearsDiff * 12;
+
+      // try to compute months precisely: if adding monthsDiff to start exceeds end, reduce by 1
+      const addMonths = (d, m) => {
+        const nd = new Date(d.getTime());
+        const y = nd.getFullYear();
+        const mo = nd.getMonth();
+        nd.setFullYear(y + Math.floor((mo + m) / 12));
+        nd.setMonth((mo + m) % 12);
+        return nd;
+      };
+
+      let months = monthsDiff;
+      while(months > 0 && addMonths(start, months) > end) months--;
+      // remainder after removing months
+      const afterMonths = addMonths(start, months);
+      let remainderMs = end - afterMonths;
+
+      // weeks, days, hours, minutes, seconds from remainderMs
+      const sec = Math.floor(remainderMs / 1000);
+      const weeks = Math.floor(sec / (7 * 24 * 3600));
+      const days = Math.floor((sec % (7 * 24 * 3600)) / (24 * 3600));
+      const hours = Math.floor((sec % (24 * 3600)) / 3600);
+      const minutes = Math.floor((sec % 3600) / 60);
+      const seconds = sec % 60;
+
+      return { negative, months, weeks, days, hours, minutes, seconds };
+    }
+
+    function pad(n){ return String(n).padStart(2,'0'); }
+
+    function updateCountdowns(){
+      // BD now
+      const nowBD = new Date(new Date().toLocaleString('en-US', { timeZone: 'Asia/Dhaka' }));
+
+      // Countdown to target
+      const diffMs = targetDate - nowBD;
+      if(diffMs > 0){
+        // target in future: show countdown to target
+        const totalSec = Math.floor(diffMs / 1000);
+        const months = Math.floor(totalSec / (30 * 24 * 3600)); // approximate months
+        const weeks = Math.floor((totalSec % (30 * 24 * 3600)) / (7 * 24 * 3600));
+        const days = Math.floor((totalSec % (7 * 24 * 3600)) / (24 * 3600));
+        const hours = Math.floor((totalSec % (24 * 3600)) / 3600);
+        const minutes = Math.floor((totalSec % 3600) / 60);
+        const seconds = totalSec % 60;
+        countdownToTargetEl.textContent = `${months}m ${weeks}w ${days}d ${pad(hours)}h ${pad(minutes)}m ${pad(seconds)}s`;
+        elapsedSinceTargetEl.textContent = `Not yet passed`;
+      } else {
+        // target passed: show elapsed since target using computeDetailedDiff for months/weeks precision
+        const diff = computeDetailedDiff(targetDate, nowBD);
+        elapsedSinceTargetEl.textContent = `${diff.months}m ${diff.weeks}w ${diff.days}d ${pad(diff.hours)}h ${pad(diff.minutes)}m ${pad(diff.seconds)}s`;
+        countdownToTargetEl.textContent = `Target Passed`;
+      }
+    }
+
+    /* ---------------------------
+       Quick actions: copy, download CSV, print
+       --------------------------- */
+    function copySummary(){
+      const summary = [
+        "Statement — Abdul Basir Numany",
+        document.getElementById('totalNagad').textContent,
+        document.getElementById('totalBkash').textContent,
+        document.getElementById('totalCash').textContent,
+        document.getElementById('grandTotal').textContent
+      ].join('\n');
+      navigator.clipboard?.writeText(summary).then(()=>{ alert('Summary copied to clipboard.'); }).catch(()=>{ alert('Unable to copy.'); });
+    }
+
+    function downloadCsv(){
+      const headers = ['Date & Time','Amount (Tk)','Method','Details','Trx ID'];
+      const rows = transactions.map(t => [t.dt, t.amount, t.method, t.details, t.trx]);
+      const csv = [headers, ...rows].map(r => r.map(cell => `"${String(cell).replace(/"/g,'""')}"`).join(',')).join('\n');
+      const blob = new Blob([csv], {type:'text/csv;charset=utf-8;'});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'statement_abdul_basir.csv';
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
+    }
+
+    /* ---------------------------
+       Initialization & intervals
+       --------------------------- */
+    // Wire quick action buttons
+    document.getElementById('copySummary').addEventListener('click', copySummary);
+    document.getElementById('copySummarySide').addEventListener('click', copySummary);
+    document.getElementById('downloadCsv').addEventListener('click', downloadCsv);
+    document.getElementById('downloadCsvSide').addEventListener('click', downloadCsv);
+    document.getElementById('printBtn').addEventListener('click', ()=>window.print());
+    document.getElementById('printBtnSide').addEventListener('click', ()=>window.print());
+
+    // Start clocks
+    updateBDTime();
+    updateCountdowns();
+    setInterval(updateBDTime, 1000);
+    setInterval(updateCountdowns, 1000);
+
+    // Prefill credential for convenience (optional)
+    // credentialInput.value = '1712295195';
+  </script>
+</body>
+</html>
