@@ -1,490 +1,479 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
+  <title>Contract Dashboard - Qari Emdadullah</title>
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Contract — Qari Emdadullah</title>
+  <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    :root{
-      --bg:#f6f8fb;
-      --card:#ffffff;
-      --muted:#6b7280;
-      --accent:#0f172a;
-      --accent-2:#0ea5a4;
-      --danger:#ef4444;
-      --success:#10b981;
-      --shadow: 0 10px 30px rgba(2,6,23,0.06);
-      --mono: "Courier New", Courier, monospace;
-      --radius:12px;
-    }
-    *{box-sizing:border-box}
-    body{
-      margin:0;
-      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-      background: linear-gradient(180deg,#eef2ff 0%, var(--bg) 100%);
-      color:var(--accent);
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-      line-height:1.45;
-    }
-    header{
-      background:linear-gradient(90deg,#0b1220,#1f2937);
-      color:#fff;padding:14px 18px;display:flex;align-items:center;justify-content:space-between;gap:12px;
-      position:sticky;top:0;z-index:50;
-    }
-    .brand{display:flex;gap:12px;align-items:center}
-    .logo img{width:48px;height:48px;border-radius:10px;object-fit:cover;display:block}
-    header h1{font-size:18px;margin:0;font-weight:700;color:#fff}
-    nav ul{list-style:none;margin:0;padding:0;display:flex;gap:12px}
-    nav a{color:rgba(255,255,255,0.95);text-decoration:none;font-weight:600;font-size:13px}
-    .wrap{max-width:1100px;margin:22px auto;padding:0 18px}
-    .grid{display:grid;grid-template-columns:1fr 360px;gap:18px;align-items:start}
-    .card{background:var(--card);border-radius:var(--radius);padding:16px;box-shadow:var(--shadow);overflow:hidden}
-    h2{margin:0 0 10px 0;font-size:18px;color:var(--accent)}
-    .lead{color:var(--muted);font-size:14px;margin-bottom:12px}
-    .access{display:flex;gap:10px;align-items:center;margin-bottom:12px;flex-wrap:wrap}
-    .access input[type="password"], .access input[type="text"]{padding:10px 12px;border-radius:10px;border:1px solid #e6e9ef;background:#fbfdff;width:240px;font-size:14px}
-    .access button{padding:10px 14px;border-radius:10px;border:none;background:#0f172a;color:#fff;font-weight:700;cursor:pointer}
-    .hint{font-size:13px;color:var(--muted)}
-    .clocks{display:flex;gap:10px;margin-top:10px;flex-wrap:wrap}
-    .clock-card{flex:1 1 220px;background:linear-gradient(180deg,#fff,#fbfdff);border-radius:10px;padding:12px;border:1px solid rgba(2,6,23,0.03);box-shadow:0 6px 18px rgba(2,6,23,0.04)}
-    .clock-card h4{margin:0;font-size:13px;color:var(--muted)}
-    .clock-card .big{font-weight:800;color:var(--accent-2);font-size:16px}
-    .count-large{font-weight:800;font-size:15px;color:#0b1220}
-    table{width:100%;border-collapse:collapse;font-size:14px;margin-top:12px;background:transparent}
-    thead th{text-align:left;padding:12px 10px;background:linear-gradient(90deg,#eef2ff,#f8fafc);color:#0f172a;font-weight:700;border-bottom:2px solid rgba(15,23,42,0.04);font-size:13px}
-    tbody td{padding:12px 10px;border-bottom:1px dashed rgba(15,23,42,0.04);vertical-align:middle}
-    tbody tr:nth-child(even){background:rgba(15,23,42,0.02)}
-    .mono{font-family:var(--mono);color:#0b1220}
-    .summary{display:flex;gap:10px;margin-top:12px;flex-wrap:wrap}
-    .tile{flex:1 1 160px;background:linear-gradient(180deg,#fff,#fbfdff);padding:12px;border-radius:10px;box-shadow:0 6px 18px rgba(2,6,23,0.04);border:1px solid rgba(2,6,23,0.03)}
-    .tile .label{font-size:13px;color:var(--muted);margin-bottom:6px;font-weight:600}
-    .tile .value{font-size:18px;font-weight:800;color:#0f172a}
-    .side{display:flex;flex-direction:column;gap:12px}
-    .info-card{padding:12px;border-radius:10px;background:linear-gradient(180deg,#fff,#fbfdff);box-shadow:var(--shadow)}
-    .info-row{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px dashed rgba(15,23,42,0.04)}
-    .info-row:last-child{border-bottom:0}
-    .info-row .k{color:var(--muted);font-weight:700}
-    .info-row .v{font-weight:700;color:#0f172a}
-    .actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
-    .actions button{padding:10px;border-radius:10px;border:1px solid rgba(2,6,23,0.06);background:#fff;cursor:pointer}
-    footer{margin-top:18px;padding:12px 20px;text-align:center;color:var(--muted);font-size:13px}
-    @media (max-width:980px){.grid{grid-template-columns:1fr;padding-bottom:80px}.access input[type="password"]{width:100%}.clock-card{flex:1 1 100%}}
-    /* Contract text styling */
-    .contract{font-size:14px;color:#0f172a;margin-top:12px}
-    .contract h3{margin:12px 0 6px 0;font-size:15px;color:var(--accent)}
-    .contract p{margin:6px 0;color:var(--muted)}
-    .signature{margin-top:18px;display:flex;gap:18px;flex-wrap:wrap}
-    .sig-box{flex:1 1 220px;padding:12px;border-radius:8px;border:1px dashed rgba(15,23,42,0.06);background:#fff}
+    .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono", "Courier New", monospace; }
   </style>
 </head>
-<body>
-  <header>
-    <div class="brand">
-      <div class="logo"><img src="docs/assets/logo.png" alt="Logo"></div>
-      <div>
-        <h1>Contract Portal — Qari Emdadullah</h1>
-        <div style="font-size:12px;color:rgba(255,255,255,0.85);margin-top:4px">Formalized agreement record • Client-side viewer</div>
+<body class="bg-gray-50 text-gray-900">
+
+  <!-- LOCK SCREEN -->
+  <div id="lockScreen" class="min-h-screen flex items-center justify-center p-6 bg-gray-50">
+    <div class="w-full max-w-md bg-white rounded-xl shadow p-6">
+      <div class="text-center">
+        <img src="https://mj-ahmad.github.io/qf/assets/logo.png" alt="Logo" class="mx-auto h-14 w-14 rounded" />
+        <h2 id="lockTitle" class="mt-4 text-2xl font-semibold text-blue-900">🔐 Password required</h2>
+        <p id="lockSubtitle" class="mt-2 text-sm text-gray-600">This page is protected. Enter the correct password to view content.</p>
+      </div>
+
+      <div class="mt-6">
+        <label for="passwordInput" class="sr-only">Password</label>
+        <input id="passwordInput" type="password" placeholder="Enter password" class="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+        <button id="unlockBtn" onclick="unlock()" class="mt-4 w-full bg-blue-700 text-white rounded px-4 py-2 hover:bg-blue-800">Unlock</button>
+        <p id="lockMsg" class="mt-3 text-sm text-red-600" aria-live="polite"></p>
+        <p class="mt-4 text-xs text-gray-500">If you need to change the password or have any questions, contact: <strong>quranerfariwala@gmail.com</strong></p>
       </div>
     </div>
-    <nav>
-      <ul>
-        <li><a href="#" style="color:#fff">Home</a></li>
-        <li><a href="#" style="color:#fff">Contracts</a></li>
-        <li><a href="#" style="color:#fff">Help</a></li>
-      </ul>
-    </nav>
-  </header>
+  </div>
 
-  <main class="wrap">
-    <div class="grid">
-      <!-- Left: Contract and statement -->
-      <section class="card" aria-labelledby="contractTitle">
-        <h2 id="contractTitle">Agreement Record — Qari Emdadullah</h2>
-        <div class="lead">This page records the verbal agreement, payment, delivery schedule, and remedies. Use the password to unlock full details.</div>
+  <!-- MAIN APP (hidden until unlocked) -->
+  <div id="app" class="hidden min-h-screen flex flex-col">
 
-        <div class="access">
-          <input id="credential" type="password" placeholder="Enter password (ID number)" aria-label="Credential input" />
-          <button id="unlockBtn">Unlock</button>
-          <div class="hint">Password (ID): <strong>1820096806</strong></div>
-        </div>
-
-        <div id="accessMessage" style="display:none;margin-top:8px;font-size:13px;color:var(--danger);font-weight:700"></div>
-
-        <!-- Real-time BD clock and two countdowns -->
-        <div class="clocks">
-          <div class="clock-card">
-            <h4>Bangladesh Time (BST)</h4>
-            <div id="bdTime" class="big">—</div>
-            <div style="font-size:12px;color:var(--muted)">Real-time (Asia/Dhaka)</div>
+    <!-- Header -->
+    <header class="bg-white border-b">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-16">
+          <div class="flex items-center gap-3">
+            <a href="#" class="flex items-center">
+              <img src="https://mj-ahmad.github.io/qf/assets/logo.png" alt="Logo" class="h-10 w-10 rounded" />
+              <span id="brand" class="ml-3 font-semibold text-lg text-blue-900">Contracts Portal</span>
+            </a>
           </div>
 
-          <div class="clock-card">
-            <h4>Countdown to Earliest Delivery (45 days)</h4>
-            <div id="countdownToEarliest" class="count-large">—</div>
-            <div style="font-size:12px;color:var(--muted)">Counts down to earliest promised delivery date</div>
-          </div>
+          <!-- Desktop nav -->
+          <nav class="hidden md:flex items-center gap-6 text-sm">
+            <a href="#" class="text-gray-700 hover:text-blue-700" data-i18n="nav_home">Home</a>
+            <a href="contract.html" class="text-gray-700 hover:text-blue-700" data-i18n="nav_contract">Contract</a>
+            <a href="#" class="text-gray-700 hover:text-blue-700" data-i18n="nav_about">About</a>
+            <a href="#" class="text-gray-700 hover:text-blue-700" data-i18n="nav_contact">Contact</a>
+          </nav>
 
-          <div class="clock-card">
-            <h4>Elapsed Since Maximum Delivery (60 days)</h4>
-            <div id="elapsedSinceMax" class="count-large">—</div>
-            <div style="font-size:12px;color:var(--muted)">Counts up after maximum delivery date passes</div>
+          <div class="flex items-center gap-3">
+            <!-- Language toggle -->
+            <div class="flex items-center gap-2">
+              <button id="langEn" class="px-2 py-1 text-sm rounded border bg-white" onclick="setLang('en')">EN</button>
+              <button id="langBn" class="px-2 py-1 text-sm rounded border bg-white" onclick="setLang('bn')">বাংলা</button>
+            </div>
+
+            <!-- Mobile menu button -->
+            <div class="md:hidden">
+              <button id="menuBtn" aria-expanded="false" aria-controls="mobileMenu" class="p-2 rounded-md text-gray-700 hover:bg-gray-100" onclick="toggleMenu()">
+                <svg id="menuIcon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8h16M4 16h16" />
+                </svg>
+              </button>
+            </div>
           </div>
         </div>
+      </div>
 
-        <!-- Hidden until unlock -->
-        <div id="contractArea" style="display:none">
-          <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-top:12px">
-            <div>
-              <div style="font-weight:800;font-size:16px">Qari Emdadullah</div>
-              <div style="color:var(--muted);font-size:13px;margin-top:4px">Investor (Short term, 2 months from Sep 08, 2025)</div>
-            </div>
-            <div style="text-align:right;color:var(--muted);font-size:13px">
-              <div><strong>Last update</strong></div>
-              <div id="lastUpdate" style="font-weight:700;margin-top:6px">Wednesday, February 25, 2026 2:39:56 PM</div>
-            </div>
-          </div>
+      <!-- Mobile menu -->
+      <div id="mobileMenu" class="md:hidden hidden border-t">
+        <div class="px-4 py-3 space-y-2">
+          <a href="#" class="block text-gray-700 hover:text-blue-700" data-i18n="nav_home">Home</a>
+          <a href="contract.html" class="block text-gray-700 hover:text-blue-700" data-i18n="nav_contract">Contract</a>
+          <a href="#" class="block text-gray-700 hover:text-blue-700" data-i18n="nav_about">About</a>
+          <a href="#" class="block text-gray-700 hover:text-blue-700" data-i18n="nav_contact">Contact</a>
+        </div>
+      </div>
+    </header>
 
-          <!-- Contract text -->
-          <div class="contract">
-            <h3>1. Parties and Payment</h3>
-            <p><strong>Investor:</strong> Qari Emdadullah — <em>11/11/b KM Das Lane, Wari, Sutrapur, Dhaka-1203</em>. Phone: <strong>+880-1820-096806</strong>.</p>
-            <p><strong>Recipient:</strong> (You / your organization) — verbal agreement recorded on <strong>08 September 2025</strong>.</p>
-            <p><strong>Payment:</strong> Cash Tk. <strong>13,000</strong> handed over on <strong>2025-09-08 ~21:00 BST</strong> at the investor's residence main gate (as described).</p>
+    <!-- Page body -->
+    <main class="flex-1 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-6">
 
-            <h3>2. Agreement Summary</h3>
-            <p>You agreed to deliver <strong>65 copies</strong> of printed <em>Quran Majid</em> in exchange for Tk.13,000. Delivery window: <strong>45 days</strong> (earliest) and up to <strong>60 days</strong> (maximum) from the payment date.</p>
+      <!-- 01. Investor info with photo -->
+      <section class="bg-white rounded-lg shadow p-5 grid grid-cols-1 md:grid-cols-3 gap-4 items-center">
+        <div class="flex items-center gap-4 md:col-span-1">
+          <img id="investorPhoto" src="https://mj-ahmad.github.io/mj-ahmad/docs/assets/logo1.jpg" alt="Investor Photo" class="h-24 w-24 rounded-full object-cover border" />
+        </div>
 
-            <h3>3. Delivery Schedule</h3>
-            <p><strong>Payment date/time (start):</strong> <span id="startDateText">2025-09-08 21:00:00 (BST)</span>.</p>
-            <p><strong>Earliest delivery due:</strong> <span id="earliestDateText"></span> (45 days after start).</p>
-            <p><strong>Maximum delivery due:</strong> <span id="maxDateText"></span> (60 days after start).</p>
-
-            <h3>4. Remedies and Accountability</h3>
-            <p>If the recipient fails to deliver within <strong>45 days</strong>, the investor may request status updates and partial remedies. If delivery is not completed by the <strong>60-day</strong> maximum, the elapsed time will be recorded and used to calculate compensation or repayment obligations.</p>
-            <p>Compensation approach (example, to be agreed): the recipient will either (a) deliver the agreed goods, or (b) repay the principal Tk.13,000 plus a fair compensation amount reflecting lost opportunity. The elapsed-time counter will be used to compute proportional remedies where applicable.</p>
-
-            <h3>5. Records and Evidence</h3>
-            <p>This digital record stores the transaction, timestamps, and the running clocks. Both parties should keep copies of this record. The recipient commits to transparent updates until the transaction is resolved.</p>
-
-            <h3>6. Signatures</h3>
-            <div class="signature">
-              <div class="sig-box">
-                <div style="font-weight:700">Investor</div>
-                <div style="color:var(--muted);font-size:13px;margin-top:8px">Name: Qari Emdadullah</div>
-                <div style="color:var(--muted);font-size:13px;margin-top:6px">Signature: ____________________</div>
-                <div style="color:var(--muted);font-size:12px;margin-top:6px">Date: ____________________</div>
-              </div>
-              <div class="sig-box">
-                <div style="font-weight:700">Recipient</div>
-                <div style="color:var(--muted);font-size:13px;margin-top:8px">Name: (Your name)</div>
-                <div style="color:var(--muted);font-size:13px;margin-top:6px">Signature: ____________________</div>
-                <div style="color:var(--muted);font-size:12px;margin-top:6px">Date: ____________________</div>
-              </div>
-            </div>
-
-            <h3 style="margin-top:12px">7. Notes</h3>
-            <p>- This record is a client-side demonstration and not a substitute for a notarized contract. For legal enforceability, consider signing a written contract and keeping witnesses or notarization.</p>
-            <p>- The recipient commits to full transparency and to repay or compensate the investor proportionally if delivery is not completed.</p>
-          </div>
-
-          <!-- Transaction table -->
-          <h3 style="margin-top:14px">Transaction Ledger</h3>
-          <table class="mono">
-            <thead>
-              <tr>
-                <th>Date & Time</th>
-                <th>Amount (Tk)</th>
-                <th>Method</th>
-                <th>Mobile</th>
-                <th>Transaction ID</th>
-              </tr>
-            </thead>
-            <tbody id="txBody"></tbody>
-          </table>
-
-          <div class="summary">
-            <div class="tile">
-              <div class="label">Total Bkash</div>
-              <div class="value" id="totalBkash">Tk. 0</div>
-            </div>
-            <div class="tile">
-              <div class="label">Total Cash</div>
-              <div class="value" id="totalCash">Tk. 0</div>
-            </div>
-            <div class="tile">
-              <div class="label">Grand Total</div>
-              <div class="value" id="grandTotal">Tk. 0</div>
-            </div>
-          </div>
-
-          <div class="actions">
-            <button id="copySummary">Copy Summary</button>
-            <button id="downloadCsv">Download CSV</button>
-            <button id="printBtn">Print</button>
+        <div class="md:col-span-2">
+          <h2 class="text-lg font-semibold text-blue-900" data-i18n="info_title">Investor Information</h2>
+          <div class="mt-3 grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm text-gray-800">
+            <div><strong data-i18n="label_fullname">Full name</strong> : <span id="fullName">Qari Emdadullah</span></div>
+            <div><strong data-i18n="label_role">Role</strong> : <span id="role">Investor</span></div>
+            <div class="sm:col-span-2"><strong data-i18n="label_address">Address</strong> : <span id="address">11/11/b KM Das Lane, Wari, Sutrapur, Dhaka-1203</span></div>
+            <div><strong data-i18n="label_email">Email</strong> : <a id="emailLink" href="mailto:hizbullahsalem@gmail.com" class="text-blue-700">hizbullahsalem@gmail.com</a></div>
+            <div><strong data-i18n="label_phone">Phone</strong> : <a id="phoneLink" href="tel:+8801820096806" class="text-blue-700">+880-1820-096806</a></div>
+            <div class="sm:col-span-2"><strong data-i18n="label_agreement">Agreement</strong> : <span id="agreementText">Short-term investment: 2 months from Sep 08, 2025</span></div>
+            <div><strong data-i18n="label_payment">Payment</strong> : <span id="paymentText">Tk. 13,000 (Cash) on 8 Sept 2025 21:00:00</span></div>
+            <div><strong data-i18n="label_earliest">Earliest delivery due</strong> : <span id="earliestText">23 Oct 2025 21:00:00</span></div>
+            <div><strong data-i18n="label_maximum">Maximum delivery due</strong> : <span id="maximumText">7 Nov 2025 21:00:00</span></div>
           </div>
         </div>
       </section>
 
-      <!-- Right: Info and quick actions -->
-      <aside class="side">
-        <div class="info-card card">
-          <h3 style="margin:0 0 8px 0">Investor Info</h3>
-          <div class="info-row"><div class="k">Full name</div><div class="v">Qari Emdadullah</div></div>
-          <div class="info-row"><div class="k">Address</div><div class="v">11/11/b KM Das Lane, Wari, Sutrapur, Dhaka-1203</div></div>
-          <div class="info-row"><div class="k">Email</div><div class="v">hizbullahsalem@gmail.com</div></div>
-          <div class="info-row"><div class="k">Phone</div><div class="v">+880-1820-096806</div></div>
-          <div style="margin-top:10px;font-size:13px;color:var(--muted)"><strong>Agreement</strong></div>
-          <div style="margin-top:6px;font-size:13px;color:var(--muted)">Short-term investment: 2 months from Sep 08, 2025</div>
-        </div>
+      <!-- 03. Time row: Bangladesh Time (en-US) | After Maximum due elapsed -->
+      <section class="bg-white rounded-lg shadow p-4">
+        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+          <div>
+            <h3 class="text-sm text-gray-600">⏰ Bangladesh Time (en-US)</h3>
+            <p id="bdClock" class="mt-1 text-lg font-medium mono">--</p>
+          </div>
 
-        <div class="info-card card">
-          <h3 style="margin:0 0 8px 0">Quick Actions</h3>
-          <div style="display:flex;flex-direction:column;gap:8px;margin-top:8px">
-            <button id="copySummarySide" style="padding:10px;border-radius:8px;border:1px solid rgba(2,6,23,0.06);background:#fff;cursor:pointer">Copy Summary</button>
-            <button id="downloadCsvSide" style="padding:10px;border-radius:8px;border:1px solid rgba(2,6,23,0.06);background:#fff;cursor:pointer">Download CSV</button>
-            <button id="printBtnSide" style="padding:10px;border-radius:8px;border:1px solid rgba(2,6,23,0.06);background:#fff;cursor:pointer">Print</button>
+          <div class="text-left md:text-right">
+            <h3 class="text-sm text-gray-600">After Maximum due</h3>
+            <p id="afterMax" class="mt-1 text-lg font-medium text-red-700 mono">0 months 0 weeks 0 d 0h 0m 0s</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 04. Estimated potential target time countdown -->
+      <section class="bg-white rounded-lg shadow p-4">
+        <h3 class="text-lg font-semibold text-blue-900">🎯 Estimated target to complete transaction</h3>
+        <p class="mt-2 text-sm text-gray-700">Target: <strong id="targetText">11 Apr 2026 11:00 AM (Asia/Dhaka)</strong></p>
+        <p class="mt-3 text-sm text-gray-600">Countdown:</p>
+        <p id="targetCountdown" class="mt-1 text-xl font-medium mono">-- days --:--:--</p>
+      </section>
+
+      <!-- 05. Compensation Calculator + note -->
+      <section class="bg-white rounded-lg shadow p-4">
+        <h3 class="text-lg font-semibold text-blue-900" data-i18n="comp_title">Compensation (Determined)</h3>
+
+        <p id="compNote" class="mt-2 text-sm text-gray-700">
+          MJ Ahmad has unilaterally determined the penalty for this agreement. Live status and calculations are shown below (penalty shown in currency).
+        </p>
+
+        <div class="mt-4 grid grid-cols-1 sm:grid-cols-3 gap-3">
+          <div>
+            <label class="block text-sm text-gray-600" data-i18n="label_principal">Principal (Tk)</label>
+            <input id="principal" type="number" value="13000" class="mt-1 w-full border rounded px-2 py-1" />
+          </div>
+          <div>
+            <label class="block text-sm text-gray-600" data-i18n="label_rate">Daily Penalty (Tk/day)</label>
+            <input id="rate" type="number" value="100" class="mt-1 w-full border rounded px-2 py-1" />
+          </div>
+          <div>
+            <label class="block text-sm text-gray-600" data-i18n="label_elapsed">Elapsed after maximum due</label>
+            <p id="elapsedSinceMax" class="mt-1 mono text-gray-800">0 months 0 weeks 0 d 0h 0m 0s</p>
           </div>
         </div>
 
-        <div class="info-card card">
-          <h3 style="margin:0 0 8px 0">Guidance</h3>
-          <div style="color:var(--muted);font-size:13px">For legal enforceability, consider a signed written contract, witnesses, or notarization. This record helps transparency and time-stamped accountability.</div>
+        <div class="mt-4 text-sm text-gray-800 space-y-1">
+          <div><strong data-i18n="label_principal_display">Principal:</strong> <span id="displayPrincipal">Tk. 13,000.00</span></div>
+          <div><strong data-i18n="label_comp_display">Calculated penalty:</strong> <span id="displayComp">Tk. 0.00</span></div>
+          <div class="text-lg font-semibold"><strong data-i18n="label_owed_display">Total owed (Principal + penalty):</strong> <span id="displayOwed">Tk. 13,000.00</span></div>
         </div>
-      </aside>
-    </div>
 
-    <footer>
-      <div style="max-width:1100px;margin:0 auto;padding:8px 20px;color:var(--muted)">
-        &copy; 2026 mj.dev • Contract Record • All rights reserved
+        <p class="mt-4 text-xs text-gray-600" data-i18n="comp_legal_note">
+          This is a unilateral determination by MJ Ahmad. If the investor is not satisfied, they retain full rights to pursue legal remedies. Any objections to MJ Ahmad's determination are expressly disclaimed.
+        </p>
+      </section>
+
+      <!-- 06. Agreement (bilingual handled by script) -->
+      <section class="bg-white rounded-lg shadow p-4">
+        <h3 id="agreementTitle" class="text-lg font-semibold text-blue-900">📜 Agreement</h3>
+
+        <div class="mt-3 text-sm text-gray-800 space-y-2">
+          <p><strong id="agreementNoLabel">Agreement No:</strong> <span id="agreementNoValue">BGS-QF-2025-09-08</span></p>
+          <p><strong id="agreementDateLabel">Date:</strong> <span id="agreementDateValue">08 September 2025</span></p>
+
+          <p id="agreementSummary" class="text-sm text-gray-800">
+            This page summarizes the key terms, responsibilities and remedies. For the full stamped agreement, use the link below:
+          </p>
+
+          <p>📜 <a id="viewContractLink" href="contract.html" class="text-blue-700 underline">View Contract Agreement</a></p>
+
+          <blockquote id="mjMessage" class="italic text-gray-700 mt-2">
+            “MJ Ahmad remains deeply grateful yet ashamed, and commits with sincerity that every moment of delay will be accounted for until the investor’s rightful benefit is fulfilled.”
+          </blockquote>
+
+          <p id="legalNote" class="mt-3 text-sm text-gray-600">
+            <strong>Legal & professional note:</strong> This presentation is for informational and record-keeping purposes and is not a substitute for legal advice. For enforceability, interpretation, or court‑grade documentation consult a qualified attorney in the relevant jurisdiction. Parties retain all rights to pursue remedies under applicable national and international law.
+          </p>
+        </div>
+      </section>
+
+      <!-- 07. Footer content (centered on mobile) -->
+      <section class="bg-white rounded-lg shadow p-4">
+    <footer class="bg-white border-t">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-col md:flex-row md:items-center md:justify-between gap-3">
+        <div class="text-sm text-gray-600">© 2026 Quraner Fariwala. All rights reserved.</div>
+<div class="text-sm text-gray-600">Empowering communities through Research, Printing & Distribution of Holy Quran — by MJ-Ahmad</div>
       </div>
     </footer>
-  </main>
+      </section>
 
+    </main>
+
+  </div>
+
+  <!-- SCRIPT: language, times, password, mj message, agreement/footer bilingual -->
   <script>
-    // -------------------------
-    // Data (user-provided)
-    // -------------------------
-    const transactions = [
-      {dt:"2025-09-08 21:00:00", amount:13000, method:"Cash", mobile:"", trx:""}
-    ];
-
-    // -------------------------
-    // Access control (client-side)
-    // Password: 1820096806
-    // -------------------------
-    const validPassword = "1820096806";
-    const unlockBtn = document.getElementById('unlockBtn');
-    const credentialInput = document.getElementById('credential');
-    const contractArea = document.getElementById('contractArea');
-    const accessMessage = document.getElementById('accessMessage');
-
-    unlockBtn.addEventListener('click', tryUnlock);
-    credentialInput.addEventListener('keydown', (e)=>{ if(e.key === 'Enter') tryUnlock(); });
-
-    function tryUnlock(){
-      const val = credentialInput.value.trim();
-      if(!val){
-        showAccess("Please enter the password (ID number).");
-        return;
-      }
-      if(val === validPassword){
-        accessMessage.style.display = 'none';
-        revealContract();
+    // --- Password unlock (client-side demo only) ---
+    function unlock(){
+      const pass = document.getElementById('passwordInput').value;
+      const msg = document.getElementById('lockMsg');
+      if(pass === "1820096806"){
+        document.getElementById('lockScreen').classList.add('hidden');
+        document.getElementById('app').classList.remove('hidden');
+        msg.textContent = "";
       } else {
-        showAccess("Access Denied — incorrect password.");
+        msg.textContent = "❌ Incorrect password — try again.";
       }
     }
 
-    function showAccess(msg){
-      accessMessage.style.display = 'block';
-      accessMessage.textContent = msg;
-      contractArea.style.display = 'none';
+    // --- Mobile menu toggle ---
+    function toggleMenu(){
+      const menu = document.getElementById('mobileMenu');
+      const btn = document.getElementById('menuBtn');
+      const expanded = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', String(!expanded));
+      menu.classList.toggle('hidden');
     }
 
-    // -------------------------
-    // Render transactions & totals
-    // -------------------------
-    function formatNumber(n){ return n.toLocaleString('en-US'); }
-
-    function renderTransactions(){
-      const tbody = document.getElementById('txBody');
-      tbody.innerHTML = '';
-      let totals = {Bkash:0,Cash:0};
-      transactions.forEach(tx=>{
-        const tr = document.createElement('tr');
-        tr.innerHTML = `<td class="mono">${tx.dt}</td>
-                        <td class="mono">Tk. ${formatNumber(tx.amount)}</td>
-                        <td>${tx.method}</td>
-                        <td class="mono">${tx.mobile || '-'}</td>
-                        <td class="mono">${tx.trx || '-'}</td>`;
-        tbody.appendChild(tr);
-        if(tx.method === 'Bkash') totals.Bkash += tx.amount;
-        else if(tx.method === 'Cash') totals.Cash += tx.amount;
-      });
-      const grand = totals.Bkash + totals.Cash;
-      document.getElementById('totalBkash').textContent = `Tk. ${formatNumber(totals.Bkash)}`;
-      document.getElementById('totalCash').textContent = `Tk. ${formatNumber(totals.Cash)}`;
-      document.getElementById('grandTotal').textContent = `Tk. ${formatNumber(grand)}`;
-    }
-
-    function revealContract(){
-      renderTransactions();
-      contractArea.style.display = 'block';
-      contractArea.scrollIntoView({behavior:'smooth', block:'start'});
-    }
-
-    // -------------------------
-    // Bangladesh real-time clock
-    // -------------------------
-    const bdTimeEl = document.getElementById('bdTime');
-    function updateBDTime(){
-      const now = new Date();
-      const bd = new Date(now.toLocaleString('en-US', { timeZone: 'Asia/Dhaka' }));
-      const options = { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric',
-                        hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false, timeZone: 'Asia/Dhaka' };
-      bdTimeEl.textContent = bd.toLocaleString('en-GB', options).replace(',', '');
-    }
-
-    // -------------------------
-    // Countdown logic
-    // - startDate: payment date/time (BST)
-    // - earliest = start + 45 days
-    // - max = start + 60 days
-    // Two displays:
-    //  - countdownToEarliest: counts down to earliest (if future), otherwise shows "Due" or "Passed"
-    //  - elapsedSinceMax: shows "Not yet passed" until max passes; after that counts up (months/weeks/days/h:m:s)
-    // -------------------------
-    const startISO = "2025-09-08T21:00:00+06:00";
-    const startDate = new Date(startISO);
-
-    function addDays(date, days){
-      const d = new Date(date.getTime());
-      d.setDate(d.getDate() + days);
-      return d;
-    }
-    const earliestDate = addDays(startDate, 45);
-    const maxDate = addDays(startDate, 60);
-
-    // Display formatted dates
-    function formatLocalBD(d){
-      const opts = { year:'numeric', month:'short', day:'numeric', hour:'2-digit', minute:'2-digit', second:'2-digit', hour12:false, timeZone:'Asia/Dhaka' };
-      return new Date(d.toLocaleString('en-US', { timeZone: 'Asia/Dhaka' })).toLocaleString('en-GB', opts).replace(',', '');
-    }
-    document.getElementById('startDateText').textContent = formatLocalBD(startDate) + " (BST)";
-    document.getElementById('earliestDateText').textContent = formatLocalBD(earliestDate) + " (BST)";
-    document.getElementById('maxDateText').textContent = formatLocalBD(maxDate) + " (BST)";
-
-    // compute detailed diff (months/weeks/days/hours/minutes/seconds)
-    function computeDetailedDiff(fromDate, toDate){
-      let start = new Date(fromDate);
-      let end = new Date(toDate);
-      if(end < start) { // swap to compute positive diff
-        [start, end] = [end, start];
+    // --- Bilingual content for Agreement, MJ message, Footer ---
+    const bilingualContent = {
+      en: {
+        agreementTitle: "📜 Agreement",
+        agreementNoLabel: "Agreement No:",
+        agreementNoValue: "BGS-QF-2025-09-08",
+        agreementDateLabel: "Date:",
+        agreementDateValue: "08 September 2025",
+        agreementSummary: "This page summarizes the key terms, responsibilities and remedies. For the full stamped agreement, use the link below:",
+        viewContractText: "View Contract Agreement",
+        mjMessage: "“MJ Ahmad remains deeply grateful yet ashamed, and commits with sincerity that every moment of delay will be accounted for until the investor’s rightful benefit is fulfilled.”",
+        legalNote: "Legal & professional note: This presentation is for informational and record-keeping purposes and is not a substitute for legal advice. For enforceability, interpretation, or court‑grade documentation consult a qualified attorney in the relevant jurisdiction. Parties retain all rights to pursue remedies under applicable national and international law.",
+        footerCopyright: "© 2026 Quraner Fariwala. All rights reserved.",
+        footerTerms: "Terms of Service",
+        footerPrivacy: "Privacy Policy",
+        footerLegal: "Legal Disclaimer",
+        compNote: "MJ Ahmad has unilaterally determined the penalty for this agreement. Live status and calculations are shown below (penalty shown in currency)."
+      },
+      bn: {
+        agreementTitle: "📜 চুক্তি",
+        agreementNoLabel: "চুক্তি নম্বর:",
+        agreementNoValue: "BGS-QF-2025-09-08",
+        agreementDateLabel: "তারিখ:",
+        agreementDateValue: "08 সেপ্টেম্বর 2025",
+        agreementSummary: "এই পৃষ্ঠা মূল শর্তাবলী, দায়িত্ব এবং প্রতিকার সংক্ষেপ করে। পূর্ণ স্ট্যাম্পড চুক্তি দেখতে নিচের লিঙ্কটি ব্যবহার করুন:",
+        viewContractText: "চুক্তিপত্র দেখুন",
+        mjMessage: "“এমজে আহমাদ গভীর কৃতজ্ঞতা ও লজ্জা অনুভব করেন এবং আন্তরিকতার সঙ্গে প্রতিশ্রুতি দেন যে প্রতিটি বিলম্বের মুহূর্ত বিনিয়োগকারীর ন্যায্য সুবিধা পূরণ না হওয়া পর্যন্ত হিসাব করা হবে।”",
+        legalNote: "আইনি ও পেশাদারী নোট: এই উপস্থাপনাটি তথ্যগত ও রেকর্ড-রক্ষার উদ্দেশ্যে প্রস্তুত করা হয়েছে এবং এটি আইনি পরামর্শের বিকল্প নয়। প্রযোজ্য কর্তৃপক্ষের আদালত-গ্রেড ডকুমেন্টেশন বা ব্যাখ্যার জন্য যোগ্য আইনজীবীর পরামর্শ নিন। পক্ষগুলি প্রযোজ্য জাতীয় ও আন্তর্জাতিক আইনের অধীনে প্রতিকার অনুসরণ করার সব অধিকার সংরক্ষণ করে।",
+        footerCopyright: "© 2026 Quraner Fariwala. সর্বস্বত্ব সংরক্ষিত।",
+        footerTerms: "সেবা শর্তাবলী",
+        footerPrivacy: "গোপনীয়তা নীতি",
+        footerLegal: "আইনি অস্বীকার",
+        compNote: "এই চুক্তিতে MJ Ahmad এককভাবে জরিমানা নির্ধারণ করেছেন। নিচে লাইভ স্ট্যাটাস ও হিসাব প্রদর্শিত হবে (জরিমানা পয়সা পর্যন্ত দেখানো হবে)।"
       }
-      // months difference by calendar months
-      let yearsDiff = end.getFullYear() - start.getFullYear();
-      let monthsDiff = end.getMonth() - start.getMonth() + yearsDiff * 12;
-      const addMonths = (d, m) => {
-        const nd = new Date(d.getTime());
-        const y = nd.getFullYear();
-        const mo = nd.getMonth();
-        nd.setFullYear(y + Math.floor((mo + m) / 12));
-        nd.setMonth((mo + m) % 12);
-        return nd;
+    };
+
+    function setAgreementAndFooterLang(lang){
+      const content = bilingualContent[lang] || bilingualContent.en;
+      const setText = (id, text) => {
+        const el = document.getElementById(id);
+        if(el) el.textContent = text;
       };
-      let months = monthsDiff;
-      while(months > 0 && addMonths(start, months) > end) months--;
-      const afterMonths = addMonths(start, months);
-      let remainderMs = end - afterMonths;
-      const sec = Math.floor(remainderMs / 1000);
-      const weeks = Math.floor(sec / (7 * 24 * 3600));
-      const days = Math.floor((sec % (7 * 24 * 3600)) / (24 * 3600));
-      const hours = Math.floor((sec % (24 * 3600)) / 3600);
-      const minutes = Math.floor((sec % 3600) / 60);
-      const seconds = sec % 60;
-      return { months, weeks, days, hours, minutes, seconds };
+
+      // Agreement
+      setText('agreementTitle', content.agreementTitle);
+      setText('agreementNoLabel', content.agreementNoLabel);
+      setText('agreementNoValue', content.agreementNoValue);
+      setText('agreementDateLabel', content.agreementDateLabel);
+      setText('agreementDateValue', content.agreementDateValue);
+      setText('agreementSummary', content.agreementSummary);
+      const viewLink = document.getElementById('viewContractLink');
+      if(viewLink) viewLink.textContent = content.viewContractText;
+
+      // MJ message & legal note
+      setText('mjMessage', content.mjMessage);
+      setText('legalNote', content.legalNote);
+
+      // Footer
+      setText('footerCopyright', content.footerCopyright);
+      setText('footerTerms', content.footerTerms);
+      setText('footerPrivacy', content.footerPrivacy);
+      setText('footerLegal', content.footerLegal);
+
+      // Compensation note
+      const compNote = document.getElementById('compNote');
+      if(compNote) compNote.textContent = content.compNote;
+
+      // Set document language attribute
+      document.documentElement.lang = (lang === 'bn') ? 'bn' : 'en';
     }
 
-    function pad(n){ return String(n).padStart(2,'0'); }
+    // --- MJ message helper (safe) ---
+    const mjMessages = {
+      en: {
+        quote: "“MJ Ahmad remains deeply grateful yet ashamed, and commits with sincerity that every moment of delay will be accounted for until the investor’s rightful benefit is fulfilled.”",
+        aria: "MJ Ahmad message in English"
+      },
+      bn: {
+        quote: "“এমজে আহমাদ গভীর কৃতজ্ঞতা ও লজ্জা অনুভব করেন এবং আন্তরিকতার সঙ্গে প্রতিশ্রুতি দেন যে প্রতিটি বিলম্বের মুহূর্ত বিনিয়োগকারীর ন্যায্য সুবিধা পূরণ না হওয়া পর্যন্ত হিসাব করা হবে।”",
+        aria: "বাংলা ভাষায় এমজে আহমাদের বার্তা"
+      }
+    };
 
-    const countdownToEarliestEl = document.getElementById('countdownToEarliest');
-    const elapsedSinceMaxEl = document.getElementById('elapsedSinceMax');
+    function setMJMessage(lang){
+      const msgEl = document.getElementById('mjMessage');
+      if(!msgEl) return;
+      const entry = mjMessages[lang] || mjMessages['en'];
+      msgEl.textContent = entry.quote;
+      msgEl.setAttribute('aria-label', entry.aria);
+    }
 
-    function updateCountdowns(){
-      // BD now
-      const nowBD = new Date(new Date().toLocaleString('en-US', { timeZone: 'Asia/Dhaka' }));
+    // --- Time & countdown logic ---
+    const tz = 'Asia/Dhaka';
+    const maxDue = new Date("2025-11-07T21:00:00+06:00");
+    const earliestDue = new Date("2025-10-23T21:00:00+06:00");
+    const targetDate = new Date("2026-04-11T11:00:00+06:00");
 
-      // Countdown to earliest
-      const diffEarliest = earliestDate - nowBD;
-      if(diffEarliest > 0){
-        const totalSec = Math.floor(diffEarliest / 1000);
-        const days = Math.floor(totalSec / (24*3600));
-        const hours = Math.floor((totalSec % (24*3600)) / 3600);
-        const minutes = Math.floor((totalSec % 3600) / 60);
-        const seconds = totalSec % 60;
-        countdownToEarliestEl.textContent = `${days}d ${pad(hours)}h ${pad(minutes)}m ${pad(seconds)}s`;
-      } else {
-        countdownToEarliestEl.textContent = `Earliest delivery window reached`;
+    function formatEnUSDate(d){
+      try {
+        return d.toLocaleString('en-US', { timeZone: tz, month: 'short', day: '2-digit', year: 'numeric', hour: 'numeric', minute: '2-digit', second: '2-digit', hour12: true });
+      } catch(e){
+        return d.toString();
+      }
+    }
+
+    function updateTimes(){
+      const now = new Date();
+
+      // Bangladesh time in en-US format
+      const bdClock = document.getElementById('bdClock');
+      if(bdClock) bdClock.textContent = formatEnUSDate(now);
+
+      // After maximum due elapsed
+      const afterMaxEl = document.getElementById('afterMax');
+      if(afterMaxEl){
+        if(now > maxDue){
+          let ms = now - maxDue;
+          const seconds = Math.floor(ms/1000);
+          const minutes = Math.floor(seconds/60);
+          const hours = Math.floor(minutes/60);
+          const days = Math.floor(hours/24);
+
+          const months = Math.floor(days/30);
+          const weeks = Math.floor((days % 30) / 7);
+          const remDays = days % 7;
+          const remHours = hours % 24;
+          const remMinutes = minutes % 60;
+          const remSeconds = seconds % 60;
+
+          afterMaxEl.textContent = `${months} months ${weeks} weeks ${remDays} d ${remHours}h ${remMinutes}m ${remSeconds}s`;
+        } else {
+          afterMaxEl.textContent = '0 months 0 weeks 0 d 0h 0m 0s';
+        }
       }
 
-      // Elapsed since max
-      const diffMax = nowBD - maxDate;
-      if(diffMax < 0){
-        elapsedSinceMaxEl.textContent = `Not yet passed`;
-      } else {
-        const diff = computeDetailedDiff(maxDate, nowBD);
-        elapsedSinceMaxEl.textContent = `${diff.months}m ${diff.weeks}w ${diff.days}d ${pad(diff.hours)}h ${pad(diff.minutes)}m ${pad(diff.seconds)}s`;
+      // Target countdown
+      const targetEl = document.getElementById('targetCountdown');
+      if(targetEl){
+        let diff = targetDate - now;
+        if(diff <= 0){
+          targetEl.textContent = (document.documentElement.lang === 'bn') ? 'লক্ষ্য সময় পৌঁছেছে' : 'Target time reached';
+        } else {
+          const sec = Math.floor(diff/1000) % 60;
+          const min = Math.floor(diff/1000/60) % 60;
+          const hr = Math.floor(diff/1000/60/60) % 24;
+          const days = Math.floor(diff/1000/60/60/24);
+          targetEl.textContent = `${days} days ${String(hr).padStart(2,'0')}:${String(min).padStart(2,'0')}:${String(sec).padStart(2,'0')}`;
+        }
       }
+
+      // Elapsed since maximum due for compensation
+      const elapsedComp = document.getElementById('elapsedSinceMax');
+      if(elapsedComp){
+        if(now > maxDue){
+          let ms = now - maxDue;
+          const seconds = Math.floor(ms/1000);
+          const minutes = Math.floor(seconds/60);
+          const hours = Math.floor(minutes/60);
+          const days = Math.floor(hours/24);
+
+          const months = Math.floor(days/30);
+          const weeks = Math.floor((days % 30) / 7);
+          const remDays = days % 7;
+          const remHours = hours % 24;
+          const remMinutes = minutes % 60;
+          const remSeconds = seconds % 60;
+
+          elapsedComp.textContent = `${months} months ${weeks} weeks ${remDays} d ${remHours}h ${remMinutes}m ${remSeconds}s`;
+        } else {
+          elapsedComp.textContent = '0 months 0 weeks 0 d 0h 0m 0s';
+        }
+      }
+
+      // Compensation calculation
+      const principalInput = document.getElementById('principal');
+      const rateInput = document.getElementById('rate');
+      const displayPrincipal = document.getElementById('displayPrincipal');
+      const displayComp = document.getElementById('displayComp');
+      const displayOwed = document.getElementById('displayOwed');
+
+      const principal = parseFloat(principalInput?.value) || 0;
+      const rate = parseFloat(rateInput?.value) || 0;
+
+      let compensation = 0;
+      if(now > maxDue){
+        const daysLate = Math.floor((now - maxDue) / (1000*60*60*24));
+        compensation = daysLate * rate;
+      }
+
+      if(displayPrincipal) displayPrincipal.textContent = `Tk. ${principal.toFixed(2)}`;
+      if(displayComp) displayComp.textContent = `Tk. ${compensation.toFixed(2)}`;
+      if(displayOwed) displayOwed.textContent = `Tk. ${(principal + compensation).toFixed(2)}`;
     }
 
-    // -------------------------
-    // Quick actions
-    // -------------------------
-    function copySummary(){
-      const summary = [
-        "Agreement — Qari Emdadullah",
-        "Payment: Tk. 13,000 (Cash) on " + formatLocalBD(startDate),
-        "Earliest delivery due: " + formatLocalBD(earliestDate),
-        "Maximum delivery due: " + formatLocalBD(maxDate),
-        "Status: see live counters on the page"
-      ].join('\n');
-      navigator.clipboard?.writeText(summary).then(()=>{ alert('Summary copied to clipboard.'); }).catch(()=>{ alert('Unable to copy.'); });
+    // Update every second
+    setInterval(updateTimes, 1000);
+    updateTimes();
+
+    // Enter key to unlock
+    document.getElementById('passwordInput').addEventListener('keydown', function(e){
+      if(e.key === 'Enter') unlock();
+    });
+
+    // Language switcher integration
+    function setLang(lang){
+      // update UI strings for nav and labels (data-i18n)
+      const i18nMap = {
+        en: {
+          nav_home: "Home", nav_contract: "Contract", nav_about: "About", nav_contact: "Contact",
+          info_title: "Investor Information", label_fullname: "Full name", label_role: "Role",
+          label_address: "Address", label_email: "Email", label_phone: "Phone", label_agreement: "Agreement",
+          label_payment: "Payment", label_earliest: "Earliest delivery due", label_maximum: "Maximum delivery due",
+          comp_title: "Compensation (Determined)", label_principal: "Principal (Tk)", label_rate: "Daily Penalty (Tk/day)",
+          label_elapsed: "Elapsed after maximum due", label_principal_display: "Principal:", label_comp_display: "Calculated penalty:",
+          label_owed_display: "Total owed (Principal + penalty):", comp_legal_note: bilingualContent.en.compNote
+        },
+        bn: {
+          nav_home: "হোম", nav_contract: "চুক্তি", nav_about: "সম্পর্কে", nav_contact: "যোগাযোগ",
+          info_title: "বিনিয়োগকারীর তথ্য", label_fullname: "পূর্ণ নাম", label_role: "ভূমিকা",
+          label_address: "ঠিকানা", label_email: "ইমেইল", label_phone: "ফোন", label_agreement: "চুক্তি",
+          label_payment: "পেমেন্ট", label_earliest: "Earliest delivery due", label_maximum: "Maximum delivery due",
+          comp_title: "ক্ষতিপূরণ (নির্ধারিত)", label_principal: "মূলধন (Tk)", label_rate: "দৈনিক জরিমানা (Tk/দিন)",
+          label_elapsed: "সর্বোচ্চ সময় অতিক্রমের পর সময়", label_principal_display: "মূলধন:", label_comp_display: "হিসাবকৃত জরিমানা:",
+          label_owed_display: "মোট বকেয়া (মূলধন + জরিমানা):", comp_legal_note: bilingualContent.bn.compNote
+        }
+      };
+
+      const map = i18nMap[lang] || i18nMap.en;
+      document.querySelectorAll('[data-i18n]').forEach(el=>{
+        const key = el.getAttribute('data-i18n');
+        if(map[key]) el.textContent = map[key];
+      });
+
+      // Agreement & footer bilingual content
+      setAgreementAndFooterLang(lang);
+      // MJ message
+      setMJMessage(lang);
+
+      // highlight selected language button
+      document.getElementById('langEn').classList.toggle('bg-blue-100', lang === 'en');
+      document.getElementById('langBn').classList.toggle('bg-blue-100', lang === 'bn');
+
+      // set document language attribute
+      document.documentElement.lang = (lang === 'bn') ? 'bn' : 'en';
     }
 
-    function downloadCsv(){
-      const headers = ['Date & Time','Amount (Tk)','Method','Mobile','Transaction ID'];
-      const rows = transactions.map(t => [t.dt, t.amount, t.method, t.mobile || '-', t.trx || '-']);
-      const csv = [headers, ...rows].map(r => r.map(cell => `"${String(cell).replace(/"/g,'""')}"`).join(',')).join('\n');
-      const blob = new Blob([csv], {type:'text/csv;charset=utf-8;'});
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = 'emdadullah_statement.csv';
-      document.body.appendChild(a);
-      a.click();
-      a.remove();
-      URL.revokeObjectURL(url);
-    }
-
-    // -------------------------
-    // Initialize
-    // -------------------------
-    document.getElementById('copySummary').addEventListener('click', copySummary);
-    document.getElementById('copySummarySide').addEventListener('click', copySummary);
-    document.getElementById('downloadCsv').addEventListener('click', downloadCsv);
-    document.getElementById('downloadCsvSide').addEventListener('click', downloadCsv);
-    document.getElementById('printBtn').addEventListener('click', ()=>window.print());
-    document.getElementById('printBtnSide').addEventListener('click', ()=>window.print());
-
-    // Start clocks and counters
-    updateBDTime();
-    updateCountdowns();
-    setInterval(updateBDTime, 1000);
-    setInterval(updateCountdowns, 1000);
-
-    // Prefill credential for convenience (optional)
-    // credentialInput.value = validPassword;
+    // Initialize language to English
+    setLang('en');
   </script>
 </body>
 </html>
