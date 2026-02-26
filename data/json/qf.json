@@ -1,0 +1,102 @@
+{
+  "QuranerFariwala": {
+    "Identity": {
+      "Mission": {},
+      "Vision": {},
+      "CoreValues": {}
+    },
+    "Editions": {
+      "FirstEdition": {
+        "Research": {},
+        "Printing": {},
+        "Distribution": {},
+        "Sales": {}
+      },
+      "SecondEdition": {},
+      "ThirdEdition": {},
+      "FourthEdition": {},
+      "FifthEdition": {}
+    },
+    "Functions": {
+      "Research": {},
+      "Printing": {},
+      "Distribution": {},
+      "Sales": {},
+      "QualityAssurance": {},
+      "CommunityEngagement": {}
+    },
+    "Projects": {
+      "FeatureProjects": {
+        "RamadhanProject": {},
+        "YouthOutreach": {},
+        "DigitalQuranAccess": {}
+      },
+      "FutureProjects": {
+        "Translations": {},
+        "GlobalDistribution": {},
+        "EducationalPrograms": {}
+      }
+    },
+    "Legal": {
+      "Compliance": {},
+      "Copyright": {},
+      "PublishingRights": {},
+      "Partnerships": {}
+    },
+    "Technology": {
+      "WebApp": {
+        "Frontend": {},
+        "Backend": {},
+        "Database": {},
+        "UserPortal": {}
+      },
+      "MobileApp": {},
+      "DigitalLibrary": {}
+    },
+    "Targets": {
+      "LocalDistribution": {},
+      "NationalDistribution": {},
+      "InternationalDistribution": {},
+      "SpecialCampaigns": {}
+    },
+    "Production": {
+      "ProgressTracking": {
+        "Images": {},
+        "Videos": {},
+        "Reports": {}
+      },
+      "Workflow": {
+        "ResearchPhase": {},
+        "PrintingPhase": {},
+        "DistributionPhase": {}
+      }
+    },
+    "Operations": {
+      "Funding": {},
+      "Transparency": {},
+      "Governance": {},
+      "RiskManagement": {},
+      "Sustainability": {}
+    },
+    "Team": {
+      "Leadership": {},
+      "Contributors": {},
+      "Volunteers": {},
+      "Training": {}
+    },
+    "Communications": {
+      "EditorialGuidelines": {},
+      "BrandIdentity": {},
+      "DigitalPresence": {},
+      "Campaigns": {}
+    },
+    "Roadmap": {
+      "Milestones": {},
+      "FutureGoals": {}
+    },
+    "Contact": {
+      "Correspondence": {},
+      "PublicRelations": {}
+    }
+  }
+}

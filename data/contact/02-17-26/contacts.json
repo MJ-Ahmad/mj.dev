@@ -1,0 +1,62 @@
+[
+  {
+    "id": "SUP001",
+    "name": "Ayesha Rahman",
+    "phone": "+8801712345678",
+    "whatsapp": "+8801712345678",
+    "email": "ayesha.rahman@example.com",
+    "organization": "mj.dev",
+    "type": "supporter",
+    "transactions": [
+      {
+        "date": "2026-02-15",
+        "amount": 5000,
+        "currency": "BDT",
+        "purpose": "Community onboarding support",
+        "reference": "TXN-SUP-20260215-01"
+      }
+    ],
+    "legacy_notice": "Committed to mj.dev stewardship",
+    "localized_explanation_bn": "সহযোগী: আয়েশা রহমান mj.dev এর জন্য সম্প্রদায়কে সহায়তা করেছেন।"
+  },
+  {
+    "id": "INV001",
+    "name": "David Chen",
+    "phone": "+14155552671",
+    "whatsapp": "+14155552671",
+    "email": "david.chen@example.org",
+    "organization": "Global Stewardship Network",
+    "type": "investor",
+    "transactions": [
+      {
+        "date": "2026-01-20",
+        "amount": 10000,
+        "currency": "USD",
+        "purpose": "Seed investment for onboarding workflows",
+        "reference": "TXN-INV-20260120-01"
+      }
+    ],
+    "legacy_notice": "Investor in ethical stewardship and onboarding clarity",
+    "localized_explanation_bn": "বিনিয়োগকারী: ডেভিড চেন mj.dev এর জন্য প্রাথমিক বিনিয়োগ করেছেন।"
+  },
+  {
+    "id": "CRD001",
+    "name": "Fatima Noor",
+    "phone": "+8801912345678",
+    "whatsapp": "+8801912345678",
+    "email": "fatima.noor@example.net",
+    "organization": "Bangladesh Cooperative Trust",
+    "type": "creditor",
+    "transactions": [
+      {
+        "date": "2026-02-10",
+        "amount": 20000,
+        "currency": "BDT",
+        "purpose": "Short-term credit for infrastructure setup",
+        "reference": "TXN-CRD-20260210-01"
+      }
+    ],
+    "legacy_notice": "Creditor supporting resilient infrastructure",
+    "localized_explanation_bn": "ঋণদাতা: ফাতিমা নূর mj.dev এর অবকাঠামো উন্নয়নে ঋণ প্রদান করেছেন।"
+  }
+]

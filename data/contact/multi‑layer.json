@@ -1,0 +1,45 @@
+{
+  "name": "Full Name",
+  "phones": {
+    "mobile": "017XXXXXXXX",
+    "home": "02XXXXXXXX",
+    "business": "02XXXXXXXX",
+    "other": "018XXXXXXXX"
+  },
+  "whatsapp_number": "017XXXXXXXX",
+  "emails": [
+    "example@email.com",
+    "alternate@email.com"
+  ],
+  "addresses": {
+    "home": "Home Address",
+    "business": "Business Address",
+    "other": "Other Address"
+  },
+  "company": "Company Name",
+  "job_title": "Job Title",
+  "notes": "Any notes about this contact",
+  "tags": ["myContacts", "VIP", "Lead"],
+  "marketing_preferences": {
+    "preferred_channel": "WhatsApp",
+    "opt_in_sms": true,
+    "opt_in_email": true,
+    "opt_in_whatsapp": true
+  },
+  "campaign_history": [
+    {
+      "campaign_name": "Winter2026",
+      "date_sent": "2026-01-15",
+      "channel": "Email",
+      "status": "Delivered"
+    },
+    {
+      "campaign_name": "Spring2026",
+      "date_sent": "2026-03-01",
+      "channel": "WhatsApp",
+      "status": "Read"
+    }
+  ],
+  "status": "active",
+  "last_contacted": "2026-02-10"
+}

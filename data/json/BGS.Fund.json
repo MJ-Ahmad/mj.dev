@@ -1,0 +1,160 @@
+﻿{
+  "Name": "BGS.Fund",
+  "TagLine": "Together for Bangladesh â€“ Transparent Giving, Lasting Impact",
+  "ShortDescription": "BGS.Fund is a transparent crowdfunding platform that connects global donors with local initiatives in Bangladesh. By empowering NGOs, schools, cultural groups, and individuals to launch secure, multiâ€‘channel fundraising campaigns, BGS.Fund ensures every contribution is tracked, trusted, and transformed into lasting impact.",
+  "Mission": "BGS.Fund exists to bridge global generosity with the urgent needs of communities across Bangladesh. Our mission is to empower NGOs, schools, cultural groups, and individuals by providing a secure, transparent platform to launch fundraising campaigns that inspire collective action. Every donation is tracked and verified, ensuring accountability while building trust between donors and recipients. By combining modern technology with a commitment to openness, BGS.Fund transforms contributions into measurable impactâ€”strengthening education, healthcare, culture, and community resilience for a brighter future.",
+  "Vision": "Our vision is to create a future where every act of generosity is transparent, trusted, and transformativeâ€”empowering Bangladesh to thrive through collective global support and sustainable local impact.",
+  "CoreValues": {
+    "Transparency": [
+      "Every campaign and donation is visible, verifiable, and accountable.",
+      "Donors can track where their money goes and the impact it creates."
+    ],
+    "CommunityEmpowerment": [
+      "Local voices lead the wayâ€”NGOs, schools, and individuals shape campaigns.",
+      "Global donors collaborate to strengthen education, healthcare, culture, and resilience."
+    ],
+    "TrustAndAccountability": [
+      "Secure systems, audited records, and ethical governance ensure confidence.",
+      "BGS.Fund commits to exclusionâ€‘proof principles, protecting donor and recipient integrity."
+    ],
+    "InnovationForImpact": [
+      "Leveraging modern technology to simplify giving and maximize reach.",
+      "Multiâ€‘channel payments, mobile banking, and futureâ€‘proof integrations keep the platform adaptive."
+    ],
+    "Sustainability": [
+      "Campaigns focus on longâ€‘term solutions, not just shortâ€‘term relief.",
+      "Donations fuel projects that build lasting social, cultural, and environmental change."
+    ]
+  },
+  "BrandPositioning": "BGS.Fund positions itself as Bangladeshâ€™s first fully transparent, techâ€‘enabled crowdfunding platform that bridges global donors with local changemakers. Unlike generic fundraising sites, BGS.Fund ensures accountability through secure multiâ€‘channel payments, verifiable impact tracking, and a communityâ€‘driven approach that empowers grassroots initiatives to thrive.",
+  "ElevatorPitch": "BGS.Fund is a transparent crowdfunding platform that connects global donors with local changemakers in Bangladesh, ensuring every contribution is secure, accountable, and impactful.",
+  "ExtendedElevatorPitch": "BGS.Fund is Bangladeshâ€™s first transparent, techâ€‘enabled crowdfunding platform designed to connect global donors with local changemakers. By empowering NGOs, schools, cultural groups, and individuals to launch secure, multiâ€‘channel fundraising campaigns, BGS.Fund ensures every contribution is tracked, trusted, and transformed into measurable impact. With a focus on accountability and community empowerment, we make giving smarter, safer, and more sustainable.",
+  "AboutUs": {
+    "DetailedVersion": "BGS.Fund is Bangladeshâ€™s first transparent, techâ€‘enabled crowdfunding platform designed to connect global donors with local changemakers. We empower NGOs, schools, cultural groups, and individuals to launch secure fundraising campaigns that inspire collective action and deliver measurable impact.\n\nOur mission is to bridge global generosity with the urgent needs of communities across Bangladesh, ensuring every contribution is tracked, trusted, and transformed into lasting change. Guided by our core values of transparency, community empowerment, accountability, innovation, and sustainability, we are committed to building a future where giving is not only secure but also deeply impactful.\n\nWith multiâ€‘channel payment options, verifiable audit trails, and a communityâ€‘driven approach, BGS.Fund makes philanthropy smarter, safer, and more sustainable. Together, we are shaping a brighter tomorrow for Bangladeshâ€”one donation, one campaign, and one community at a time.",
+    "ConciseVersion": "BGS.Fund is a transparent crowdfunding platform connecting global donors with local changemakers in Bangladesh. We empower communities through secure, accountable fundraising campaigns that deliver measurable impact."
+  },
+  "SocialMediaSnippets": {
+    "LinkedIn": {
+      "Tagline": "Together for Bangladesh â€“ Transparent Giving, Lasting Impact",
+      "Blurb": "BGS.Fund is Bangladeshâ€™s first transparent crowdfunding platform, connecting global donors with local changemakers through secure, accountable fundraising campaigns."
+    },
+    "TwitterX": {
+      "Tagline": "Global Giving, Local Impact",
+      "Blurb": "We make donations transparent, secure, and impactfulâ€”empowering communities across Bangladesh."
+    },
+    "Instagram": {
+      "Tagline": "Connecting Hearts, Building Futures",
+      "Blurb": "BGS.Fund empowers NGOs, schools, and individuals in Bangladesh with transparent, techâ€‘enabled fundraising that turns generosity into lasting change."
+    },
+    "PressRelease": {
+      "Tagline": "Transparent Giving, Measurable Results",
+      "Blurb": "BGS.Fund is a secure crowdfunding hub that ensures every donation is tracked, trusted, and transformed into real impact for communities across Bangladesh."
+    }
+  },
+  "BrandToneGuide": {
+    "VoiceStyle": [
+      "Professional yet approachable â€“ authoritative in technical matters, but warm and human in storytelling.",
+      "Transparent & trustworthy â€“ emphasize clarity, accountability, and openness in every message.",
+      "Inspirational & communityâ€‘driven â€“ highlight collective action, shared responsibility, and positive change.",
+      "Techâ€‘forward but humanâ€‘centered â€“ balance innovation with empathy, showing that technology serves people."
+    ],
+    "Keywords": [
+      "Transparency",
+      "Trust",
+      "Empowerment",
+      "Community",
+      "Impact",
+      "Accountability",
+      "Innovation",
+      "Sustainability",
+      "Global support",
+      "Local change"
+    ],
+    "Dos": [
+      "Use clear, simple language that builds trust.",
+      "Highlight measurable impact (numbers, outcomes, stories).",
+      "Emphasize community empowerment and local voices.",
+      "Keep tone inclusive ('we,' 'together,' 'our impact').",
+      "Show optimism and forwardâ€‘thinking in every message."
+    ],
+    "Donts": [
+      "Avoid jargon or overly technical terms in publicâ€‘facing content.",
+      "Donâ€™t overpromiseâ€”always tie claims to verifiable transparency.",
+      "Avoid negative framing (e.g., 'we fight corruption')â€”instead, use positive framing ('we ensure accountability').",
+      "Donâ€™t sound detachedâ€”avoid passive voice when describing impact."
+    ],
+    "ToneExamples": {
+      "Website": "BGS.Fund empowers communities across Bangladesh by connecting global donors with local initiatives. Every donation is secure, transparent, and transformed into lasting impact.",
+      "SocialMedia": "Together weâ€™re building brighter futures ðŸŒâœ¨. Every contribution on BGS.Fund is tracked, trusted, and impactful.",
+      "InvestorDeck": "BGS.Fund is Bangladeshâ€™s first transparent crowdfunding platform, combining secure technology with community empowerment to deliver measurable results."
+    }
+  },
+  "ContentCalendar": {
+    "Week1": {
+      "Theme": "Launch & Awareness",
+      "LinkedIn": "Introducing BGS.Fund â€“ Bangladeshâ€™s first transparent crowdfunding platform. Together we make giving secure, accountable, and impactful.",
+      "TwitterX": "Global giving, local impact ðŸŒâœ¨. Every donation on BGS.Fund is tracked, trusted, and transformative.",
+      "Instagram": "Connecting hearts, building futures. Join us in empowering communities across Bangladesh."
+    },
+    "Week2": {
+      "Theme": "Transparency & Trust",
+      "LinkedIn": "At BGS.Fund, transparency isnâ€™t optionalâ€”itâ€™s our foundation. Every donation is verifiable, every campaign accountable.",
+      "TwitterX": "Donations made visible, impact made real ðŸ”’âœ…. Thatâ€™s the BGS.Fund promise.",
+      "Instagram": "Your generosity, tracked every step of the way."
+    },
+    "Week3": {
+      "Theme": "Community Impact",
+      "LinkedIn": "From education to healthcare, BGS.Fund empowers local changemakers to create lasting impact. Explore campaigns today.",
+      "TwitterX": "Together we rise, together we give ðŸ’ªðŸŒ±. Support community projects with BGS.Fund.",
+      "Instagram": "Every campaign tells a story. Every donation builds a future."
+    },
+    "Week4": {
+      "Theme": "Call to Action & Engagement",
+      "LinkedIn": "Ready to make a difference? Launch your campaign or support one today at BGS.Fund.",
+      "TwitterX": "One click. One donation. One future. Start giving with BGS.Fund today ðŸš€.",
+      "Instagram": "Giving is more than charityâ€”itâ€™s community empowerment. Join the movement."
+    },
+    "PostingRhythm": {
+      "LinkedIn": "2 posts per week (professional updates, impact stories).",
+      "TwitterX": "3â€“4 posts per week (short, punchy updates, hashtags).",
+      "Instagram": "2 posts per week (visual storytelling, campaign highlights)."
+    }
+  },
+  "HashtagClusters": {
+    "GlobalGivingImpact": [
+      "#GlobalGiving",
+      "#LocalImpact",
+      "#TogetherForBangladesh",
+      "#EmpowerChange",
+      "#ImpactThatLasts"
+    ],
+    "TransparencyTrust": [
+      "#TransparentGiving",
+      "#AccountableAid",
+      "#TrustInAction",
+      "#DonationsMadeVisible",
+      "#GivingYouCanTrust"
+    ],
+    "CommunitySustainability": [
+      "#CommunityEmpowerment",
+      "#FutureForward",
+      "#SustainableImpact",
+      "#ChangemakersUnite",
+      "#BuildingFutures"
+    ],
+    "TechEnabledPhilanthropy": [
+      "#SmartGiving",
+      "#DigitalDonations",
+      "#TechForGood",
+      "#InnovationMeetsCompassion",
+      "#SecureFundraising"
+    ],
+    "CampaignEngagement": [
+      "#SupportBangladesh",
+      "#FundTheFuture",
+      "#TogetherWeRise",
+      "#YourContributionTheirTomorrow",
+      "#JoinTheMovement"
+    ]
+  }
+}
