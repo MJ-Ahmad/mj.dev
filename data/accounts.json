@@ -1,0 +1,70 @@
+{
+  "BankAccounts": [
+    {
+      "Bank": "City Bank        ",
+      "Branch": "Motijheel    ",
+      "AccountName": "QURANER FARIWALA",
+      "AccountNumber": "1502835465001",
+      "RoutingNumber": "225271548",
+      "Status": "Active"
+    },
+    {
+      "Bank": "Eastern Bank Ltd ",
+      "Branch": "Principal    ",
+      "AccountName": "QURANER FARIWALA",
+      "AccountNumber": "1011070611663",
+      "RoutingNumber": "095275358",
+      "Status": "Active"
+    },
+    {
+      "Bank": "Mutual Trust Bank",
+      "Branch": "Principal    ",
+      "AccountName": "QURANER FARIWALA",
+      "AccountNumber": "1301010000896",
+      "RoutingNumber": "145275358",
+      "Status": "Active"
+    },
+    {
+      "Bank": "BRAC Bank        ",
+      "Branch": "Bijoynagar   ",
+      "AccountName": "QURANER FARIWALA",
+      "AccountNumber": "2060133490001",
+      "RoutingNumber": "060271103",
+      "Status": "Active"
+    }
+  ],
+  "MobileBanking": [
+    {
+      "Provider": "Bkash Merchant   ",
+      "Number": "01788856628  ",
+      "Holder": "Quraner Fariwala",
+      "Status": "Inactive"
+    },
+    {
+      "Provider": "Bkash Personal   ",
+      "Number": "01920082926  ",
+      "Holder": "Md Jafor Ahmad",
+      "Status": "Active"
+    },
+    {
+      "Provider": "Rocket           ",
+      "Number": "01920082926-6",
+      "Holder": "Md Jafor Ahmad",
+      "Status": "Active"
+    },
+    {
+      "Provider": "Nagad            ",
+      "Number": "01788856628  ",
+      "Holder": "Md Jafor Ahmad",
+      "Status": "Active"
+    }
+  ],
+  "Sponsors": {
+    "GitHub": "https://github.com/sponsors/MJ-Ahmad",
+    "Status": "Active"
+  },
+  "Crypto": {
+    "ETH": "0xaD6fE115967c22D1C54Fe6010C3AacCE5E196435",
+    "Status": "Active"
+  }
+}

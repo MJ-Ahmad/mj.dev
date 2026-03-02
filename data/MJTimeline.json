@@ -1,0 +1,574 @@
+{
+  "Project": "Quraner Fariwala Recovery",
+  "Version": "1.0",
+  "CreatedDate": "2026-02-27",
+  "Description": "Comprehensive, task-level timeline for recovery, documentation, negotiation, fundraising, operations, MCP network, consolidation, and sustainability. Each Phase contains Tasks with independent statuses to allow granular progress tracking and automatic percentage calculation.",
+  "Phases": [
+    {
+      "Step": "1",
+      "Title": "Crisis Documentation",
+      "Goal": "Complete all lists within 3 days.",
+      "Tasks": [
+        {
+          "TaskID": "1.1",
+          "Section": "Creditors & Investors",
+          "Description": "Collect names, phone numbers, amounts, and dates of all creditors and investors.",
+          "Status": "In Progress"
+        },
+        {
+          "TaskID": "1.2",
+          "Section": "Creditors & Investors",
+          "Description": "Verify verbal agreements and convert them into written records (notes of conversation, claimed terms).",
+          "Status": "Pending"
+        },
+        {
+          "TaskID": "1.3",
+          "Section": "Creditors & Investors",
+          "Description": "Assign unique CreditorID for each entry and capture supporting evidence (screenshots, bank references).",
+          "Status": "Pending"
+        },
+        {
+          "TaskID": "1.4",
+          "Section": "Creditors & Investors",
+          "Description": "Save creditor list into D:\\\\mj.dev\\\\docs\\\\creditors\\\\creditors-list.json with backup copy.",
+          "Status": "Pending"
+        },
+        {
+          "TaskID": "1.5",
+          "Section": "Advance Orders",
+          "Description": "Collect names, phone numbers, amounts, invoice references, and order details for all advance payments.",
+          "Status": "Pending"
+        },
+        {
+          "TaskID": "1.6",
+          "Section": "Advance Orders",
+          "Description": "Verify each payment against receipts, bank transactions, or mobile payment logs.",
+          "Status": "Pending"
+        },
+        {
+          "TaskID": "1.7",
+          "Section": "Advance Orders",
+          "Description": "Assign unique OrderID for each advance order and capture any customer notes or promises.",
+          "Status": "Pending"
+        },
+        {
+          "TaskID": "1.8",
+          "Section": "Advance Orders",
+          "Description": "Save orders list into D:\\\\mj.dev\\\\docs\\\\orders\\\\orders-list.json with backup copy.",
+          "Status": "Pending"
+        },
+        {
+          "TaskID": "1.9",
+          "Section": "Documentation Folders",
+          "Description": "Ensure creditors and orders lists are stored in separate folders and verify folder permissions.",
+          "Status": "Pending"
+        },
+        {
+          "TaskID": "1.10",
+          "Section": "Documentation Folders",
+          "Description": "Create encrypted backup copies and an offline printout for immediate reference.",
+          "Status": "Pending"
+        }
+      ]
+    },
+    {
+      "Step": "2",
+      "Title": "Communication & Apology",
+      "Goal": "Complete all communications within 5 days.",
+      "Tasks": [
+        {
+          "TaskID": "2.1",
+          "Section": "Drafting",
+          "Description": "Prepare a formal apology letter template in Bengali and English (concise, accountable, solution-oriented).",
+          "Status": "Pending"
+        },
+        {
+          "TaskID": "2.2",
+          "Section": "Drafting",
+          "Description": "Prepare an Arabic version of the apology template for international donors where applicable.",
+          "Status": "Pending"
+        },
+        {
+          "TaskID": "2.3",
+          "Section": "Drafting",
+          "Description": "Customize apology letters for high-priority creditors (mentioning specific amounts and proposed settlement options).",
+          "Status": "Pending"
+        },
+        {
+          "TaskID": "2.4",
+          "Section": "Drafting",
+          "Description": "Customize apology letters for advance order customers (offer refund or prioritized delivery options).",
+          "Status": "Pending"
+        },
+        {
+          "TaskID": "2.5",
+          "Section": "Sending",
+          "Description": "Send apology messages to creditors via SMS/WhatsApp/phone and record delivery status.",
+          "Status": "Pending"
+        },
+        {
+          "TaskID": "2.6",
+          "Section": "Sending",
+          "Description": "Send apology messages to advance order customers and offer clear next steps (refund or delivery timeline).",
+          "Status": "Pending"
+        },
+        {
+          "TaskID": "2.7",
+          "Section": "Documentation",
+          "Description": "Save copies of all communications in D:\\\\mj.dev\\\\docs\\\\communications\\\\apology-letters\\\\ with timestamps.",
+          "Status": "Pending"
+        },
+        {
+          "TaskID": "2.8",
+          "Section": "Documentation",
+          "Description": "Create a communication log file with date, recipient, method, and short summary of message.",
+          "Status": "Pending"
+        },
+        {
+          "TaskID": "2.9",
+          "Section": "Follow-up",
+          "Description": "Track responses from creditors and customers in a structured response list and tag priority cases.",
+          "Status": "Pending"
+        },
+        {
+          "TaskID": "2.10",
+          "Section": "Follow-up",
+          "Description": "Update MJTimeline.json with progress for each communication task and note blockers.",
+          "Status": "Pending"
+        }
+      ]
+    },
+    {
+      "Step": "3",
+      "Title": "Negotiation & Settlement",
+      "Goal": "Reduce creditor pressure and establish clear settlement agreements within 7 days.",
+      "Tasks": [
+        {
+          "TaskID": "3.1",
+          "Section": "Preparation",
+          "Description": "Identify creditors requiring urgent negotiation and prioritize by amount and pressure level.",
+          "Status": "Pending"
+        },
+        {
+          "TaskID": "3.2",
+          "Section": "Preparation",
+          "Description": "Prepare a negotiation strategy document with proposed timelines, partial payments, and supply options.",
+          "Status": "Completed"
+        },
+        {
+          "TaskID": "3.3",
+          "Section": "Meetings",
+          "Description": "Schedule direct discussions (phone or in-person) with prioritized creditors and record meeting times.",
+          "Status": "Completed"
+        },
+        {
+          "TaskID": "3.4",
+          "Section": "Meetings",
+          "Description": "Conduct negotiations, document agreed terms, and obtain verbal confirmations where possible.",
+          "Status": "Pending"
+        },
+        {
+          "TaskID": "3.5",
+          "Section": "Agreements",
+          "Description": "Draft bilingual settlement agreements (Bengali + English) tailored to each creditor's terms.",
+          "Status": "Pending"
+        },
+        {
+          "TaskID": "3.6",
+          "Section": "Agreements",
+          "Description": "Include clauses for repayment upon recovery, Quran supply options, and dispute resolution steps.",
+          "Status": "Pending"
+        },
+        {
+          "TaskID": "3.7",
+          "Section": "Documentation",
+          "Description": "Save signed agreements in D:\\\\mj.dev\\\\docs\\\\communications\\\\settlement-agreements\\\\ and create backups.",
+          "Status": "Pending"
+        },
+        {
+          "TaskID": "3.8",
+          "Section": "Documentation",
+          "Description": "Maintain a negotiation log with creditor name, date, summary, agreed terms, and next action.",
+          "Status": "Pending"
+        },
+        {
+          "TaskID": "3.9",
+          "Section": "Follow-up",
+          "Description": "Track creditor compliance with agreed interim terms and update MJTimeline.json accordingly.",
+          "Status": "Pending"
+        },
+        {
+          "TaskID": "3.10",
+          "Section": "Follow-up",
+          "Description": "Send confirmation messages to creditors after agreements are signed and store confirmations.",
+          "Status": "Pending"
+        }
+      ]
+    },
+    {
+      "Step": "4",
+      "Title": "Fundraising & Support",
+      "Goal": "Collect cash donations and secure financial support before the end of Ramadan.",
+      "Tasks": [
+        {
+          "TaskID": "4.1",
+          "Section": "Donor Identification",
+          "Description": "Create a list of potential donors including madrasas, ulema, businessmen, and community leaders.",
+          "Status": "Pending"
+        },
+        {
+          "TaskID": "4.2",
+          "Section": "Donor Identification",
+          "Description": "Categorize donors by type (individual, institutional, business, religious) and priority.",
+          "Status": "Pending"
+        },
+        {
+          "TaskID": "4.3",
+          "Section": "Proposal Drafting",
+          "Description": "Prepare a concise donation proposal in English highlighting purpose, impact, and urgent needs.",
+          "Status": "Pending"
+        },
+        {
+          "TaskID": "4.4",
+          "Section": "Proposal Drafting",
+          "Description": "Translate and adapt the proposal into Bengali for local donors and community outreach.",
+          "Status": "Pending"
+        },
+        {
+          "TaskID": "4.5",
+          "Section": "Proposal Drafting",
+          "Description": "Translate and adapt the proposal into Arabic for international or Arabic-speaking donors.",
+          "Status": "Pending"
+        },
+        {
+          "TaskID": "4.6",
+          "Section": "Outreach",
+          "Description": "Contact at least 5 donors daily via phone, email, or personal visits and record outcomes.",
+          "Status": "Pending"
+        },
+        {
+          "TaskID": "4.7",
+          "Section": "Outreach",
+          "Description": "Record donor responses in D:\\\\mj.dev\\\\docs\\\\fundraising\\\\donor-list.json with date and commitment amount.",
+          "Status": "Pending"
+        },
+        {
+          "TaskID": "4.8",
+          "Section": "Documentation",
+          "Description": "Save all proposals and outreach templates in D:\\\\mj.dev\\\\docs\\\\fundraising\\\\donation-proposals\\\\.",
+          "Status": "Pending"
+        },
+        {
+          "TaskID": "4.9",
+          "Section": "Documentation",
+          "Description": "Maintain a fundraising log with daily outreach summary, pledges, and received amounts.",
+          "Status": "Pending"
+        },
+        {
+          "TaskID": "4.10",
+          "Section": "Follow-up",
+          "Description": "Send thank-you messages and receipts to donors who commit or transfer funds.",
+          "Status": "Pending"
+        },
+        {
+          "TaskID": "4.11",
+          "Section": "Follow-up",
+          "Description": "Update MJTimeline.json with completed fundraising tasks and percentage progress.",
+          "Status": "Pending"
+        }
+      ]
+    },
+    {
+      "Step": "5",
+      "Title": "Restart Operations",
+      "Goal": "Restart operations towards the end of Ramadan with clear, documented steps.",
+      "Tasks": [
+        {
+          "TaskID": "5.1",
+          "Section": "Preparation",
+          "Description": "Identify printing press options, request quotes, and negotiate initial printing costs for a small batch.",
+          "Status": "Pending"
+        },
+        {
+          "TaskID": "5.2",
+          "Section": "Preparation",
+          "Description": "Finalize Quran manuscript with all markings, research notes, and corrections for print-ready files.",
+          "Status": "Pending"
+        },
+        {
+          "TaskID": "5.3",
+          "Section": "Printing",
+          "Description": "Approve proof copy and start printing a small test batch of Qurans for quality verification.",
+          "Status": "Pending"
+        },
+        {
+          "TaskID": "5.4",
+          "Section": "Printing",
+          "Description": "Document printing plan and cost breakdown in D:\\\\mj.dev\\\\docs\\\\operations\\\\printing-plan.docx.",
+          "Status": "Pending"
+        },
+        {
+          "TaskID": "5.5",
+          "Section": "Distribution",
+          "Description": "Deliver Qurans to advance order clients first and collect delivery confirmations.",
+          "Status": "Pending"
+        },
+        {
+          "TaskID": "5.6",
+          "Section": "Distribution",
+          "Description": "Record delivery details (customer name, date, quantity, proof of delivery) in distribution log.",
+          "Status": "Pending"
+        },
+        {
+          "TaskID": "5.7",
+          "Section": "Network Setup",
+          "Description": "Create a new sales and distribution network (MCP network) pilot plan and pilot region list.",
+          "Status": "Pending"
+        },
+        {
+          "TaskID": "5.8",
+          "Section": "Network Setup",
+          "Description": "Assign roles to agents, madrasas, and vendors for pilot distribution and document responsibilities.",
+          "Status": "Pending"
+        },
+        {
+          "TaskID": "5.9",
+          "Section": "Documentation",
+          "Description": "Save all operational documents and SOPs in D:\\\\mj.dev\\\\docs\\\\operations\\\\.",
+          "Status": "Pending"
+        },
+        {
+          "TaskID": "5.10",
+          "Section": "Follow-up",
+          "Description": "Update MJTimeline.json with completed operational tasks and percentage progress.",
+          "Status": "Pending"
+        }
+      ]
+    },
+    {
+      "Step": "6",
+      "Title": "MCP Network Setup",
+      "Goal": "Establish a structured MCP national network for Quran distribution and stakeholder engagement.",
+      "Tasks": [
+        {
+          "TaskID": "6.1",
+          "Section": "Planning",
+          "Description": "Define the scope of MCP network including madrasas, agents, donors, investors, and vendors.",
+          "Status": "Pending"
+        },
+        {
+          "TaskID": "6.2",
+          "Section": "Planning",
+          "Description": "Create a stakeholder map identifying all categories of participants and priority regions.",
+          "Status": "Pending"
+        },
+        {
+          "TaskID": "6.3",
+          "Section": "Data Collection",
+          "Description": "Collect contact details of madrasas, Quran students, and potential distribution agents.",
+          "Status": "Pending"
+        },
+        {
+          "TaskID": "6.4",
+          "Section": "Data Collection",
+          "Description": "Compile donor and investor profiles with transaction history and communication notes.",
+          "Status": "Pending"
+        },
+        {
+          "TaskID": "6.5",
+          "Section": "Structure",
+          "Description": "Design MCP organizational chart with roles, responsibilities, and escalation paths.",
+          "Status": "Pending"
+        },
+        {
+          "TaskID": "6.6",
+          "Section": "Structure",
+          "Description": "Define onboarding checklist and minimal requirements for agents and madrasas.",
+          "Status": "Pending"
+        },
+        {
+          "TaskID": "6.7",
+          "Section": "Documentation",
+          "Description": "Save MCP network plan in D:\\\\mj.dev\\\\docs\\\\operations\\\\distribution-network.json.",
+          "Status": "Pending"
+        },
+        {
+          "TaskID": "6.8",
+          "Section": "Documentation",
+          "Description": "Create bilingual onboarding guide (Bengali + English) for MCP participants.",
+          "Status": "Pending"
+        },
+        {
+          "TaskID": "6.9",
+          "Section": "Follow-up",
+          "Description": "Communicate with stakeholders to confirm participation and roles for pilot rollout.",
+          "Status": "Pending"
+        },
+        {
+          "TaskID": "6.10",
+          "Section": "Follow-up",
+          "Description": "Update MJTimeline.json with completed MCP setup tasks and percentage progress.",
+          "Status": "Pending"
+        }
+      ]
+    },
+    {
+      "Step": "7",
+      "Title": "Final Consolidation & Execution",
+      "Goal": "Consolidate all phases, resolve remaining issues, and execute the final recovery plan.",
+      "Tasks": [
+        {
+          "TaskID": "7.1",
+          "Section": "Review",
+          "Description": "Review all previous phases and verify task-level completion and evidence.",
+          "Status": "Pending"
+        },
+        {
+          "TaskID": "7.2",
+          "Section": "Review",
+          "Description": "Identify incomplete tasks, errors, and outstanding obligations across all phases.",
+          "Status": "Pending"
+        },
+        {
+          "TaskID": "7.3",
+          "Section": "Correction",
+          "Description": "Resolve outstanding errors, gaps, and incomplete obligations one by one with evidence.",
+          "Status": "Pending"
+        },
+        {
+          "TaskID": "7.4",
+          "Section": "Correction",
+          "Description": "Update MJTimeline.json with corrected statuses and recalculate progress percentages.",
+          "Status": "Pending"
+        },
+        {
+          "TaskID": "7.5",
+          "Section": "Integration",
+          "Description": "Merge creditor lists, order lists, agreements, donor records, and logs into a consolidated master file.",
+          "Status": "Pending"
+        },
+        {
+          "TaskID": "7.6",
+          "Section": "Integration",
+          "Description": "Ensure bilingual documentation (Bengali + English) is complete, consistent, and accessible.",
+          "Status": "Pending"
+        },
+        {
+          "TaskID": "7.7",
+          "Section": "Execution",
+          "Description": "Finalize Quran printing schedule and distribution plan for nationwide rollout after pilot validation.",
+          "Status": "Pending"
+        },
+        {
+          "TaskID": "7.8",
+          "Section": "Execution",
+          "Description": "Deliver Qurans to creditors and advance order customers as part of settlement and record confirmations.",
+          "Status": "Pending"
+        },
+        {
+          "TaskID": "7.9",
+          "Section": "Execution",
+          "Description": "Launch MCP network operations with assigned agents, monitor pilot, and iterate.",
+          "Status": "Pending"
+        },
+        {
+          "TaskID": "7.10",
+          "Section": "Follow-up",
+          "Description": "Prepare a final recovery report summarizing achievements, pending issues, and next steps.",
+          "Status": "Pending"
+        },
+        {
+          "TaskID": "7.11",
+          "Section": "Follow-up",
+          "Description": "Save final report in D:\\\\mj.dev\\\\docs\\\\reports\\\\final-recovery-report.docx and create backups.",
+          "Status": "Pending"
+        },
+        {
+          "TaskID": "7.12",
+          "Section": "Follow-up",
+          "Description": "Send thank-you messages to all stakeholders and publish a public summary for transparency.",
+          "Status": "Pending"
+        }
+      ]
+    },
+    {
+      "Step": "8",
+      "Title": "Legacy & Sustainability",
+      "Goal": "Ensure long-term sustainability, ethical stewardship, and inheritable systems for Quraner Fariwala.",
+      "Tasks": [
+        {
+          "TaskID": "8.1",
+          "Section": "Governance",
+          "Description": "Draft a constitutional framework for Quraner Fariwala including ethical stewardship principles.",
+          "Status": "Pending"
+        },
+        {
+          "TaskID": "8.2",
+          "Section": "Governance",
+          "Description": "Create bilingual governance documents (Bengali + English) for transparency and accessibility.",
+          "Status": "Pending"
+        },
+        {
+          "TaskID": "8.3",
+          "Section": "Governance",
+          "Description": "Anchor DID/CID identifiers for institutional trust and traceable inheritance where applicable.",
+          "Status": "Pending"
+        },
+        {
+          "TaskID": "8.4",
+          "Section": "Financial Sustainability",
+          "Description": "Develop a financial sustainability plan including donor retention, investment cycles, and zakat integration.",
+          "Status": "Pending"
+        },
+        {
+          "TaskID": "8.5",
+          "Section": "Financial Sustainability",
+          "Description": "Create transparent financial reporting templates for monthly and yearly audits.",
+          "Status": "Pending"
+        },
+        {
+          "TaskID": "8.6",
+          "Section": "Operational Continuity",
+          "Description": "Design modular folder structures, SOPs, and onboarding workflows for future contributors.",
+          "Status": "Pending"
+        },
+        {
+          "TaskID": "8.7",
+          "Section": "Operational Continuity",
+          "Description": "Prepare training materials and a short onboarding course for staff, volunteers, and agents.",
+          "Status": "Pending"
+        },
+        {
+          "TaskID": "8.8",
+          "Section": "Documentation",
+          "Description": "Save all sustainability documents in D:\\\\mj.dev\\\\docs\\\\legacy\\\\ and create backups.",
+          "Status": "Pending"
+        },
+        {
+          "TaskID": "8.9",
+          "Section": "Documentation",
+          "Description": "Prepare a bilingual legacy handbook (Bengali + English) for future stewards and contributors.",
+          "Status": "Pending"
+        },
+        {
+          "TaskID": "8.10",
+          "Section": "Community Engagement",
+          "Description": "Establish a feedback system for madrasas, students, and donors to continuously improve operations.",
+          "Status": "Pending"
+        },
+        {
+          "TaskID": "8.11",
+          "Section": "Community Engagement",
+          "Description": "Organize annual stakeholder meetings to review progress and sustainability goals.",
+          "Status": "Pending"
+        },
+        {
+          "TaskID": "8.12",
+          "Section": "Follow-up",
+          "Description": "Update MJTimeline.json with completed legacy tasks and percentage progress.",
+          "Status": "Pending"
+        }
+      ]
+    }
+  ]
+}

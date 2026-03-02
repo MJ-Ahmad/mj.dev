@@ -1,0 +1,76 @@
+{
+  "LegalIssues": [
+    {
+      "Name": "Mahbubur Rahman     ",
+      "ID": "MJ1714221654",
+      "Function": "MahbuburRahman",
+      "Status": "In Process"
+    },
+    {
+      "Name": "Setara Begum        ",
+      "ID": "MJ1306353683",
+      "Function": "SetaraBegum",
+      "Status": "In Process"
+    },
+    {
+      "Name": "Nazifa Rahaman      ",
+      "ID": "MJ1740526104",
+      "Function": "NazifaRahaman",
+      "Status": "In Process"
+    },
+    {
+      "Name": "Tarek Jamel         ",
+      "ID": "MJ1778610277",
+      "Function": "TarekJamel",
+      "Status": "In Process"
+    },
+    {
+      "Name": "Hossain Ahmad       ",
+      "ID": "MJ1982408514",
+      "Function": "HossainAhmad",
+      "Status": "In Process"
+    },
+    {
+      "Name": "Mahmud bin Zakariya ",
+      "ID": "MJ1611803564",
+      "Function": "Mahmudbinzakariya",
+      "Status": "In Process"
+    },
+    {
+      "Name": "Elias Lahori        ",
+      "ID": "MJ1915669909",
+      "Function": "EliasLahori",
+      "Status": "In Process"
+    },
+    {
+      "Name": "Faysal Mahmud Habibi",
+      "ID": "MJ1701498522",
+      "Function": "FaysalHabibi",
+      "Status": "In Process"
+    },
+    {
+      "Name": "Muhammad Hamidullah ",
+      "ID": "MJ1841988716",
+      "Function": "MuhammadHamidullah",
+      "Status": "In Process"
+    },
+    {
+      "Name": "Muhammadullah Saadi ",
+      "ID": "MJ0841988716",
+      "Function": "Muhammadullah",
+      "Status": "In Process"
+    },
+    {
+      "Name": "Mohammad Oliullah   ",
+      "ID": "MJ1967392132",
+      "Function": "MohammadOliullah",
+      "Status": "In Process"
+    },
+    {
+      "Name": "Masum Al Forhad     ",
+      "ID": "MJ1712800045",
+      "Function": "MasumAlForhad",
+      "Status": "In Process"
+    }
+  ]
+}
